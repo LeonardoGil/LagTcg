@@ -5,6 +5,13 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgForms", "TcgForms\TcgForms.csproj", "{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgDomain", "TcgDomain\TcgDomain.csproj", "{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FC472DC-25ED-4E7A-829A-23E007CDAEE5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
