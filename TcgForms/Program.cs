@@ -1,3 +1,5 @@
+using TcgForms.Forms;
+
 namespace TcgForms
 {
     internal static class Program
