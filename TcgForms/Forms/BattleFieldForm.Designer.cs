@@ -1,6 +1,6 @@
-﻿namespace TcgForms
+﻿namespace TcgForms.Forms
 {
-    partial class Form1
+    partial class BattleFieldForm
     {
         /// <summary>
         ///  Required designer variable.
