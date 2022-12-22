@@ -4,9 +4,6 @@ namespace TcgForms.Forms
 {
     partial class BattleFieldForm
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
@@ -24,40 +21,48 @@ namespace TcgForms.Forms
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.CardInHandTest = new CardInHandControl();
             this.SuspendLayout();
-            // 
-            // CardInHandTest
-            // 
-            this.CardInHandTest.Location = new System.Drawing.Point(57, 301);
-            this.CardInHandTest.Name = "CardInHandTest";
-            this.CardInHandTest.Size = new System.Drawing.Size(89, 129);
-            this.CardInHandTest.TabIndex = 0;
-            // 
+            this.CreateBattleField();
+
             // BattleFieldForm
-            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(564, 450);
+            this.ClientSize = new System.Drawing.Size(787, 383);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Name = "BattleFieldForm";
             this.Text = "Battle Field";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+
+            this.AddControlsForm();
             this.ResumeLayout(false);
+        }
 
-            this.Controls.Add(this.CardInHandTest);
+        private void AddControlsForm()
+        {
+            this.Controls.Add(this.tableLayoutDivisional);
+        }
 
+        private void CreateBattleField()
+        {
+            // tableLayoutDivisional
+            this.tableLayoutDivisional = new System.Windows.Forms.TableLayoutPanel();
+            
+            this.tableLayoutDivisional.ColumnCount = 1;
+            this.tableLayoutDivisional.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutDivisional.Location = new System.Drawing.Point(12, 2);
+            this.tableLayoutDivisional.Name = "tableLayoutDivisional";
+            this.tableLayoutDivisional.RowCount = 2;
+            this.tableLayoutDivisional.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.88733F));
+            this.tableLayoutDivisional.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.11267F));
+            this.tableLayoutDivisional.Size = new System.Drawing.Size(787, 523);
+            this.tableLayoutDivisional.TabIndex = 1;
+            this.tableLayoutDivisional.BackColor = Color.Black;
         }
 
         #endregion
-
-        private CardInHandControl CardInHandTest;
+        private TableLayoutPanel tableLayoutDivisional;
     }
 }
