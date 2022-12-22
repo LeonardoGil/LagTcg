@@ -1,6 +1,6 @@
-﻿using TcgDomain.Entities.Cards;
-using TcgDomain.Entities.Cards.Abstract;
+﻿using TcgDomain.Extensions;
 using TcgInfra.CustomExceptions;
+using TcgInfra.CustomMessages;
 
 namespace TcgDomain.Entities
 {
@@ -12,8 +12,8 @@ namespace TcgDomain.Entities
 
         public void AddCard(dynamic card)
         {
-            if (card is not MonsterCard || card is not EffectCard)
-                throw new BusinessException("Tipo de objeto não e compatível com Deck.");
+            if (((object)card).IsCard())
+                throw new BusinessException(ErrorMessage.DynamicCardInvalid);
 
             var numberCards = Cards.Count(c => c == card);
 

@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7A778350-D714-44AC-9809-DE2F3F87392E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgInfra", "TcgInfra\TcgInfra.csproj", "{46FC144A-7B55-4D20-9656-BA41207886E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgMock", "TcgMock\TcgMock.csproj", "{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +34,10 @@ Global
 		{46FC144A-7B55-4D20-9656-BA41207886E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FC144A-7B55-4D20-9656-BA41207886E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FC144A-7B55-4D20-9656-BA41207886E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

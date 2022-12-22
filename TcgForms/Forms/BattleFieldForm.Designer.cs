@@ -1,4 +1,6 @@
-﻿namespace TcgForms.Forms
+﻿using TcgForms.Controls;
+
+namespace TcgForms.Forms
 {
     partial class BattleFieldForm
     {
@@ -28,12 +30,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.CardInHandTest = new CardInHandControl();
+            this.SuspendLayout();
+            // 
+            // CardInHandTest
+            // 
+            this.CardInHandTest.Location = new System.Drawing.Point(57, 301);
+            this.CardInHandTest.Name = "CardInHandTest";
+            this.CardInHandTest.Size = new System.Drawing.Size(89, 129);
+            this.CardInHandTest.TabIndex = 0;
+            // 
+            // BattleFieldForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(564, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Name = "BattleFieldForm";
+            this.Text = "Battle Field";
+            this.ResumeLayout(false);
+
+            this.Controls.Add(this.CardInHandTest);
+
         }
 
         #endregion
+
+        private CardInHandControl CardInHandTest;
     }
 }
