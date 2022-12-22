@@ -15,5 +15,10 @@ namespace TcgForms.Forms
             User = user;
             Opponent = opponent;
         }
+
+        private void DrawButton_Click(object sender, EventArgs e)
+        {
+            var card = User.Deck.Draw();
+        }
     }
 }
