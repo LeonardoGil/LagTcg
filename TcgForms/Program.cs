@@ -16,13 +16,13 @@ namespace TcgForms
             {
                 Username = "Leonardo",
                 PointLife = 8000,
-                Deck = new BattleDeck(BlueEyesDeck.Get())
+                Deck = new DuelDeck(BlueEyesDeck.Get())
             };
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new BattleFieldForm(player, null));
+            Application.Run(new DuelFieldForm(player, null));
         }
     }
 }

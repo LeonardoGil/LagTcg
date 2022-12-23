@@ -1,12 +1,12 @@
 ﻿namespace TcgDomain.Entities.Battles
 {
-    public class BattleDeck
+    public class DuelDeck
     {
         private Deck OriginalDeck;
 
         private List<dynamic> Cards;
 
-        public BattleDeck(Deck deck)
+        public DuelDeck(Deck deck)
         {
             OriginalDeck = deck;
             Cards = OriginalDeck.Cards.ToList();

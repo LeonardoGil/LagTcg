@@ -1,6 +1,6 @@
 ﻿namespace TcgForms.Controls
 {
-    partial class CardInHandControl
+    partial class CardControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardInHandControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardControl));
             this.SuspendLayout();
             // 
             // CardInHandControl

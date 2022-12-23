@@ -2,7 +2,7 @@
 
 namespace TcgForms.Forms
 {
-    partial class BattleFieldForm
+    partial class DuelFieldForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -78,9 +78,9 @@ namespace TcgForms.Forms
             this.Controls.Add(this.FieldPlayerPanel);
             this.Controls.Add(this.FieldOpponentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BattleFieldForm";
+            this.Name = "DuelFieldForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Battle Field";
+            this.Text = "Duel Field";
             this.FieldPlayerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -92,6 +92,5 @@ namespace TcgForms.Forms
         private Panel FieldPlayerPanel;
         private FlowLayoutPanel MyHandsFlowPanel;
         private Button DrawButton;
-        private CardInHandControl CardsInHands;
     }
 }

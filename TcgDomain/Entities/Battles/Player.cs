@@ -6,6 +6,6 @@
 
         public uint PointLife { get; set; }
 
-        public BattleDeck Deck { get; set; }
+        public DuelDeck Deck { get; set; }
     }
 }

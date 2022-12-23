@@ -4,9 +4,9 @@ using TcgInfra.CustomMessages;
 
 namespace TcgForms.Controls
 {
-    public partial class CardInHandControl : UserControl
+    public partial class CardControl : UserControl
     {
-        public CardInHandControl()
+        public CardControl()
         {
             //if (((object)card).IsCard())
             //    throw new BusinessException(ErrorMessage.DynamicCardInvalid);
