@@ -2,9 +2,9 @@
 {
     public class Player
     {
-        public string Username { get; private set; }
+        public string Username { get; set; }
 
-        public uint PointLife { get; private set; }
+        public uint PointLife { get; set; }
 
         public BattleDeck Deck { get; set; }
     }

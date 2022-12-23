@@ -6,6 +6,11 @@ namespace TcgDomain.Entities
 {
     public class Deck
     {
+        public Deck()
+        {
+            Cards = new List<dynamic>();
+        }
+
         public string Description { get; set; }
 
         public List<dynamic> Cards { get; private set; }

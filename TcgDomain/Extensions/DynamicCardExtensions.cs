@@ -7,7 +7,7 @@ namespace TcgDomain.Extensions
     {
         public static bool IsCard(this object card)
         {
-            return card is not MonsterCard || card is not EffectCard;
+            return card is not MonsterCard && card is not EffectCard;
         }
     }
 }

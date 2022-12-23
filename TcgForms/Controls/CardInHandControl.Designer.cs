@@ -38,8 +38,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Name = "CardInHandControl";
-            this.Size = new System.Drawing.Size(89, 129);
+            this.Size = new System.Drawing.Size(80, 120);
             this.ResumeLayout(false);
+
         }
 
         #endregion

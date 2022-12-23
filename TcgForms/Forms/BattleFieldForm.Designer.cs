@@ -25,9 +25,8 @@ namespace TcgForms.Forms
         {
             this.FieldOpponentPanel = new System.Windows.Forms.Panel();
             this.FieldPlayerPanel = new System.Windows.Forms.Panel();
-            this.MyHandsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.DrawButton = new System.Windows.Forms.Button();
-
+            this.MyHandsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.FieldPlayerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,15 +50,6 @@ namespace TcgForms.Forms
             this.FieldPlayerPanel.Size = new System.Drawing.Size(1366, 380);
             this.FieldPlayerPanel.TabIndex = 1;
             // 
-            // MyHandsFlowPanel
-            // 
-            this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
-            this.MyHandsFlowPanel.Location = new System.Drawing.Point(200, 260);
-            this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
-            this.MyHandsFlowPanel.Size = new System.Drawing.Size(966, 120);
-            this.MyHandsFlowPanel.TabIndex = 0;
-            // 
             // DrawButton
             // 
             this.DrawButton.Location = new System.Drawing.Point(1172, 260);
@@ -69,6 +59,15 @@ namespace TcgForms.Forms
             this.DrawButton.Text = "Draw";
             this.DrawButton.UseVisualStyleBackColor = true;
             this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
+            // 
+            // MyHandsFlowPanel
+            // 
+            this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
+            this.MyHandsFlowPanel.Location = new System.Drawing.Point(200, 260);
+            this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
+            this.MyHandsFlowPanel.Size = new System.Drawing.Size(966, 120);
+            this.MyHandsFlowPanel.TabIndex = 0;
             // 
             // BattleFieldForm
             // 
@@ -93,5 +92,6 @@ namespace TcgForms.Forms
         private Panel FieldPlayerPanel;
         private FlowLayoutPanel MyHandsFlowPanel;
         private Button DrawButton;
+        private CardInHandControl CardsInHands;
     }
 }
