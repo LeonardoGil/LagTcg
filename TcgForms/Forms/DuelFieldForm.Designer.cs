@@ -30,6 +30,9 @@ namespace TcgForms.Forms
             this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentSecondary = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.FieldOpponentPanel.SuspendLayout();
             this.FieldPlayerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +52,9 @@ namespace TcgForms.Forms
             // FieldPlayerPanel
             // 
             this.FieldPlayerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerDeck);
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerMain);
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerSecondary);
             this.FieldPlayerPanel.Controls.Add(this.DrawButton);
             this.FieldPlayerPanel.Controls.Add(this.MyHandsFlowPanel);
             this.FieldPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -59,7 +65,7 @@ namespace TcgForms.Forms
             // 
             // DrawButton
             // 
-            this.DrawButton.Location = new System.Drawing.Point(1141, 284);
+            this.DrawButton.Location = new System.Drawing.Point(1141, 288);
             this.DrawButton.Name = "DrawButton";
             this.DrawButton.Size = new System.Drawing.Size(85, 140);
             this.DrawButton.TabIndex = 1;
@@ -71,13 +77,15 @@ namespace TcgForms.Forms
             // 
             this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
-            this.MyHandsFlowPanel.Location = new System.Drawing.Point(145, 284);
+            this.MyHandsFlowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MyHandsFlowPanel.Location = new System.Drawing.Point(145, 288);
             this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
             this.MyHandsFlowPanel.Size = new System.Drawing.Size(990, 140);
             this.MyHandsFlowPanel.TabIndex = 0;
             // 
             // tableLayoutOpponentDeck
             // 
+            this.tableLayoutOpponentDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentDeck.ColumnCount = 1;
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -91,6 +99,7 @@ namespace TcgForms.Forms
             // 
             // tableLayoutOpponentMain
             // 
+            this.tableLayoutOpponentMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentMain.ColumnCount = 5;
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -107,6 +116,7 @@ namespace TcgForms.Forms
             // 
             // tableLayoutOpponentSecondary
             // 
+            this.tableLayoutOpponentSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentSecondary.ColumnCount = 1;
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -117,6 +127,51 @@ namespace TcgForms.Forms
             this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutOpponentSecondary.Size = new System.Drawing.Size(100, 280);
             this.tableLayoutOpponentSecondary.TabIndex = 2;
+            // 
+            // tableLayoutPlayerDeck
+            // 
+            this.tableLayoutPlayerDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutPlayerDeck.ColumnCount = 1;
+            this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPlayerDeck.Location = new System.Drawing.Point(1035, 4);
+            this.tableLayoutPlayerDeck.Name = "tableLayoutPlayerDeck";
+            this.tableLayoutPlayerDeck.RowCount = 2;
+            this.tableLayoutPlayerDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerDeck.Size = new System.Drawing.Size(100, 280);
+            this.tableLayoutPlayerDeck.TabIndex = 5;
+            // 
+            // tableLayoutPlayerMain
+            // 
+            this.tableLayoutPlayerMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutPlayerMain.ColumnCount = 5;
+            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPlayerMain.Location = new System.Drawing.Point(390, 4);
+            this.tableLayoutPlayerMain.Name = "tableLayoutPlayerMain";
+            this.tableLayoutPlayerMain.RowCount = 2;
+            this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerMain.Size = new System.Drawing.Size(500, 280);
+            this.tableLayoutPlayerMain.TabIndex = 4;
+            // 
+            // tableLayoutPlayerSecondary
+            // 
+            this.tableLayoutPlayerSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutPlayerSecondary.ColumnCount = 1;
+            this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPlayerSecondary.Location = new System.Drawing.Point(145, 4);
+            this.tableLayoutPlayerSecondary.Name = "tableLayoutPlayerSecondary";
+            this.tableLayoutPlayerSecondary.RowCount = 2;
+            this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPlayerSecondary.Size = new System.Drawing.Size(100, 280);
+            this.tableLayoutPlayerSecondary.TabIndex = 3;
             // 
             // DuelFieldForm
             // 
@@ -145,5 +200,8 @@ namespace TcgForms.Forms
         private TableLayoutPanel tableLayoutOpponentDeck;
         private TableLayoutPanel tableLayoutOpponentSecondary;
         private TableLayoutPanel tableLayoutOpponentMain;
+        private TableLayoutPanel tableLayoutPlayerDeck;
+        private TableLayoutPanel tableLayoutPlayerMain;
+        private TableLayoutPanel tableLayoutPlayerSecondary;
     }
 }
