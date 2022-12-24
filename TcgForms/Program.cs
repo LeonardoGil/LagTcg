@@ -1,5 +1,6 @@
 using TcgDomain.Entities.Battles;
 using TcgForms.Forms;
+using TcgMock;
 using TcgMock.Decks;
 
 namespace TcgForms
@@ -12,17 +13,20 @@ namespace TcgForms
         [STAThread]
         static void Main()
         {
+            var cards = MockService.LoadInitialCards();
+
             var player = new Player
             {
                 Username = "Leonardo",
                 PointLife = 8000,
-                Deck = new DuelDeck(BlueEyesDeck.Get())
+                Deck = new DuelDeck(YugiMutoDeck.Get(cards))
             };
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new DuelFieldForm(player, null));
+
+            //ApplicationConfiguration.Initialize();
+            //Application.Run(new DuelFieldForm(player, null));
         }
     }
 }

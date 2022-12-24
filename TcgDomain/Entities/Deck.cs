@@ -17,7 +17,7 @@ namespace TcgDomain.Entities
 
         public void AddCard(dynamic card)
         {
-            if (((object)card).IsCard())
+            if ((card as object).IsCard())
                 throw new BusinessException(ErrorMessage.DynamicCardInvalid);
 
             var numberCards = Cards.Count(c => c == card);

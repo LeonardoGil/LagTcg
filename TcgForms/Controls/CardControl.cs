@@ -1,4 +1,5 @@
-﻿using TcgDomain.Extensions;
+﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Extensions;
 using TcgInfra.CustomExceptions;
 using TcgInfra.CustomMessages;
 
@@ -8,10 +9,13 @@ namespace TcgForms.Controls
     {
         public CardControl()
         {
-            //if (((object)card).IsCard())
-            //    throw new BusinessException(ErrorMessage.DynamicCardInvalid);
-
             InitializeComponent();
+        }
+
+        public CardControl(Card card)
+        {
+            if (card.IsCard())
+                throw new BusinessException(ErrorMessage.DynamicCardInvalid);
         }
     }
 }

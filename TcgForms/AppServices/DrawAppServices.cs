@@ -3,11 +3,11 @@ using TcgForms.Controls;
 
 namespace TcgForms.Services
 {
-    public class DrawServices
+    public class DrawAppServices
     {
         private readonly ComponentResourceManager resources;
 
-        public DrawServices()
+        public DrawAppServices()
         {
             resources = new ComponentResourceManager(typeof(CardControl));
         }
@@ -19,7 +19,7 @@ namespace TcgForms.Services
 
             cardInHand.BackgroundImageLayout = ImageLayout.Stretch;
             cardInHand.Name = "Card";
-            cardInHand.Size = new Size(80, 120);
+            cardInHand.Size = new Size(100, 140);
 
             control.ResumeLayout(false);
         }

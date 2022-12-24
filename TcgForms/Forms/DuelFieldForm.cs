@@ -9,7 +9,7 @@ namespace TcgForms.Forms
     {
         #region Services
 
-        private readonly DrawServices cardInHandServices;
+        private readonly DrawAppServices cardInHandServices;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace TcgForms.Forms
             User = user;
             Opponent = opponent;
 
-            cardInHandServices = new DrawServices();
+            cardInHandServices = new DrawAppServices();
         }
 
         private void DrawButton_Click(object sender, EventArgs e)
