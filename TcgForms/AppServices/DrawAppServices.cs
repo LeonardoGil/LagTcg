@@ -1,16 +1,11 @@
 ﻿using System.ComponentModel;
 using TcgForms.Controls;
 
-namespace TcgForms.Services
+namespace TcgForms.AppServices
 {
     public class DrawAppServices
     {
-        private readonly ComponentResourceManager resources;
-
-        public DrawAppServices()
-        {
-            resources = new ComponentResourceManager(typeof(CardControl));
-        }
+        public DrawAppServices() { }
 
         public void LoadCardForControl(CardControl cardInHand, Control control)
         {

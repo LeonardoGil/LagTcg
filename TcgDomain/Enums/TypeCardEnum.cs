@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TcgMock.Enums
+namespace TcgDomain.Enums
 {
     public enum TypeCardEnum
     {
@@ -10,13 +10,16 @@ namespace TcgMock.Enums
         [Description("Effect Monster")]
         EffectMonster = 1,
 
+        [Description("Ritual Monster")]
+        RitualMonster = 2,
+
         [Description("Fusion Monster")]
-        FusionMonster = 2,
+        FusionMonster = 3,
         
         [Description("Spell Card")]
-        SpellCard = 3,
+        SpellCard = 4,
 
         [Description("Trap Card")]
-        TrapCard = 4,
+        TrapCard = 5,
     }
 }

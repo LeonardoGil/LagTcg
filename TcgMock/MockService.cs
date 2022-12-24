@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using TcgDomain.Entities.Cards;
+using TcgDomain.Enums;
 using TcgDomain.Extensions;
 using TcgMock.DTOs;
-using TcgMock.Enums;
 
 namespace TcgMock
 {

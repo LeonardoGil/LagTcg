@@ -1,7 +1,6 @@
 using TcgDomain.Entities.Battles;
-using TcgDomain.Entities.Cards.Abstract;
 using TcgForms.Controls;
-using TcgForms.Services;
+using TcgForms.AppServices;
 
 namespace TcgForms.Forms
 {
@@ -9,7 +8,9 @@ namespace TcgForms.Forms
     {
         #region Services
 
-        private readonly DrawAppServices cardInHandServices;
+        private readonly DrawAppServices DrawAppServices;
+
+        private readonly InvokeAppServices InvokeAppServices;
 
         #endregion
 
@@ -24,24 +25,19 @@ namespace TcgForms.Forms
             User = user;
             Opponent = opponent;
 
-            cardInHandServices = new DrawAppServices();
+            DrawAppServices = new DrawAppServices();
+            InvokeAppServices = new InvokeAppServices();
         }
+
+        public void InvokeCard(CardControl cardControl) => InvokeAppServices.Invoke(MyHandsFlowPanel, tableLayoutPlayerMain, cardControl);
 
         private void DrawButton_Click(object sender, EventArgs e)
         {
-            var card = User.Deck.Draw() as Card;
+            var card = User.Deck.Draw();
 
-            var cardInHand = new CardControl();
+            var cardControl = new CardControl(card);
 
-            //FieldPlayerPanel.SuspendLayout();
-            //MyHandsFlowPanel.SuspendLayout();
-            //SuspendLayout();
-
-            cardInHandServices.LoadCardForControl(cardInHand, MyHandsFlowPanel);
-
-            //FieldPlayerPanel.ResumeLayout(false);
-            //MyHandsFlowPanel.ResumeLayout(false);
-            //ResumeLayout(false);
+            DrawAppServices.LoadCardForControl(cardControl, MyHandsFlowPanel);
         }
     }
 }

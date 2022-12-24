@@ -24,15 +24,15 @@ namespace TcgForms.Forms
         private void InitializeComponent()
         {
             this.FieldOpponentPanel = new System.Windows.Forms.Panel();
-            this.FieldPlayerPanel = new System.Windows.Forms.Panel();
-            this.DrawButton = new System.Windows.Forms.Button();
-            this.MyHandsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentSecondary = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
+            this.FieldPlayerPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
+            this.DrawButton = new System.Windows.Forms.Button();
+            this.MyHandsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.FieldOpponentPanel.SuspendLayout();
             this.FieldPlayerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -49,53 +49,19 @@ namespace TcgForms.Forms
             this.FieldOpponentPanel.Size = new System.Drawing.Size(1280, 288);
             this.FieldOpponentPanel.TabIndex = 0;
             // 
-            // FieldPlayerPanel
+            // tableLayoutOpponentSecondary
             // 
-            this.FieldPlayerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerDeck);
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerMain);
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerSecondary);
-            this.FieldPlayerPanel.Controls.Add(this.DrawButton);
-            this.FieldPlayerPanel.Controls.Add(this.MyHandsFlowPanel);
-            this.FieldPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FieldPlayerPanel.Location = new System.Drawing.Point(0, 292);
-            this.FieldPlayerPanel.Name = "FieldPlayerPanel";
-            this.FieldPlayerPanel.Size = new System.Drawing.Size(1280, 428);
-            this.FieldPlayerPanel.TabIndex = 1;
-            // 
-            // DrawButton
-            // 
-            this.DrawButton.Location = new System.Drawing.Point(1141, 288);
-            this.DrawButton.Name = "DrawButton";
-            this.DrawButton.Size = new System.Drawing.Size(85, 140);
-            this.DrawButton.TabIndex = 1;
-            this.DrawButton.Text = "Draw";
-            this.DrawButton.UseVisualStyleBackColor = true;
-            this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
-            // 
-            // MyHandsFlowPanel
-            // 
-            this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
-            this.MyHandsFlowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MyHandsFlowPanel.Location = new System.Drawing.Point(145, 288);
-            this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
-            this.MyHandsFlowPanel.Size = new System.Drawing.Size(990, 140);
-            this.MyHandsFlowPanel.TabIndex = 0;
-            // 
-            // tableLayoutOpponentDeck
-            // 
-            this.tableLayoutOpponentDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutOpponentDeck.ColumnCount = 1;
-            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(145, 4);
-            this.tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
-            this.tableLayoutOpponentDeck.RowCount = 2;
-            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentDeck.Size = new System.Drawing.Size(100, 280);
-            this.tableLayoutOpponentDeck.TabIndex = 0;
+            this.tableLayoutOpponentSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutOpponentSecondary.ColumnCount = 1;
+            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1035, 4);
+            this.tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
+            this.tableLayoutOpponentSecondary.RowCount = 2;
+            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOpponentSecondary.Size = new System.Drawing.Size(100, 280);
+            this.tableLayoutOpponentSecondary.TabIndex = 2;
             // 
             // tableLayoutOpponentMain
             // 
@@ -114,19 +80,33 @@ namespace TcgForms.Forms
             this.tableLayoutOpponentMain.Size = new System.Drawing.Size(500, 280);
             this.tableLayoutOpponentMain.TabIndex = 1;
             // 
-            // tableLayoutOpponentSecondary
+            // tableLayoutOpponentDeck
             // 
-            this.tableLayoutOpponentSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutOpponentSecondary.ColumnCount = 1;
-            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1035, 4);
-            this.tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
-            this.tableLayoutOpponentSecondary.RowCount = 2;
-            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentSecondary.Size = new System.Drawing.Size(100, 280);
-            this.tableLayoutOpponentSecondary.TabIndex = 2;
+            this.tableLayoutOpponentDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            this.tableLayoutOpponentDeck.ColumnCount = 1;
+            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(145, 4);
+            this.tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
+            this.tableLayoutOpponentDeck.RowCount = 2;
+            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOpponentDeck.Size = new System.Drawing.Size(100, 280);
+            this.tableLayoutOpponentDeck.TabIndex = 0;
+            // 
+            // FieldPlayerPanel
+            // 
+            this.FieldPlayerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerDeck);
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerMain);
+            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerSecondary);
+            this.FieldPlayerPanel.Controls.Add(this.DrawButton);
+            this.FieldPlayerPanel.Controls.Add(this.MyHandsFlowPanel);
+            this.FieldPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.FieldPlayerPanel.Location = new System.Drawing.Point(0, 292);
+            this.FieldPlayerPanel.Name = "FieldPlayerPanel";
+            this.FieldPlayerPanel.Size = new System.Drawing.Size(1280, 428);
+            this.FieldPlayerPanel.TabIndex = 1;
             // 
             // tableLayoutPlayerDeck
             // 
@@ -172,6 +152,26 @@ namespace TcgForms.Forms
             this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPlayerSecondary.Size = new System.Drawing.Size(100, 280);
             this.tableLayoutPlayerSecondary.TabIndex = 3;
+            // 
+            // DrawButton
+            // 
+            this.DrawButton.Location = new System.Drawing.Point(1141, 288);
+            this.DrawButton.Name = "DrawButton";
+            this.DrawButton.Size = new System.Drawing.Size(85, 140);
+            this.DrawButton.TabIndex = 1;
+            this.DrawButton.Text = "Draw";
+            this.DrawButton.UseVisualStyleBackColor = true;
+            this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
+            // 
+            // MyHandsFlowPanel
+            // 
+            this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
+            this.MyHandsFlowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MyHandsFlowPanel.Location = new System.Drawing.Point(145, 288);
+            this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
+            this.MyHandsFlowPanel.Size = new System.Drawing.Size(990, 140);
+            this.MyHandsFlowPanel.TabIndex = 0;
             // 
             // DuelFieldForm
             // 

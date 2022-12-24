@@ -1,6 +1,5 @@
 ﻿using TcgDomain.Extensions;
 using TcgInfra.CustomExceptions;
-using TcgInfra.CustomMessages;
 
 namespace TcgDomain.Entities
 {
@@ -17,8 +16,7 @@ namespace TcgDomain.Entities
 
         public void AddCard(dynamic card)
         {
-            if ((card as object).IsCard())
-                throw new BusinessException(ErrorMessage.DynamicCardInvalid);
+            (card as object).OnlyCard();
 
             var numberCards = Cards.Count(c => c == card);
 
