@@ -27,6 +27,12 @@ namespace TcgDomain.Extensions
             if (card is EffectCard)
                 return TypeCardEnum.EffectMonster;
 
+            if (card is MagicCard)
+                return TypeCardEnum.SpellCard;
+
+            if (card is TrapCard)
+                return TypeCardEnum.TrapCard;
+
             throw new BusinessException("Object não e um tipo Card");
         }
     }

@@ -1,11 +1,11 @@
 ﻿namespace TcgForms.Controls
 {
-    partial class CardControl
+    partial class CardControl 
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        protected System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -41,6 +41,7 @@
             this.contextMenuCard.Name = "contextMenuCard";
             this.contextMenuCard.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.contextMenuCard.Size = new System.Drawing.Size(110, 26);
+            this.contextMenuCard.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuCard_Opening);
             // 
             // MenuItemInvokeNormalCard
             // 
@@ -56,7 +57,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ContextMenuStrip = this.contextMenuCard;
             this.Name = "CardControl";
-            this.Size = new System.Drawing.Size(80, 120);
+            this.Size = new System.Drawing.Size(100, 140);
             this.contextMenuCard.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -64,7 +65,7 @@
 
         #endregion
 
-        private ContextMenuStrip contextMenuCard;
-        private ToolStripMenuItem MenuItemInvokeNormalCard;
+        protected ContextMenuStrip contextMenuCard;
+        protected ToolStripMenuItem MenuItemInvokeNormalCard;
     }
 }

@@ -1,17 +1,36 @@
 ﻿using TcgDomain.Enums;
+using TcgInfra.CustomExceptions;
+using TcgInfra.CustomMessages;
 
 namespace TcgDomain.Entities.Cards.Abstract
 {
     public abstract class MonsterCard : Card
     {
-        public uint Attack { get; set; }
+        public int Attack { get; set; }
 
-        public uint Defense { get; set; }
+        public int Defense { get; set; }
 
-        public byte Level { get; set; }
+        public int Level { get; set; }
 
         public AttributeEnum Attribute { get; set; }
         
         public TypeMonsterEnum Type { get; set; }
+
+        public RangeMonsterLevelEnum RangeMonsterLevel 
+        { 
+            get
+            {
+                if (Level >= 1 && Level <= 4)
+                    return RangeMonsterLevelEnum.OneToFour;
+
+                if (Level == 5 || Level == 6)
+                    return RangeMonsterLevelEnum.FiveAndSix;
+
+                if (Level >= 7)
+                    return RangeMonsterLevelEnum.SevenOrMore;
+
+                throw new BusinessException(ErrorMessage.LevelMonsterCardInvalid);
+            }
+        }
     }
 }

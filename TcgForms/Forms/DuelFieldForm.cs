@@ -1,43 +1,71 @@
 using TcgDomain.Entities.Battles;
 using TcgForms.Controls;
-using TcgForms.AppServices;
 
 namespace TcgForms.Forms
 {
     public partial class DuelFieldForm : Form
     {
-        #region Services
+        #region Property & Constructor
 
-        private readonly DrawAppServices DrawAppServices;
+        public Player Player { get; set; }
 
-        private readonly InvokeAppServices InvokeAppServices;
+        public Player Opponent { get; set; }
 
-        #endregion
-
-        protected Player User { get; set; }
-
-        protected Player Opponent { get; set; }
+        public BattleField BattleField { get; set; }
 
         public DuelFieldForm(Player user, Player opponent)
         {
             InitializeComponent();
 
-            User = user;
+            Player = user;
             Opponent = opponent;
-
-            DrawAppServices = new DrawAppServices();
-            InvokeAppServices = new InvokeAppServices();
+            BattleField = new BattleField();
         }
 
-        public void InvokeCard(CardControl cardControl) => InvokeAppServices.Invoke(MyHandsFlowPanel, tableLayoutPlayerMain, cardControl);
+        #endregion
 
-        private void DrawButton_Click(object sender, EventArgs e)
+        #region Public Methods
+
+        public void InvokePlayerMonster(CardControl cardControl)
         {
-            var card = User.Deck.Draw();
+            flowPanelHands.SuspendLayout();
+            tableLayoutPlayerMain.SuspendLayout();
+
+            flowPanelHands.Controls.Remove(cardControl);
+
+            foreach (var monster in Player.MonstersField.Select((card, index) => new { Card = card, Index = index}))
+            {
+                if (monster.Card is not null)
+                    continue;
+
+                Player.MonstersField[monster.Index] = cardControl.OriginalCard;
+                tableLayoutPlayerMain.Controls.Add(cardControl, monster.Index, 0);
+                break;
+            }
+
+            flowPanelHands.ResumeLayout(false);
+            tableLayoutPlayerMain.ResumeLayout(false);
+        }
+
+        #endregion
+
+        #region Events
+
+        private void ButtonDraw_Click(object sender, EventArgs e)
+        {
+            var card = Player.Deck.Draw();
 
             var cardControl = new CardControl(card);
 
-            DrawAppServices.LoadCardForControl(cardControl, MyHandsFlowPanel);
+            flowPanelHands.Controls.Add(cardControl);
+
+            flowPanelHands.SuspendLayout();
+
+            cardControl.Name = "Card";
+
+            flowPanelHands.ResumeLayout(false);
         }
+
+        #endregion
     }
 }

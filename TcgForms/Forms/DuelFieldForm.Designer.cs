@@ -1,6 +1,4 @@
-﻿using TcgForms.Controls;
-
-namespace TcgForms.Forms
+﻿namespace TcgForms.Forms
 {
     partial class DuelFieldForm
     {
@@ -23,31 +21,31 @@ namespace TcgForms.Forms
 
         private void InitializeComponent()
         {
-            this.FieldOpponentPanel = new System.Windows.Forms.Panel();
+            this.panelFieldOpponent = new System.Windows.Forms.Panel();
             this.tableLayoutOpponentSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
-            this.FieldPlayerPanel = new System.Windows.Forms.Panel();
+            this.panelFieldPlayer = new System.Windows.Forms.Panel();
             this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
-            this.DrawButton = new System.Windows.Forms.Button();
-            this.MyHandsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.FieldOpponentPanel.SuspendLayout();
-            this.FieldPlayerPanel.SuspendLayout();
+            this.buttonDraw = new System.Windows.Forms.Button();
+            this.flowPanelHands = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelFieldOpponent.SuspendLayout();
+            this.panelFieldPlayer.SuspendLayout();
             this.SuspendLayout();
             // 
             // FieldOpponentPanel
             // 
-            this.FieldOpponentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.FieldOpponentPanel.Controls.Add(this.tableLayoutOpponentSecondary);
-            this.FieldOpponentPanel.Controls.Add(this.tableLayoutOpponentMain);
-            this.FieldOpponentPanel.Controls.Add(this.tableLayoutOpponentDeck);
-            this.FieldOpponentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FieldOpponentPanel.Location = new System.Drawing.Point(0, 0);
-            this.FieldOpponentPanel.Name = "FieldOpponentPanel";
-            this.FieldOpponentPanel.Size = new System.Drawing.Size(1280, 288);
-            this.FieldOpponentPanel.TabIndex = 0;
+            this.panelFieldOpponent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentSecondary);
+            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentMain);
+            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentDeck);
+            this.panelFieldOpponent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFieldOpponent.Location = new System.Drawing.Point(0, 0);
+            this.panelFieldOpponent.Name = "FieldOpponentPanel";
+            this.panelFieldOpponent.Size = new System.Drawing.Size(1280, 288);
+            this.panelFieldOpponent.TabIndex = 0;
             // 
             // tableLayoutOpponentSecondary
             // 
@@ -96,17 +94,17 @@ namespace TcgForms.Forms
             // 
             // FieldPlayerPanel
             // 
-            this.FieldPlayerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerDeck);
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerMain);
-            this.FieldPlayerPanel.Controls.Add(this.tableLayoutPlayerSecondary);
-            this.FieldPlayerPanel.Controls.Add(this.DrawButton);
-            this.FieldPlayerPanel.Controls.Add(this.MyHandsFlowPanel);
-            this.FieldPlayerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.FieldPlayerPanel.Location = new System.Drawing.Point(0, 292);
-            this.FieldPlayerPanel.Name = "FieldPlayerPanel";
-            this.FieldPlayerPanel.Size = new System.Drawing.Size(1280, 428);
-            this.FieldPlayerPanel.TabIndex = 1;
+            this.panelFieldPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerDeck);
+            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerMain);
+            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerSecondary);
+            this.panelFieldPlayer.Controls.Add(this.buttonDraw);
+            this.panelFieldPlayer.Controls.Add(this.flowPanelHands);
+            this.panelFieldPlayer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelFieldPlayer.Location = new System.Drawing.Point(0, 292);
+            this.panelFieldPlayer.Name = "FieldPlayerPanel";
+            this.panelFieldPlayer.Size = new System.Drawing.Size(1280, 428);
+            this.panelFieldPlayer.TabIndex = 1;
             // 
             // tableLayoutPlayerDeck
             // 
@@ -155,23 +153,23 @@ namespace TcgForms.Forms
             // 
             // DrawButton
             // 
-            this.DrawButton.Location = new System.Drawing.Point(1141, 288);
-            this.DrawButton.Name = "DrawButton";
-            this.DrawButton.Size = new System.Drawing.Size(85, 140);
-            this.DrawButton.TabIndex = 1;
-            this.DrawButton.Text = "Draw";
-            this.DrawButton.UseVisualStyleBackColor = true;
-            this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
+            this.buttonDraw.Location = new System.Drawing.Point(1141, 288);
+            this.buttonDraw.Name = "DrawButton";
+            this.buttonDraw.Size = new System.Drawing.Size(85, 140);
+            this.buttonDraw.TabIndex = 1;
+            this.buttonDraw.Text = "Draw";
+            this.buttonDraw.UseVisualStyleBackColor = true;
+            this.buttonDraw.Click += new System.EventHandler(this.ButtonDraw_Click);
             // 
             // MyHandsFlowPanel
             // 
-            this.MyHandsFlowPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MyHandsFlowPanel.BackColor = System.Drawing.Color.Black;
-            this.MyHandsFlowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MyHandsFlowPanel.Location = new System.Drawing.Point(145, 288);
-            this.MyHandsFlowPanel.Name = "MyHandsFlowPanel";
-            this.MyHandsFlowPanel.Size = new System.Drawing.Size(990, 140);
-            this.MyHandsFlowPanel.TabIndex = 0;
+            this.flowPanelHands.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flowPanelHands.BackColor = System.Drawing.Color.Black;
+            this.flowPanelHands.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowPanelHands.Location = new System.Drawing.Point(145, 288);
+            this.flowPanelHands.Name = "MyHandsFlowPanel";
+            this.flowPanelHands.Size = new System.Drawing.Size(990, 140);
+            this.flowPanelHands.TabIndex = 0;
             // 
             // DuelFieldForm
             // 
@@ -179,24 +177,24 @@ namespace TcgForms.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.FieldPlayerPanel);
-            this.Controls.Add(this.FieldOpponentPanel);
+            this.Controls.Add(this.panelFieldPlayer);
+            this.Controls.Add(this.panelFieldOpponent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DuelFieldForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel Field";
-            this.FieldOpponentPanel.ResumeLayout(false);
-            this.FieldPlayerPanel.ResumeLayout(false);
+            this.panelFieldOpponent.ResumeLayout(false);
+            this.panelFieldPlayer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Panel FieldOpponentPanel;
-        private Panel FieldPlayerPanel;
-        private FlowLayoutPanel MyHandsFlowPanel;
-        private Button DrawButton;
+        private Panel panelFieldOpponent;
+        private Panel panelFieldPlayer;
+        private FlowLayoutPanel flowPanelHands;
+        private Button buttonDraw;
         private TableLayoutPanel tableLayoutOpponentDeck;
         private TableLayoutPanel tableLayoutOpponentSecondary;
         private TableLayoutPanel tableLayoutOpponentMain;

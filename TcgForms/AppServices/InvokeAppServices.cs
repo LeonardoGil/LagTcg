@@ -1,12 +1,36 @@
-﻿using TcgForms.Controls;
+﻿using TcgDomain.Entities.Battles;
+using TcgDomain.Entities.Cards;
 
 namespace TcgForms.AppServices
 {
     public class InvokeAppServices
     {
-        public void Invoke(Control hands, Control field, CardControl control)
+        public bool CanInvokeNormalMonster(NormalCard card, Player player)
         {
-            throw new NotImplementedException();
+            switch (card.RangeMonsterLevel)
+            {
+                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
+                    return true;
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
+                    return CanInvokeMonsterLevelFiveAndSix(player);
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
+                    return CanInvokeMonsterLevelSevenOrMore(player);
+
+                default:
+                    return false;
+            }
+        }
+
+        public bool CanInvokeMonsterLevelFiveAndSix(Player player)
+        {
+            return player.MonstersField.Any(x => x is not null);
+        }
+
+        public bool CanInvokeMonsterLevelSevenOrMore(Player player)
+        {
+            return player.MonstersField.Count(x => x is not null) >= 2;
         }
     }
 }
