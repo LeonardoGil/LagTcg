@@ -3,6 +3,7 @@ using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 using TcgDomain.Extensions;
 using TcgForms.AppServices;
+using TcgForms.Controls;
 using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
 
@@ -10,11 +11,13 @@ namespace TcgForms.Forms
 {
     public partial class DuelFieldForm : Form
     {
-        #region Services
+        #region Services & Forms
 
         private readonly DrawAppServices DrawAppServices = new DrawAppServices();
 
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
+
+        private readonly MyCardsForm MyCardsForm = new MyCardsForm();
 
         #endregion
 
@@ -52,7 +55,8 @@ namespace TcgForms.Forms
 
         public void InvokePlayerMonster(CardMonsterHandControl cardHandControl)
         {
-            RemoveCardFromHand(cardHandControl);
+            MyCardsForm.RemoveCard(cardHandControl);
+            MyCardsForm.RemoveCardFromHand(cardHandControl);
 
             var position = InvokeAppServices.Invoke(Player, cardHandControl.OriginalCard);
 
@@ -94,18 +98,13 @@ namespace TcgForms.Forms
                 if (basicCard.IsMonsterCard())
                 {
                     var cardControl = new CardMonsterHandControl(card);
-
-                    flowPanelHands.Controls.Add(cardControl);
+                    MyCardsForm.AddCard(cardControl);
                 }
 
                 if (basicCard.IsSpecialCard())
                 {
                     throw new NotImplementedException();
                 }
-
-                flowPanelHands.SuspendLayout();
-
-                flowPanelHands.ResumeLayout(false);
             }
         }
 
@@ -117,15 +116,6 @@ namespace TcgForms.Forms
                 Phase = Phase + 1;
 
             LoadInfo();
-        }
-
-        public void RemoveCardFromHand(CardMonsterHandControl cardHandControl)
-        {
-            flowPanelHands.Controls.Remove(cardHandControl);
-
-            flowPanelHands.SuspendLayout();
-
-            flowPanelHands.ResumeLayout(false);
         }
 
         public void AddCardOnField(CardMonsterFieldControl cardFieldControl, int position)
@@ -172,6 +162,12 @@ namespace TcgForms.Forms
         private void buttonNextPhase_Click(object sender, EventArgs e)
         {
             NextPhase();
+        }
+
+        private void buttonMyCards_Click(object sender, EventArgs e)
+        {
+            MyCardsForm.DuelFieldForm = this;
+            MyCardsForm.ShowDialog();
         }
 
         #endregion

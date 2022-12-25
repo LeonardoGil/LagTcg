@@ -11,6 +11,8 @@ namespace TcgForms.Controls.Hands
     {
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
+        public DuelFieldForm DuelFieldForm { get => (ParentForm as MyCardsForm).ParentForm as DuelFieldForm; }
+
         public CardMonsterHandControl()
         {
             InitializeComponent();
@@ -35,15 +37,15 @@ namespace TcgForms.Controls.Hands
             switch (monsterCard.RangeMonsterLevel)
             {
                 case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
-                    (ParentForm as DuelFieldForm).InvokePlayerMonster(this);
+                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonster(this);
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
-                    (ParentForm as DuelFieldForm).InvokePlayerMonsterAttribute(this, 1);
+                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1);
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
-                    (ParentForm as DuelFieldForm).InvokePlayerMonsterAttribute(this, 2);
+                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2);
                     break;
             }
         }
@@ -61,7 +63,8 @@ namespace TcgForms.Controls.Hands
         private async void contextMenuCardMonster_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var card = OriginalCard as MonsterCard;
-            var duelFieldForm = (ParentForm as DuelFieldForm);
+            var myCardsForm = ParentForm as MyCardsForm;
+            var duelFieldForm = myCardsForm.DuelFieldForm;
 
             var validateInvoke = InvokeAppServices.CanInvokeMonster(card, duelFieldForm.Player);
             var validatePhase = InvokeAppServices.CanInvokeMonster(duelFieldForm.Phase, duelFieldForm.PhasePlayer);
