@@ -1,4 +1,5 @@
-﻿using TcgDomain.Extensions;
+﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Extensions;
 using TcgInfra.CustomExceptions;
 
 namespace TcgDomain.Entities
@@ -22,6 +23,8 @@ namespace TcgDomain.Entities
 
             if (numberCards >= 3)
                 throw new BusinessException("Já possui 3 cards iguais no Deck.");
+
+            (card as Card).SetImage();
 
             Cards.Add(card);
         }

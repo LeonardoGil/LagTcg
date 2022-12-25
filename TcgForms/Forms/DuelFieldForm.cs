@@ -1,11 +1,26 @@
 using TcgDomain.Entities.Battles;
+using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Enums;
+using TcgDomain.Extensions;
+using TcgForms.AppServices;
 using TcgForms.Controls;
+using TcgForms.Controls.Hands;
 
 namespace TcgForms.Forms
 {
     public partial class DuelFieldForm : Form
     {
+        #region Services
+
+        private readonly DrawAppServices DrawAppServices = new DrawAppServices();
+
+        #endregion
+
         #region Property & Constructor
+
+        public PhasePlayerEnum PhasePlayer { get; set; }
+
+        public PhaseEnum Phase { get; set; }
 
         public Player Player { get; set; }
 
@@ -20,13 +35,16 @@ namespace TcgForms.Forms
             Player = user;
             Opponent = opponent;
             BattleField = new BattleField();
+
+            PhasePlayer = PhasePlayerEnum.Player;
+            Phase = PhaseEnum.DrawPhase;
         }
 
         #endregion
 
         #region Public Methods
 
-        public void InvokePlayerMonster(CardControl cardControl)
+        public void InvokePlayerMonster(CardMonsterHandControl cardControl)
         {
             flowPanelHands.SuspendLayout();
             tableLayoutPlayerMain.SuspendLayout();
@@ -47,23 +65,46 @@ namespace TcgForms.Forms
             tableLayoutPlayerMain.ResumeLayout(false);
         }
 
+        public void DrawCard(int quantity = 1)
+        {
+            var cards = DrawAppServices.DrawCards(Player, quantity);
+
+            foreach (var card in cards)
+            {
+                var basicCard = (card as Card);
+
+                var control = default(Control);
+
+                if (basicCard.IsMonsterCard())
+                {
+                    var cardControl = new CardMonsterHandControl(card);
+                    control = cardControl;
+                    
+                    flowPanelHands.Controls.Add(cardControl);
+                }
+
+                if (basicCard.IsSpecialCard())
+                {
+                    throw new NotImplementedException();
+                }
+
+                flowPanelHands.SuspendLayout();
+
+                control.Name = $"Card-{basicCard.Description}-{Guid.NewGuid()}";
+
+                flowPanelHands.ResumeLayout(false);
+            }
+        }
+
         #endregion
 
         #region Events
 
         private void ButtonDraw_Click(object sender, EventArgs e)
         {
-            var card = Player.Deck.Draw();
+            DrawCard();
 
-            var cardControl = new CardControl(card);
-
-            flowPanelHands.Controls.Add(cardControl);
-
-            flowPanelHands.SuspendLayout();
-
-            cardControl.Name = "Card";
-
-            flowPanelHands.ResumeLayout(false);
+            Phase = PhaseEnum.MainPhaseOne;
         }
 
         #endregion

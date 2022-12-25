@@ -1,4 +1,6 @@
-﻿namespace TcgDomain.Entities.Battles
+﻿using TcgInfra.CustomExceptions;
+
+namespace TcgDomain.Entities.Battles
 {
     public class DuelDeck
     {
@@ -14,6 +16,9 @@
 
         public dynamic Draw()
         {
+            if (!Cards.Any())
+                throw new FatalException("Acabou as cartas!");
+
             var card = Cards.First();
             Cards.Remove(card);
 

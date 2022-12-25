@@ -10,6 +10,8 @@ namespace TcgDomain.Entities.Battles
 
         public DuelDeck Deck { get; set; }
 
+        public bool CanInvoke { get; set; }
+
 
         public MonsterCard[] MonstersField = new MonsterCard[5];
 

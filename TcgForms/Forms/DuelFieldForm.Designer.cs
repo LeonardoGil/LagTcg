@@ -35,7 +35,7 @@
             this.panelFieldPlayer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // FieldOpponentPanel
+            // panelFieldOpponent
             // 
             this.panelFieldOpponent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentSecondary);
@@ -43,7 +43,7 @@
             this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentDeck);
             this.panelFieldOpponent.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFieldOpponent.Location = new System.Drawing.Point(0, 0);
-            this.panelFieldOpponent.Name = "FieldOpponentPanel";
+            this.panelFieldOpponent.Name = "panelFieldOpponent";
             this.panelFieldOpponent.Size = new System.Drawing.Size(1280, 288);
             this.panelFieldOpponent.TabIndex = 0;
             // 
@@ -92,7 +92,7 @@
             this.tableLayoutOpponentDeck.Size = new System.Drawing.Size(100, 280);
             this.tableLayoutOpponentDeck.TabIndex = 0;
             // 
-            // FieldPlayerPanel
+            // panelFieldPlayer
             // 
             this.panelFieldPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerDeck);
@@ -102,7 +102,7 @@
             this.panelFieldPlayer.Controls.Add(this.flowPanelHands);
             this.panelFieldPlayer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFieldPlayer.Location = new System.Drawing.Point(0, 292);
-            this.panelFieldPlayer.Name = "FieldPlayerPanel";
+            this.panelFieldPlayer.Name = "panelFieldPlayer";
             this.panelFieldPlayer.Size = new System.Drawing.Size(1280, 428);
             this.panelFieldPlayer.TabIndex = 1;
             // 
@@ -151,23 +151,23 @@
             this.tableLayoutPlayerSecondary.Size = new System.Drawing.Size(100, 280);
             this.tableLayoutPlayerSecondary.TabIndex = 3;
             // 
-            // DrawButton
+            // buttonDraw
             // 
             this.buttonDraw.Location = new System.Drawing.Point(1141, 288);
-            this.buttonDraw.Name = "DrawButton";
+            this.buttonDraw.Name = "buttonDraw";
             this.buttonDraw.Size = new System.Drawing.Size(85, 140);
             this.buttonDraw.TabIndex = 1;
             this.buttonDraw.Text = "Draw";
             this.buttonDraw.UseVisualStyleBackColor = true;
             this.buttonDraw.Click += new System.EventHandler(this.ButtonDraw_Click);
             // 
-            // MyHandsFlowPanel
+            // flowPanelHands
             // 
             this.flowPanelHands.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowPanelHands.BackColor = System.Drawing.Color.Black;
             this.flowPanelHands.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowPanelHands.Location = new System.Drawing.Point(145, 288);
-            this.flowPanelHands.Name = "MyHandsFlowPanel";
+            this.flowPanelHands.Name = "flowPanelHands";
             this.flowPanelHands.Size = new System.Drawing.Size(990, 140);
             this.flowPanelHands.TabIndex = 0;
             // 
