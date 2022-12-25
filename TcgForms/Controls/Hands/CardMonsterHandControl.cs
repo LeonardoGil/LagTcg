@@ -2,6 +2,8 @@
 using TcgDomain.Entities.Cards.Abstract;
 using TcgForms.AppServices;
 using TcgForms.Forms;
+using TcgInfra.CustomMessages;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace TcgForms.Controls.Hands
 {
@@ -28,7 +30,22 @@ namespace TcgForms.Controls.Hands
 
         private void menuItemInvoke_Click(object sender, EventArgs e)
         {
-            (ParentForm as DuelFieldForm).InvokePlayerMonster(this);
+            var monsterCard = OriginalCard as MonsterCard;
+
+            switch (monsterCard.RangeMonsterLevel)
+            {
+                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
+                    (ParentForm as DuelFieldForm).InvokePlayerMonster(this);
+                    break;
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
+                    (ParentForm as DuelFieldForm).InvokePlayerMonsterAttribute(this, 1);
+                    break;
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
+                    (ParentForm as DuelFieldForm).InvokePlayerMonsterAttribute(this, 2);
+                    break;
+            }
         }
 
         private void menuItemSpecialInvoke_Click(object sender, EventArgs e)
@@ -40,7 +57,7 @@ namespace TcgForms.Controls.Hands
         {
             throw new NotImplementedException();
         }
-        
+
         private async void contextMenuCardMonster_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var card = OriginalCard as MonsterCard;

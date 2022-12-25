@@ -18,7 +18,7 @@ namespace TcgMock
 
                 return cardsDto.Where(x => x.Type == TypeCardEnum.NormalMonster.GetDescription()).Select(dto => new NormalCard
                 {
-                    Id = dto.Id,
+                    Serie = dto.Id,
                     Attack = dto.Atk,
                     Defense = dto.Def,
                     Level = dto.Level,

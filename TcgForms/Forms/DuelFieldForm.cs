@@ -20,13 +20,15 @@ namespace TcgForms.Forms
 
         #region Property & Constructor
 
-        public PhasePlayerEnum PhasePlayer { get; set; }
+        public int Turn { get; private set; }
 
-        public PhaseEnum Phase { get; set; }
+        public PhasePlayerEnum PhasePlayer { get; private set; }
 
-        public Player Player { get; set; }
+        public PhaseEnum Phase { get; private set; }
 
-        public Player Opponent { get; set; }
+        public Player Player { get; private set; }
+
+        public Player Opponent { get; private set; }
 
         public DuelFieldForm(Player user, Player opponent)
         {
@@ -37,7 +39,7 @@ namespace TcgForms.Forms
 
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
-            
+
             LoadInfo();
 
             Player.Deck.Shuffle();
@@ -50,21 +52,31 @@ namespace TcgForms.Forms
 
         public void InvokePlayerMonster(CardMonsterHandControl cardHandControl)
         {
-            flowPanelHands.Controls.Remove(cardHandControl);
-            
-            flowPanelHands.SuspendLayout();
-
-            flowPanelHands.ResumeLayout(false);
+            RemoveCardFromHand(cardHandControl);
 
             var position = InvokeAppServices.Invoke(Player, cardHandControl.OriginalCard);
 
             var cardFieldControl = new CardMonsterFieldControl(cardHandControl.OriginalCard);
 
-            tableLayoutPlayerMain.Controls.Add(cardFieldControl, position, 0);
+            AddCardOnField(cardFieldControl, position);
+        }
 
-            tableLayoutPlayerMain.SuspendLayout();
+        public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity)
+        {
+            var cardsInField = Player.MonstersField.OfType<Card>().ToList();
 
-            tableLayoutPlayerMain.ResumeLayout(false);
+            var cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(cardsInField, quantity);
+
+            InvokeAppServices.SacrificeForInvoke(Player, cardsForSacrifice, cardHandControl.OriginalCard);
+
+            var cardsMonsterField = tableLayoutPlayerMain.Controls.OfType<dynamic>()
+                                                                  .Where(x => x is CardMonsterFieldControl)
+                                                                  .OfType<CardMonsterFieldControl>()
+                                                                  .ToList();
+
+            cardsMonsterField.ForEach(RemoveCardOnField);
+
+            InvokePlayerMonster(cardHandControl);
         }
 
         public void DrawCard(int quantity = 1)
@@ -75,15 +87,11 @@ namespace TcgForms.Forms
             {
                 var basicCard = (card as Card);
 
-                var control = default(Control);
-
                 if (basicCard.IsMonsterCard())
                 {
                     var cardControl = new CardMonsterHandControl(card);
 
                     flowPanelHands.Controls.Add(cardControl);
-
-                    control = cardControl;
                 }
 
                 if (basicCard.IsSpecialCard())
@@ -93,8 +101,6 @@ namespace TcgForms.Forms
 
                 flowPanelHands.SuspendLayout();
 
-                control.Name = $"Card-{basicCard.Id}-{Guid.NewGuid()}";
-                
                 flowPanelHands.ResumeLayout(false);
             }
         }
@@ -107,6 +113,33 @@ namespace TcgForms.Forms
                 Phase = Phase + 1;
 
             LoadInfo();
+        }
+
+        public void RemoveCardFromHand(CardMonsterHandControl cardHandControl)
+        {
+            flowPanelHands.Controls.Remove(cardHandControl);
+
+            flowPanelHands.SuspendLayout();
+
+            flowPanelHands.ResumeLayout(false);
+        }
+
+        public void AddCardOnField(CardMonsterFieldControl cardFieldControl, int position)
+        {
+            tableLayoutPlayerMain.Controls.Add(cardFieldControl, position, 0);
+
+            tableLayoutPlayerMain.SuspendLayout();
+
+            tableLayoutPlayerMain.ResumeLayout(false);
+        }
+
+        public void RemoveCardOnField(CardMonsterFieldControl cardFieldControl)
+        {
+            tableLayoutPlayerMain.Controls.Remove(cardFieldControl);
+
+            tableLayoutPlayerMain.SuspendLayout();
+
+            tableLayoutPlayerMain.ResumeLayout(false);
         }
 
         #endregion
@@ -136,7 +169,7 @@ namespace TcgForms.Forms
         {
             NextPhase();
         }
-        
+
         #endregion
     }
 }

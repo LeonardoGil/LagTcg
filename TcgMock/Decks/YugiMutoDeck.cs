@@ -14,7 +14,7 @@ namespace TcgMock.Decks
                 Description = "Yugi-Muto Deck"
             };
 
-            cardsDto.Where(x => CardIds.Contains(x.Id)).ToList().ForEach(deck.AddCard);
+            cardsDto.Where(x => CardIds.Contains(x.Serie)).ToList().ForEach(deck.AddCard);
 
             return deck;
         }

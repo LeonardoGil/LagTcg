@@ -5,7 +5,14 @@ namespace TcgDomain.Entities.Cards.Abstract
 {
     public abstract class Card
     {
-        public int Id { get; set; }
+        public Guid Id { get; private set; }
+
+        public Card()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public int Serie { get; set; }
 
         public string Name { get; set; }
 

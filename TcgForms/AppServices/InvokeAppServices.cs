@@ -1,25 +1,70 @@
 ﻿using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
+using TcgForms.Forms;
 using TcgInfra.CustomExceptions;
+using TcgInfra.CustomMessages;
 
 namespace TcgForms.AppServices
 {
     public class InvokeAppServices
     {
-        /// <returns>Retorna a posição de invocação</returns>
+        private readonly int[] _Position = { 2, 1, 3, 0, 4 };
+        private readonly int[] _SortPosition = { 0, 1, 2, 3, 4 };
+
         public int Invoke(Player player, dynamic card)
         {
-            foreach (var monster in player.MonstersField.Select((card, index) => new { Card = card, Index = index }))
+            foreach (var position in _Position)
             {
-                if (monster.Card is not null)
+                var monster = player.MonstersField[position];
+
+                if (monster is not null)
                     continue;
 
-                player.MonstersField[monster.Index] = card;
-                return monster.Index;
+                player.MonstersField[position] = card;
+                return position;
             }
 
             throw new BusinessException("Não há posição disponivel em campo");
+        }
+
+        public void SacrificeForInvoke(Player player, List<Card> sacrifice, dynamic card)
+        {
+            foreach (var position in _SortPosition)
+            {
+                var monster = player.MonstersField[position];
+
+                if (monster is null)
+                    continue;
+
+                var monsterCard = monster as Card;
+
+                if (sacrifice.Contains(monsterCard))
+                {
+                    player.MonstersField[position] = null;
+                }
+            }
+        }
+        
+        public List<Card> SelectCardsForAttribute(List<Card> cardsAvailable, int quantity)
+        {
+            var dialog = string.Format(DialogMessage.InvokeAttribute, quantity);
+
+            if (MessageBox.Show(dialog, "Invoke", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                var message = $"Selecione {quantity} carta(s)";
+
+                using (var selectCardForm = new SelectCardForm(cardsAvailable, message, quantity))
+                {
+                    selectCardForm.ShowDialog();
+                    if (selectCardForm.DialogResult == DialogResult.OK)
+                    {
+                        return selectCardForm.CardsSelected;
+                    }
+                }
+            }
+
+            throw new Exception();
         }
 
         public bool CanInvokeMonster(MonsterCard card, Player player)
@@ -45,12 +90,12 @@ namespace TcgForms.AppServices
             return phasePlayer == PhasePlayerEnum.Player && (phase == PhaseEnum.MainPhaseOne || phase == PhaseEnum.MainPhaseTwo);
         }
 
-        public static bool CanInvokeMonsterForAttribute(Player player, int attributes)
+        public bool CanInvokeMonsterForAttribute(Player player, int attributes)
         {
             return player.MonstersField.Count(x => x is not null) >= attributes;
         }
 
-        public static bool HasSpaceInField(Player player)
+        public bool HasSpaceInField(Player player)
         {
             return player.MonstersField.Any(x => x is null);
         }
