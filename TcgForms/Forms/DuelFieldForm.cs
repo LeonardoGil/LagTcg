@@ -1,9 +1,11 @@
+using System.Threading;
 using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 using TcgDomain.Extensions;
 using TcgForms.AppServices;
 using TcgForms.Controls;
+using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
 
 namespace TcgForms.Forms
@@ -13,6 +15,8 @@ namespace TcgForms.Forms
         #region Services
 
         private readonly DrawAppServices DrawAppServices = new DrawAppServices();
+
+        private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
         #endregion
 
@@ -38,30 +42,31 @@ namespace TcgForms.Forms
 
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
+
+            Player.Deck.Shuffle();
+            DrawCard(5);
         }
 
         #endregion
 
         #region Public Methods
 
-        public void InvokePlayerMonster(CardMonsterHandControl cardControl)
+        public void InvokePlayerMonster(CardMonsterHandControl cardHandControl)
         {
+            flowPanelHands.Controls.Remove(cardHandControl);
+            
             flowPanelHands.SuspendLayout();
-            tableLayoutPlayerMain.SuspendLayout();
-
-            flowPanelHands.Controls.Remove(cardControl);
-
-            foreach (var monster in Player.MonstersField.Select((card, index) => new { Card = card, Index = index}))
-            {
-                if (monster.Card is not null)
-                    continue;
-
-                Player.MonstersField[monster.Index] = cardControl.OriginalCard;
-                tableLayoutPlayerMain.Controls.Add(cardControl, monster.Index, 0);
-                break;
-            }
 
             flowPanelHands.ResumeLayout(false);
+
+            var position = InvokeAppServices.Invoke(Player, cardHandControl.OriginalCard);
+
+            var cardFieldControl = new CardMonsterFieldControl(cardHandControl.OriginalCard);
+
+            tableLayoutPlayerMain.Controls.Add(cardFieldControl, position, 0);
+
+            tableLayoutPlayerMain.SuspendLayout();
+
             tableLayoutPlayerMain.ResumeLayout(false);
         }
 
@@ -78,9 +83,10 @@ namespace TcgForms.Forms
                 if (basicCard.IsMonsterCard())
                 {
                     var cardControl = new CardMonsterHandControl(card);
-                    control = cardControl;
-                    
+
                     flowPanelHands.Controls.Add(cardControl);
+
+                    control = cardControl;
                 }
 
                 if (basicCard.IsSpecialCard())
@@ -90,8 +96,8 @@ namespace TcgForms.Forms
 
                 flowPanelHands.SuspendLayout();
 
-                control.Name = $"Card-{basicCard.Description}-{Guid.NewGuid()}";
-
+                control.Name = $"Card-{basicCard.Id}-{Guid.NewGuid()}";
+                
                 flowPanelHands.ResumeLayout(false);
             }
         }

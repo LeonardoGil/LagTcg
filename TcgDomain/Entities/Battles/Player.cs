@@ -13,8 +13,8 @@ namespace TcgDomain.Entities.Battles
         public bool CanInvoke { get; set; }
 
 
-        public MonsterCard[] MonstersField = new MonsterCard[5];
+        public dynamic[] MonstersField = new dynamic[5];
 
-        public Card[] SpecialField = new Card[5];
+        public dynamic[] SpecialField = new dynamic[5];
     }
 }
