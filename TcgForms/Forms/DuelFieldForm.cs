@@ -28,15 +28,12 @@ namespace TcgForms.Forms
 
         public Player Opponent { get; set; }
 
-        public BattleField BattleField { get; set; }
-
         public DuelFieldForm(Player user, Player opponent)
         {
             InitializeComponent();
 
             Player = user;
             Opponent = opponent;
-            BattleField = new BattleField();
 
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
