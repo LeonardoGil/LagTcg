@@ -35,6 +35,8 @@ namespace TcgForms.Forms
 
         public DuelFieldForm(Player user, Player opponent)
         {
+            BackgroundImage = Properties.Resources.BackgroundDigitalDuel;
+
             InitializeComponent();
 
             Player = user;
@@ -123,6 +125,9 @@ namespace TcgForms.Forms
             tableLayoutPlayerMain.Controls.Add(cardFieldControl, position, 0);
 
             tableLayoutPlayerMain.SuspendLayout();
+
+            cardFieldControl.Anchor = AnchorStyles.None;
+            cardFieldControl.Location = new Point(20 + (140 * position), 10);
 
             tableLayoutPlayerMain.ResumeLayout(false);
         }
