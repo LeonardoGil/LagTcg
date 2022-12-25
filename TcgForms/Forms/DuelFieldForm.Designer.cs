@@ -26,13 +26,22 @@
             this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
             this.panelFieldPlayer = new System.Windows.Forms.Panel();
+            this.groupPlayerInfo = new System.Windows.Forms.GroupBox();
+            this.labelPlayerPointLife = new System.Windows.Forms.Label();
+            this.labelPlayerName = new System.Windows.Forms.Label();
+            this.buttonNextPhase = new System.Windows.Forms.Button();
             this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDraw = new System.Windows.Forms.Button();
             this.flowPanelHands = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupDuelInfo = new System.Windows.Forms.GroupBox();
+            this.labelPhasePlayer = new System.Windows.Forms.Label();
+            this.labelPhase = new System.Windows.Forms.Label();
             this.panelFieldOpponent.SuspendLayout();
             this.panelFieldPlayer.SuspendLayout();
+            this.groupPlayerInfo.SuspendLayout();
+            this.groupDuelInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFieldOpponent
@@ -95,6 +104,9 @@
             // panelFieldPlayer
             // 
             this.panelFieldPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panelFieldPlayer.Controls.Add(this.groupDuelInfo);
+            this.panelFieldPlayer.Controls.Add(this.groupPlayerInfo);
+            this.panelFieldPlayer.Controls.Add(this.buttonNextPhase);
             this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerDeck);
             this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerMain);
             this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerSecondary);
@@ -105,6 +117,48 @@
             this.panelFieldPlayer.Name = "panelFieldPlayer";
             this.panelFieldPlayer.Size = new System.Drawing.Size(1280, 428);
             this.panelFieldPlayer.TabIndex = 1;
+            // 
+            // groupPlayerInfo
+            // 
+            this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
+            this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
+            this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupPlayerInfo.Location = new System.Drawing.Point(1141, 1);
+            this.groupPlayerInfo.Name = "groupPlayerInfo";
+            this.groupPlayerInfo.Size = new System.Drawing.Size(127, 140);
+            this.groupPlayerInfo.TabIndex = 8;
+            this.groupPlayerInfo.TabStop = false;
+            this.groupPlayerInfo.Text = "Player";
+            // 
+            // labelPlayerPointLife
+            // 
+            this.labelPlayerPointLife.AutoSize = true;
+            this.labelPlayerPointLife.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerPointLife.Location = new System.Drawing.Point(9, 59);
+            this.labelPlayerPointLife.Name = "labelPlayerPointLife";
+            this.labelPlayerPointLife.Size = new System.Drawing.Size(79, 16);
+            this.labelPlayerPointLife.TabIndex = 8;
+            this.labelPlayerPointLife.Text = "PointLife";
+            // 
+            // labelPlayerName
+            // 
+            this.labelPlayerName.AutoSize = true;
+            this.labelPlayerName.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerName.Location = new System.Drawing.Point(9, 29);
+            this.labelPlayerName.Name = "labelPlayerName";
+            this.labelPlayerName.Size = new System.Drawing.Size(39, 16);
+            this.labelPlayerName.TabIndex = 7;
+            this.labelPlayerName.Text = "Name";
+            // 
+            // buttonNextPhase
+            // 
+            this.buttonNextPhase.Location = new System.Drawing.Point(1141, 362);
+            this.buttonNextPhase.Name = "buttonNextPhase";
+            this.buttonNextPhase.Size = new System.Drawing.Size(80, 60);
+            this.buttonNextPhase.TabIndex = 6;
+            this.buttonNextPhase.Text = "Next Phase";
+            this.buttonNextPhase.UseVisualStyleBackColor = true;
+            this.buttonNextPhase.Click += new System.EventHandler(this.buttonNextPhase_Click);
             // 
             // tableLayoutPlayerDeck
             // 
@@ -153,9 +207,9 @@
             // 
             // buttonDraw
             // 
-            this.buttonDraw.Location = new System.Drawing.Point(1141, 288);
+            this.buttonDraw.Location = new System.Drawing.Point(1141, 294);
             this.buttonDraw.Name = "buttonDraw";
-            this.buttonDraw.Size = new System.Drawing.Size(85, 140);
+            this.buttonDraw.Size = new System.Drawing.Size(80, 60);
             this.buttonDraw.TabIndex = 1;
             this.buttonDraw.Text = "Draw";
             this.buttonDraw.UseVisualStyleBackColor = true;
@@ -171,6 +225,37 @@
             this.flowPanelHands.Size = new System.Drawing.Size(990, 140);
             this.flowPanelHands.TabIndex = 0;
             // 
+            // groupDuelInfo
+            // 
+            this.groupDuelInfo.Controls.Add(this.labelPhase);
+            this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
+            this.groupDuelInfo.Location = new System.Drawing.Point(1141, 144);
+            this.groupDuelInfo.Name = "groupDuelInfo";
+            this.groupDuelInfo.Size = new System.Drawing.Size(127, 140);
+            this.groupDuelInfo.TabIndex = 9;
+            this.groupDuelInfo.TabStop = false;
+            this.groupDuelInfo.Text = "Duel";
+            // 
+            // labelPhasePlayer
+            // 
+            this.labelPhasePlayer.AutoSize = true;
+            this.labelPhasePlayer.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPhasePlayer.Location = new System.Drawing.Point(9, 59);
+            this.labelPhasePlayer.Name = "labelPhasePlayer";
+            this.labelPhasePlayer.Size = new System.Drawing.Size(95, 16);
+            this.labelPhasePlayer.TabIndex = 9;
+            this.labelPhasePlayer.Text = "PhasePlayer";
+            // 
+            // labelPhase
+            // 
+            this.labelPhase.AutoSize = true;
+            this.labelPhase.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPhase.Location = new System.Drawing.Point(9, 29);
+            this.labelPhase.Name = "labelPhase";
+            this.labelPhase.Size = new System.Drawing.Size(47, 16);
+            this.labelPhase.TabIndex = 10;
+            this.labelPhase.Text = "Phase";
+            // 
             // DuelFieldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -185,6 +270,10 @@
             this.Text = "Duel Field";
             this.panelFieldOpponent.ResumeLayout(false);
             this.panelFieldPlayer.ResumeLayout(false);
+            this.groupPlayerInfo.ResumeLayout(false);
+            this.groupPlayerInfo.PerformLayout();
+            this.groupDuelInfo.ResumeLayout(false);
+            this.groupDuelInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -194,12 +283,19 @@
         private Panel panelFieldOpponent;
         private Panel panelFieldPlayer;
         private FlowLayoutPanel flowPanelHands;
-        private Button buttonDraw;
         private TableLayoutPanel tableLayoutOpponentDeck;
         private TableLayoutPanel tableLayoutOpponentSecondary;
         private TableLayoutPanel tableLayoutOpponentMain;
         private TableLayoutPanel tableLayoutPlayerDeck;
         private TableLayoutPanel tableLayoutPlayerMain;
         private TableLayoutPanel tableLayoutPlayerSecondary;
+        private Button buttonDraw;
+        private Button buttonNextPhase;
+        private Label labelPlayerName;
+        private Label labelPlayerPointLife;
+        private Label labelPhase;
+        private Label labelPhasePlayer;
+        private GroupBox groupPlayerInfo;
+        private GroupBox groupDuelInfo;
     }
 }

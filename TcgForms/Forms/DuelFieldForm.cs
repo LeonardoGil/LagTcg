@@ -1,10 +1,8 @@
-using System.Threading;
 using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 using TcgDomain.Extensions;
 using TcgForms.AppServices;
-using TcgForms.Controls;
 using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
 
@@ -42,6 +40,8 @@ namespace TcgForms.Forms
 
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
+            
+            LoadInfo();
 
             Player.Deck.Shuffle();
             DrawCard(5);
@@ -102,6 +102,29 @@ namespace TcgForms.Forms
             }
         }
 
+        public void NextPhase()
+        {
+            if (Phase == PhaseEnum.EndPhase)
+                Phase = PhaseEnum.DrawPhase;
+            else
+                Phase = Phase + 1;
+
+            LoadInfo();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void LoadInfo()
+        {
+            labelPlayerName.Text = Player.Username;
+            labelPlayerPointLife.Text = Player.PointLife.ToString();
+
+            labelPhase.Text = Phase.GetDescription();
+            labelPhasePlayer.Text = PhasePlayer.ToString();
+        }
+
         #endregion
 
         #region Events
@@ -109,10 +132,14 @@ namespace TcgForms.Forms
         private void ButtonDraw_Click(object sender, EventArgs e)
         {
             DrawCard();
-
-            Phase = PhaseEnum.MainPhaseOne;
+            NextPhase();
         }
 
+        private void buttonNextPhase_Click(object sender, EventArgs e)
+        {
+            NextPhase();
+        }
+        
         #endregion
     }
 }
