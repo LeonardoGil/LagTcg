@@ -37,7 +37,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Name = "CardControl";
             this.Size = new System.Drawing.Size(100, 140);
+            this.DoubleClick += new System.EventHandler(this.CardControl_DoubleClick);
             this.ResumeLayout(false);
+
         }
 
         #endregion

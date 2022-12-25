@@ -64,7 +64,7 @@ namespace TcgForms.AppServices
                 }
             }
 
-            throw new Exception();
+            return new List<Card>();
         }
 
         public bool CanInvokeMonster(MonsterCard card, Player player)

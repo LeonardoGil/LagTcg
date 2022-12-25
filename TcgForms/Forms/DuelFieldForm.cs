@@ -67,11 +67,15 @@ namespace TcgForms.Forms
 
             var cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(cardsInField, quantity);
 
+            if (!cardsForSacrifice.Any())
+                return;
+
             InvokeAppServices.SacrificeForInvoke(Player, cardsForSacrifice, cardHandControl.OriginalCard);
 
             var cardsMonsterField = tableLayoutPlayerMain.Controls.OfType<dynamic>()
                                                                   .Where(x => x is CardMonsterFieldControl)
                                                                   .OfType<CardMonsterFieldControl>()
+                                                                  .Where(x => !Player.MonstersField.OfType<Card>().Contains(x.Card))
                                                                   .ToList();
 
             cardsMonsterField.ForEach(RemoveCardOnField);

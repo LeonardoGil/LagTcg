@@ -26,5 +26,13 @@ namespace TcgForms.Controls
         {
             InitializeComponent();
         }
+
+        private void CardControl_DoubleClick(object sender, EventArgs e)
+        {
+            using (var form = new InfoCardForm(Card))
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }
