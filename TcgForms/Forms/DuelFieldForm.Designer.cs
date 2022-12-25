@@ -21,11 +21,10 @@
 
         private void InitializeComponent()
         {
-            this.panelFieldOpponent = new System.Windows.Forms.Panel();
             this.tableLayoutOpponentSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
-            this.panelFieldPlayer = new System.Windows.Forms.Panel();
+            this.buttonMyCards = new System.Windows.Forms.Button();
             this.groupDuelInfo = new System.Windows.Forms.GroupBox();
             this.labelPhase = new System.Windows.Forms.Label();
             this.labelPhasePlayer = new System.Windows.Forms.Label();
@@ -37,24 +36,10 @@
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDraw = new System.Windows.Forms.Button();
-            this.buttonMyCards = new System.Windows.Forms.Button();
-            this.panelFieldOpponent.SuspendLayout();
-            this.panelFieldPlayer.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelFieldOpponent
-            // 
-            this.panelFieldOpponent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentSecondary);
-            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentMain);
-            this.panelFieldOpponent.Controls.Add(this.tableLayoutOpponentDeck);
-            this.panelFieldOpponent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelFieldOpponent.Location = new System.Drawing.Point(0, 0);
-            this.panelFieldOpponent.Name = "panelFieldOpponent";
-            this.panelFieldOpponent.Size = new System.Drawing.Size(1280, 288);
-            this.panelFieldOpponent.TabIndex = 0;
             // 
             // tableLayoutOpponentSecondary
             // 
@@ -62,7 +47,7 @@
             this.tableLayoutOpponentSecondary.ColumnCount = 1;
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1035, 4);
+            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1050, 40);
             this.tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
             this.tableLayoutOpponentSecondary.RowCount = 2;
             this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -79,12 +64,12 @@
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.Location = new System.Drawing.Point(390, 4);
+            this.tableLayoutOpponentMain.Location = new System.Drawing.Point(270, 20);
             this.tableLayoutOpponentMain.Name = "tableLayoutOpponentMain";
             this.tableLayoutOpponentMain.RowCount = 2;
             this.tableLayoutOpponentMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutOpponentMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentMain.Size = new System.Drawing.Size(500, 280);
+            this.tableLayoutOpponentMain.Size = new System.Drawing.Size(700, 320);
             this.tableLayoutOpponentMain.TabIndex = 1;
             // 
             // tableLayoutOpponentDeck
@@ -93,7 +78,7 @@
             this.tableLayoutOpponentDeck.ColumnCount = 1;
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(145, 4);
+            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(110, 40);
             this.tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
             this.tableLayoutOpponentDeck.RowCount = 2;
             this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -101,30 +86,23 @@
             this.tableLayoutOpponentDeck.Size = new System.Drawing.Size(100, 280);
             this.tableLayoutOpponentDeck.TabIndex = 0;
             // 
-            // panelFieldPlayer
+            // buttonMyCards
             // 
-            this.panelFieldPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.panelFieldPlayer.Controls.Add(this.buttonMyCards);
-            this.panelFieldPlayer.Controls.Add(this.groupDuelInfo);
-            this.panelFieldPlayer.Controls.Add(this.groupPlayerInfo);
-            this.panelFieldPlayer.Controls.Add(this.buttonNextPhase);
-            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerDeck);
-            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerMain);
-            this.panelFieldPlayer.Controls.Add(this.tableLayoutPlayerSecondary);
-            this.panelFieldPlayer.Controls.Add(this.buttonDraw);
-            this.panelFieldPlayer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFieldPlayer.Location = new System.Drawing.Point(0, 292);
-            this.panelFieldPlayer.Name = "panelFieldPlayer";
-            this.panelFieldPlayer.Size = new System.Drawing.Size(1280, 428);
-            this.panelFieldPlayer.TabIndex = 1;
+            this.buttonMyCards.Location = new System.Drawing.Point(12, 530);
+            this.buttonMyCards.Name = "buttonMyCards";
+            this.buttonMyCards.Size = new System.Drawing.Size(60, 50);
+            this.buttonMyCards.TabIndex = 10;
+            this.buttonMyCards.Text = "My Cards";
+            this.buttonMyCards.UseVisualStyleBackColor = true;
+            this.buttonMyCards.Click += new System.EventHandler(this.buttonMyCards_Click);
             // 
             // groupDuelInfo
             // 
             this.groupDuelInfo.Controls.Add(this.labelPhase);
             this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
-            this.groupDuelInfo.Location = new System.Drawing.Point(1141, 144);
+            this.groupDuelInfo.Location = new System.Drawing.Point(1166, 556);
             this.groupDuelInfo.Name = "groupDuelInfo";
-            this.groupDuelInfo.Size = new System.Drawing.Size(127, 140);
+            this.groupDuelInfo.Size = new System.Drawing.Size(102, 134);
             this.groupDuelInfo.TabIndex = 9;
             this.groupDuelInfo.TabStop = false;
             this.groupDuelInfo.Text = "Duel";
@@ -154,9 +132,9 @@
             this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
             this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
             this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupPlayerInfo.Location = new System.Drawing.Point(1141, 1);
+            this.groupPlayerInfo.Location = new System.Drawing.Point(1166, 416);
             this.groupPlayerInfo.Name = "groupPlayerInfo";
-            this.groupPlayerInfo.Size = new System.Drawing.Size(127, 140);
+            this.groupPlayerInfo.Size = new System.Drawing.Size(102, 134);
             this.groupPlayerInfo.TabIndex = 8;
             this.groupPlayerInfo.TabStop = false;
             this.groupPlayerInfo.Text = "Player";
@@ -183,9 +161,9 @@
             // 
             // buttonNextPhase
             // 
-            this.buttonNextPhase.Location = new System.Drawing.Point(1141, 362);
+            this.buttonNextPhase.Location = new System.Drawing.Point(12, 460);
             this.buttonNextPhase.Name = "buttonNextPhase";
-            this.buttonNextPhase.Size = new System.Drawing.Size(80, 60);
+            this.buttonNextPhase.Size = new System.Drawing.Size(60, 50);
             this.buttonNextPhase.TabIndex = 6;
             this.buttonNextPhase.Text = "Next Phase";
             this.buttonNextPhase.UseVisualStyleBackColor = true;
@@ -197,7 +175,7 @@
             this.tableLayoutPlayerDeck.ColumnCount = 1;
             this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPlayerDeck.Location = new System.Drawing.Point(1035, 4);
+            this.tableLayoutPlayerDeck.Location = new System.Drawing.Point(1050, 410);
             this.tableLayoutPlayerDeck.Name = "tableLayoutPlayerDeck";
             this.tableLayoutPlayerDeck.RowCount = 2;
             this.tableLayoutPlayerDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -214,12 +192,12 @@
             this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.Location = new System.Drawing.Point(390, 4);
+            this.tableLayoutPlayerMain.Location = new System.Drawing.Point(270, 390);
             this.tableLayoutPlayerMain.Name = "tableLayoutPlayerMain";
             this.tableLayoutPlayerMain.RowCount = 2;
             this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerMain.Size = new System.Drawing.Size(500, 280);
+            this.tableLayoutPlayerMain.Size = new System.Drawing.Size(700, 320);
             this.tableLayoutPlayerMain.TabIndex = 4;
             // 
             // tableLayoutPlayerSecondary
@@ -228,7 +206,7 @@
             this.tableLayoutPlayerSecondary.ColumnCount = 1;
             this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPlayerSecondary.Location = new System.Drawing.Point(145, 4);
+            this.tableLayoutPlayerSecondary.Location = new System.Drawing.Point(110, 410);
             this.tableLayoutPlayerSecondary.Name = "tableLayoutPlayerSecondary";
             this.tableLayoutPlayerSecondary.RowCount = 2;
             this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -238,38 +216,45 @@
             // 
             // buttonDraw
             // 
-            this.buttonDraw.Location = new System.Drawing.Point(1141, 294);
+            this.buttonDraw.Location = new System.Drawing.Point(12, 390);
             this.buttonDraw.Name = "buttonDraw";
-            this.buttonDraw.Size = new System.Drawing.Size(80, 60);
+            this.buttonDraw.Size = new System.Drawing.Size(60, 50);
             this.buttonDraw.TabIndex = 1;
             this.buttonDraw.Text = "Draw";
             this.buttonDraw.UseVisualStyleBackColor = true;
             this.buttonDraw.Click += new System.EventHandler(this.ButtonDraw_Click);
             // 
-            // buttonMyCards
+            // panel1
             // 
-            this.buttonMyCards.Location = new System.Drawing.Point(29, 30);
-            this.buttonMyCards.Name = "buttonMyCards";
-            this.buttonMyCards.Size = new System.Drawing.Size(70, 98);
-            this.buttonMyCards.TabIndex = 10;
-            this.buttonMyCards.Text = "My Cards";
-            this.buttonMyCards.UseVisualStyleBackColor = true;
-            this.buttonMyCards.Click += new System.EventHandler(this.buttonMyCards_Click);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(0, 360);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1280, 10);
+            this.panel1.TabIndex = 11;
             // 
             // DuelFieldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panelFieldPlayer);
-            this.Controls.Add(this.panelFieldOpponent);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutOpponentMain);
+            this.Controls.Add(this.tableLayoutOpponentSecondary);
+            this.Controls.Add(this.groupPlayerInfo);
+            this.Controls.Add(this.groupDuelInfo);
+            this.Controls.Add(this.tableLayoutOpponentDeck);
+            this.Controls.Add(this.buttonMyCards);
+            this.Controls.Add(this.tableLayoutPlayerDeck);
+            this.Controls.Add(this.tableLayoutPlayerSecondary);
+            this.Controls.Add(this.tableLayoutPlayerMain);
+            this.Controls.Add(this.buttonNextPhase);
+            this.Controls.Add(this.buttonDraw);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DuelFieldForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel Field";
-            this.panelFieldOpponent.ResumeLayout(false);
-            this.panelFieldPlayer.ResumeLayout(false);
             this.groupDuelInfo.ResumeLayout(false);
             this.groupDuelInfo.PerformLayout();
             this.groupPlayerInfo.ResumeLayout(false);
@@ -279,9 +264,6 @@
         }
 
         #endregion
-
-        private Panel panelFieldOpponent;
-        private Panel panelFieldPlayer;
         private TableLayoutPanel tableLayoutOpponentDeck;
         private TableLayoutPanel tableLayoutOpponentSecondary;
         private TableLayoutPanel tableLayoutOpponentMain;
@@ -297,5 +279,6 @@
         private GroupBox groupPlayerInfo;
         private GroupBox groupDuelInfo;
         private Button buttonMyCards;
+        private Panel panel1;
     }
 }
