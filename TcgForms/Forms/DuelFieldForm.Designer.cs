@@ -88,7 +88,7 @@
             // 
             // buttonMyCards
             // 
-            this.buttonMyCards.Location = new System.Drawing.Point(12, 530);
+            this.buttonMyCards.Location = new System.Drawing.Point(25, 530);
             this.buttonMyCards.Name = "buttonMyCards";
             this.buttonMyCards.Size = new System.Drawing.Size(60, 50);
             this.buttonMyCards.TabIndex = 10;
@@ -100,9 +100,10 @@
             // 
             this.groupDuelInfo.Controls.Add(this.labelPhase);
             this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
-            this.groupDuelInfo.Location = new System.Drawing.Point(1166, 556);
+            this.groupDuelInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupDuelInfo.Location = new System.Drawing.Point(1165, 550);
             this.groupDuelInfo.Name = "groupDuelInfo";
-            this.groupDuelInfo.Size = new System.Drawing.Size(102, 134);
+            this.groupDuelInfo.Size = new System.Drawing.Size(100, 150);
             this.groupDuelInfo.TabIndex = 9;
             this.groupDuelInfo.TabStop = false;
             this.groupDuelInfo.Text = "Duel";
@@ -110,20 +111,20 @@
             // labelPhase
             // 
             this.labelPhase.AutoSize = true;
-            this.labelPhase.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhase.Location = new System.Drawing.Point(9, 29);
+            this.labelPhase.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPhase.Location = new System.Drawing.Point(5, 29);
             this.labelPhase.Name = "labelPhase";
-            this.labelPhase.Size = new System.Drawing.Size(47, 16);
+            this.labelPhase.Size = new System.Drawing.Size(42, 13);
             this.labelPhase.TabIndex = 10;
             this.labelPhase.Text = "Phase";
             // 
             // labelPhasePlayer
             // 
             this.labelPhasePlayer.AutoSize = true;
-            this.labelPhasePlayer.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhasePlayer.Location = new System.Drawing.Point(9, 59);
+            this.labelPhasePlayer.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPhasePlayer.Location = new System.Drawing.Point(5, 59);
             this.labelPhasePlayer.Name = "labelPhasePlayer";
-            this.labelPhasePlayer.Size = new System.Drawing.Size(95, 16);
+            this.labelPhasePlayer.Size = new System.Drawing.Size(84, 13);
             this.labelPhasePlayer.TabIndex = 9;
             this.labelPhasePlayer.Text = "PhasePlayer";
             // 
@@ -131,10 +132,10 @@
             // 
             this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
             this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
-            this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupPlayerInfo.Location = new System.Drawing.Point(1166, 416);
+            this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupPlayerInfo.Location = new System.Drawing.Point(1165, 390);
             this.groupPlayerInfo.Name = "groupPlayerInfo";
-            this.groupPlayerInfo.Size = new System.Drawing.Size(102, 134);
+            this.groupPlayerInfo.Size = new System.Drawing.Size(100, 150);
             this.groupPlayerInfo.TabIndex = 8;
             this.groupPlayerInfo.TabStop = false;
             this.groupPlayerInfo.Text = "Player";
@@ -142,26 +143,26 @@
             // labelPlayerPointLife
             // 
             this.labelPlayerPointLife.AutoSize = true;
-            this.labelPlayerPointLife.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPlayerPointLife.Location = new System.Drawing.Point(9, 59);
+            this.labelPlayerPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerPointLife.Location = new System.Drawing.Point(5, 59);
             this.labelPlayerPointLife.Name = "labelPlayerPointLife";
-            this.labelPlayerPointLife.Size = new System.Drawing.Size(79, 16);
+            this.labelPlayerPointLife.Size = new System.Drawing.Size(70, 13);
             this.labelPlayerPointLife.TabIndex = 8;
             this.labelPlayerPointLife.Text = "PointLife";
             // 
             // labelPlayerName
             // 
             this.labelPlayerName.AutoSize = true;
-            this.labelPlayerName.Font = new System.Drawing.Font("Fira Code", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPlayerName.Location = new System.Drawing.Point(9, 29);
+            this.labelPlayerName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerName.Location = new System.Drawing.Point(5, 29);
             this.labelPlayerName.Name = "labelPlayerName";
-            this.labelPlayerName.Size = new System.Drawing.Size(39, 16);
+            this.labelPlayerName.Size = new System.Drawing.Size(35, 13);
             this.labelPlayerName.TabIndex = 7;
             this.labelPlayerName.Text = "Name";
             // 
             // buttonNextPhase
             // 
-            this.buttonNextPhase.Location = new System.Drawing.Point(12, 460);
+            this.buttonNextPhase.Location = new System.Drawing.Point(25, 460);
             this.buttonNextPhase.Name = "buttonNextPhase";
             this.buttonNextPhase.Size = new System.Drawing.Size(60, 50);
             this.buttonNextPhase.TabIndex = 6;
@@ -216,7 +217,7 @@
             // 
             // buttonDraw
             // 
-            this.buttonDraw.Location = new System.Drawing.Point(12, 390);
+            this.buttonDraw.Location = new System.Drawing.Point(25, 390);
             this.buttonDraw.Name = "buttonDraw";
             this.buttonDraw.Size = new System.Drawing.Size(60, 50);
             this.buttonDraw.TabIndex = 1;
@@ -236,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Blue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.panel1);
