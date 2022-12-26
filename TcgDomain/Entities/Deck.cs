@@ -33,5 +33,22 @@ namespace TcgDomain.Entities
         {
             Cards.Remove(card);
         }
+
+        public dynamic Draw()
+        {
+            if (!Cards.Any())
+                throw new FatalException("Acabou as cartas!");
+
+            var card = Cards.First();
+            Cards.Remove(card);
+
+            return card;
+        }
+
+        public void Shuffle()
+        {
+            var random = new Random();
+            Cards = Cards.OrderBy(x => random.Next()).ToList();
+        }
     }
 }

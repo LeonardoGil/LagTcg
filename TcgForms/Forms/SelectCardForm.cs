@@ -25,7 +25,7 @@ namespace TcgForms.Forms
 
         public void LoadCard(Card card)
         {
-            var control = new SelectCardControl(card);
+            var control = new SelectTheCardsControl(card);
 
             flowLayoutPanelCards.Controls.Add(control);
 
@@ -37,8 +37,8 @@ namespace TcgForms.Forms
         private void buttonOk_Click(object sender, EventArgs e)
         {
             var cardsControl = flowLayoutPanelCards.Controls.OfType<dynamic>()
-                                                            .Where(x => x is SelectCardControl)
-                                                            .Select(x => x as SelectCardControl)
+                                                            .Where(x => x is SelectTheCardsControl)
+                                                            .Select(x => x as SelectTheCardsControl)
                                                             .Where(x => x.Selected)
                                                             .Select(x => x.Card)
                                                             .ToList();

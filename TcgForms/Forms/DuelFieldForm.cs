@@ -5,6 +5,7 @@ using TcgDomain.Extensions;
 using TcgForms.AppServices;
 using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
+using TcgForms.Controls.Stacks;
 
 namespace TcgForms.Forms
 {
@@ -46,12 +47,12 @@ namespace TcgForms.Forms
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
 
+            Player.Deck.Shuffle();
+            DrawCardPlayer(5);
+
             Turn++;
 
             LoadInfo();
-
-            Player.Deck.Shuffle();
-            DrawCard(5);
         }
 
         #endregion
@@ -88,7 +89,7 @@ namespace TcgForms.Forms
             InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice, false, set);
         }
 
-        public void DrawCard(int quantity = 1)
+        public void DrawCardPlayer(int quantity = 1)
         {
             var cards = DrawAppServices.DrawCards(Player, quantity);
 
@@ -123,8 +124,7 @@ namespace TcgForms.Forms
 
             LoadInfo();
 
-            buttonDraw.Enabled = Phase == PhaseEnum.DrawPhase;
-            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase;
+            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase || PhasePlayer == PhasePlayerEnum.Opponent;
         }
 
         #endregion
@@ -191,12 +191,6 @@ namespace TcgForms.Forms
         #endregion
 
         #region Events
-
-        private void buttonDraw_Click(object sender, EventArgs e)
-        {
-            DrawCard();
-            NextPhase();
-        }
 
         private void buttonNextPhase_Click(object sender, EventArgs e)
         {

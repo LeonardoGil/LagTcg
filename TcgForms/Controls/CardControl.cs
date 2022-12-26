@@ -15,7 +15,6 @@ namespace TcgForms.Controls
 
         public Card Card { get => OriginalCard as Card; }
 
-
         public CardControl(dynamic originalCard, bool set = false)
         {
             InitializeComponent();

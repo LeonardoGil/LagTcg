@@ -2,16 +2,16 @@
 
 namespace TcgForms.Controls
 {
-    public partial class SelectCardControl : CardControl
+    public partial class SelectTheCardsControl : CardControl
     {
         public bool Selected { get; set; }
 
-        public SelectCardControl()
+        public SelectTheCardsControl()
         {
             InitializeComponent();
         }
 
-        public SelectCardControl(Card card) : base(card)
+        public SelectTheCardsControl(Card card) : base(card)
         {
             InitializeComponent();
         }

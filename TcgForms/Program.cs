@@ -15,7 +15,7 @@ namespace TcgForms
         {
             var cards = MockService.LoadInitialCards();
 
-            var duelDeck = new DuelDeck(YugiMutoDeck.Get(cards));
+            var duelDeck = YugiMutoDeck.Get(cards);
 
             var player = new Player
             {

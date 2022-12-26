@@ -1,4 +1,5 @@
 ﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgInfra.CustomExceptions;
 
 namespace TcgDomain.Entities.Battles
 {
@@ -6,21 +7,29 @@ namespace TcgDomain.Entities.Battles
     {
         public Player()
         {
-            ResetAction();
+            CanInvoke = true;
+
+            MonstersField = new dynamic[5];
+            SpecialField = new dynamic[5];
+
+            Graveyard = new List<dynamic>();
         }
 
         public string Username { get; set; }
 
         public int PointLife { get; set; }
 
-        public DuelDeck Deck { get; set; }
-
         public bool CanInvoke { get; set; }
 
+        public Deck Deck;
 
-        public dynamic[] MonstersField = new dynamic[5];
+        public Deck ExtraDeck;
 
-        public dynamic[] SpecialField = new dynamic[5];
+        public List<dynamic> Graveyard;
+
+        public dynamic[] MonstersField; 
+
+        public dynamic[] SpecialField;
 
         public void ResetAction()
         {

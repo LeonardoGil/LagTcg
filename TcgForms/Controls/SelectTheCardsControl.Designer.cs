@@ -1,6 +1,6 @@
 ﻿namespace TcgForms.Controls
 {
-    partial class SelectCardControl
+    partial class SelectTheCardsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -41,12 +41,12 @@
             this.checkBox.UseVisualStyleBackColor = true;
             this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
-            // SelectCardControl
+            // SelectTheCardsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkBox);
-            this.Name = "SelectCardControl";
+            this.Name = "SelectTheCardsControl";
             this.ResumeLayout(false);
             this.PerformLayout();
 
