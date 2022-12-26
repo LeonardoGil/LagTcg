@@ -38,15 +38,15 @@ namespace TcgForms.Controls.Hands
             switch (monsterCard.RangeMonsterLevel)
             {
                 case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
-                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonster(this);
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonster(this);
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
-                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1);
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1);
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
-                    (ParentForm as MyCardsForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2);
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2);
                     break;
             }
         }
@@ -64,7 +64,7 @@ namespace TcgForms.Controls.Hands
         private void contextMenuCardMonster_Opening(object sender, CancelEventArgs e)
         {
             var card = OriginalCard as MonsterCard;
-            var myCardsForm = ParentForm as MyCardsForm;
+            var myCardsForm = ParentForm as CardsHandForm;
             var duelFieldForm = myCardsForm.DuelFieldForm;
 
             var validateInvoke = InvokeAppServices.CanInvokeMonster(card, duelFieldForm.Player);

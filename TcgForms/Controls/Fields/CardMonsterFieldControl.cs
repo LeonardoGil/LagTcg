@@ -33,6 +33,12 @@ namespace TcgForms.Controls.Fields
             if (set) Verse();
         }
 
+        public override void ResetActionPhase()
+        {
+            CanAttack = true;
+            CanChangePosition = true;
+        }
+
         private void CardMonsterFieldControl_Paint(object sender, PaintEventArgs e)
         {
             ContextMenuStrip.Items.Add(GetMenuItemZoom());
@@ -46,6 +52,8 @@ namespace TcgForms.Controls.Fields
 
         private void menuItemChangePosition_Click(object sender, EventArgs e)
         {
+            Verse();
+            CanChangePosition = false;
         }
     }
 }

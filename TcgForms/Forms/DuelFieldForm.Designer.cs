@@ -36,7 +36,7 @@
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDraw = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDivisional = new System.Windows.Forms.Panel();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.SuspendLayout();
@@ -233,15 +233,15 @@
             this.buttonDraw.TabIndex = 1;
             this.buttonDraw.Text = "Draw";
             this.buttonDraw.UseVisualStyleBackColor = true;
-            this.buttonDraw.Click += new System.EventHandler(this.ButtonDraw_Click);
+            this.buttonDraw.Click += new System.EventHandler(this.buttonDraw_Click);
             // 
-            // panel1
+            // panelDivisional
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(0, 360);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 10);
-            this.panel1.TabIndex = 11;
+            this.panelDivisional.BackColor = System.Drawing.Color.White;
+            this.panelDivisional.Location = new System.Drawing.Point(0, 360);
+            this.panelDivisional.Name = "panelDivisional";
+            this.panelDivisional.Size = new System.Drawing.Size(1280, 10);
+            this.panelDivisional.TabIndex = 11;
             // 
             // DuelFieldForm
             // 
@@ -250,7 +250,7 @@
             this.BackColor = System.Drawing.Color.Blue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelDivisional);
             this.Controls.Add(this.tableLayoutOpponentMain);
             this.Controls.Add(this.tableLayoutOpponentSecondary);
             this.Controls.Add(this.groupPlayerInfo);
@@ -290,6 +290,6 @@
         private GroupBox groupPlayerInfo;
         private GroupBox groupDuelInfo;
         private Button buttonMyCards;
-        private Panel panel1;
+        private Panel panelDivisional;
     }
 }

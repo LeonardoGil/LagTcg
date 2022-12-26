@@ -19,7 +19,7 @@ namespace TcgForms.Forms
 
         private readonly PhaseAppServices PhaseAppServices = new PhaseAppServices();
 
-        private readonly MyCardsForm MyCardsForm = new MyCardsForm();
+        private readonly CardsHandForm MyCardsForm = new CardsHandForm();
 
         #endregion
 
@@ -62,11 +62,7 @@ namespace TcgForms.Forms
             MyCardsForm.RemoveCard(cardHandControl);
             MyCardsForm.RemoveCardFromHand(cardHandControl);
 
-            var position = InvokeAppServices.Invoke(Player, cardHandControl.OriginalCard);
-
-            var cardFieldControl = new CardMonsterFieldControl(cardHandControl.OriginalCard);
-
-            AddCardOnField(cardFieldControl, position);
+            InvokeMonster(Player, cardHandControl.OriginalCard);
         }
 
         public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity)
@@ -78,17 +74,7 @@ namespace TcgForms.Forms
             if (!cardsForSacrifice.Any())
                 return;
 
-            InvokeAppServices.SacrificeForInvoke(Player, cardsForSacrifice, cardHandControl.OriginalCard);
-
-            var cardsMonsterField = tableLayoutPlayerMain.Controls.OfType<dynamic>()
-                                                                  .Where(x => x is CardMonsterFieldControl)
-                                                                  .OfType<CardMonsterFieldControl>()
-                                                                  .Where(x => !Player.MonstersField.OfType<Card>().Contains(x.Card))
-                                                                  .ToList();
-
-            cardsMonsterField.ForEach(RemoveCardOnField);
-
-            InvokePlayerMonster(cardHandControl);
+            InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice);
         }
 
         public void DrawCard(int quantity = 1)
@@ -117,6 +103,8 @@ namespace TcgForms.Forms
             if (Phase == PhaseEnum.EndPhase)
             {
                 PhasePlayer = PhaseAppServices.NextPhasePlayer(PhasePlayer);
+
+                tableLayoutPlayerMain.Controls.OfType<CardControl>().ToList().ForEach(x => x.ResetActionPhase());
             }
 
             Phase = PhaseAppServices.NextPhase(Phase);
@@ -126,30 +114,56 @@ namespace TcgForms.Forms
             buttonDraw.Enabled = Phase == PhaseEnum.DrawPhase;
         }
 
-        public void AddCardOnField(CardMonsterFieldControl cardFieldControl, int position)
-        {
-            tableLayoutPlayerMain.Controls.Add(cardFieldControl, position, 0);
+        #endregion
 
-            tableLayoutPlayerMain.SuspendLayout();
+        #region Private Methods
+
+        private void AddCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl, int position)
+        {
+            table.Controls.Add(cardFieldControl, position, 0);
+
+            table.SuspendLayout();
 
             cardFieldControl.Anchor = AnchorStyles.None;
             cardFieldControl.Location = new Point(20 + (140 * position), 10);
 
-            tableLayoutPlayerMain.ResumeLayout(false);
+            table.ResumeLayout(false);
         }
 
-        public void RemoveCardOnField(CardMonsterFieldControl cardFieldControl)
+        private void RemoveCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl)
         {
-            tableLayoutPlayerMain.Controls.Remove(cardFieldControl);
+            table.Controls.Remove(cardFieldControl);
 
-            tableLayoutPlayerMain.SuspendLayout();
+            table.SuspendLayout();
 
-            tableLayoutPlayerMain.ResumeLayout(false);
+            table.ResumeLayout(false);
         }
 
-        #endregion
+        private void InvokeMonster(Player player, dynamic originalCard, bool opponent = false)
+        {
+            var position = InvokeAppServices.Invoke(player, originalCard);
 
-        #region Private Methods
+            var cardFieldControl = new CardMonsterFieldControl(originalCard);
+
+            var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
+
+            AddCardMonsterOnField(table, cardFieldControl, position);
+        }
+
+        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool opponent = false)
+        {
+            InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, cardHandControl.OriginalCard);
+
+            var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
+
+            var cardsMonsterField = table.Controls.OfType<CardMonsterFieldControl>()
+                                                                  .Where(x => !player.MonstersField.OfType<Card>().Contains(x.Card))
+                                                                  .ToList();
+
+            cardsMonsterField.ForEach(card => RemoveCardMonsterOnField(table, card));
+
+            InvokeMonster(player, cardHandControl.OriginalCard, opponent);
+        }
 
         private void LoadInfo()
         {
@@ -164,7 +178,7 @@ namespace TcgForms.Forms
 
         #region Events
 
-        private void ButtonDraw_Click(object sender, EventArgs e)
+        private void buttonDraw_Click(object sender, EventArgs e)
         {
             DrawCard();
             NextPhase();

@@ -3,7 +3,7 @@ using TcgForms.Controls.Hands;
 
 namespace TcgForms.Forms
 {
-    public partial class MyCardsForm : Form
+    public partial class CardsHandForm : Form
     {
         public List<dynamic> CardControls { get; set; }
 
@@ -11,7 +11,7 @@ namespace TcgForms.Forms
 
         public DuelFieldForm DuelFieldForm { get; set; }
 
-        public MyCardsForm()
+        public CardsHandForm()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace TcgForms.Forms
 {
-    partial class MyCardsForm
+    partial class CardsHandForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             this.flowLayoutPanelHands.Size = new System.Drawing.Size(800, 280);
             this.flowLayoutPanelHands.TabIndex = 1;
             // 
-            // MyCardsForm
+            // CardsHandForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -50,7 +50,7 @@
             this.Controls.Add(this.flowLayoutPanelHands);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "MyCardsForm";
+            this.Name = "CardsHandForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MyCardsForm_Load);

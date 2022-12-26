@@ -2,7 +2,6 @@
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Extensions;
 using TcgForms.Forms;
-using TcgForms.Properties;
 
 namespace TcgForms.Controls
 {
@@ -45,6 +44,8 @@ namespace TcgForms.Controls
 
             ResumeLayout(false);
         }
+
+        public virtual void ResetActionPhase() => throw new NotImplementedException();
 
         protected ToolStripMenuItem GetMenuItemZoom() => menuItemZoom;
 
