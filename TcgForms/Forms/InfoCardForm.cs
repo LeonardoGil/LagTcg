@@ -1,4 +1,5 @@
 ﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Extensions;
 using TcgForms.Controls;
 
 namespace TcgForms.Forms
@@ -9,24 +10,7 @@ namespace TcgForms.Forms
         {
             InitializeComponent();
 
-            LoadCardControl(card);
-        }
-
-        private void LoadCardControl(Card card)
-        {
-            var control = new CardControl(card);
-
-            Controls.Add(control);
-
-            SuspendLayout();
-
-            control.Dock = DockStyle.Fill;
-
-            control.Click += new EventHandler(InfoCardForm_Close);
-            
-            control.DoubleClick += new EventHandler(InfoCardForm_Close);
-
-            ResumeLayout(false);
+            BackgroundImage = new Bitmap(card.Image.GetStream());
         }
 
         private void InfoCardForm_Close(object sender, EventArgs e) => Close();
