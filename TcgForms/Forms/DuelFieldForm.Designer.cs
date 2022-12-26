@@ -43,6 +43,7 @@
             // 
             // tableLayoutOpponentSecondary
             // 
+            this.tableLayoutOpponentSecondary.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutOpponentSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentSecondary.ColumnCount = 1;
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -57,6 +58,7 @@
             // 
             // tableLayoutOpponentMain
             // 
+            this.tableLayoutOpponentMain.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutOpponentMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentMain.ColumnCount = 5;
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -74,6 +76,7 @@
             // 
             // tableLayoutOpponentDeck
             // 
+            this.tableLayoutOpponentDeck.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutOpponentDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutOpponentDeck.ColumnCount = 1;
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -98,9 +101,11 @@
             // 
             // groupDuelInfo
             // 
+            this.groupDuelInfo.BackColor = System.Drawing.Color.Transparent;
             this.groupDuelInfo.Controls.Add(this.labelPhase);
             this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
             this.groupDuelInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupDuelInfo.ForeColor = System.Drawing.Color.White;
             this.groupDuelInfo.Location = new System.Drawing.Point(1165, 550);
             this.groupDuelInfo.Name = "groupDuelInfo";
             this.groupDuelInfo.Size = new System.Drawing.Size(100, 150);
@@ -130,9 +135,11 @@
             // 
             // groupPlayerInfo
             // 
+            this.groupPlayerInfo.BackColor = System.Drawing.Color.Transparent;
             this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
             this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
             this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupPlayerInfo.ForeColor = System.Drawing.Color.White;
             this.groupPlayerInfo.Location = new System.Drawing.Point(1165, 390);
             this.groupPlayerInfo.Name = "groupPlayerInfo";
             this.groupPlayerInfo.Size = new System.Drawing.Size(100, 150);
@@ -172,6 +179,7 @@
             // 
             // tableLayoutPlayerDeck
             // 
+            this.tableLayoutPlayerDeck.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPlayerDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutPlayerDeck.ColumnCount = 1;
             this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -186,6 +194,7 @@
             // 
             // tableLayoutPlayerMain
             // 
+            this.tableLayoutPlayerMain.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPlayerMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutPlayerMain.ColumnCount = 5;
             this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -203,6 +212,7 @@
             // 
             // tableLayoutPlayerSecondary
             // 
+            this.tableLayoutPlayerSecondary.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPlayerSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
             this.tableLayoutPlayerSecondary.ColumnCount = 1;
             this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
