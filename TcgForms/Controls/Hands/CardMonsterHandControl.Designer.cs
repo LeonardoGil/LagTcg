@@ -73,6 +73,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.contextMenuCardMonster;
             this.Name = "CardMonsterHandControl";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.CardMonsterHandControl_Paint);
             this.contextMenuCardMonster.ResumeLayout(false);
             this.ResumeLayout(false);
 

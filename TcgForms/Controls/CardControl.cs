@@ -1,7 +1,8 @@
-﻿using TcgDomain.Entities.Cards;
+﻿using System.ComponentModel;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Extensions;
 using TcgForms.Forms;
+using TcgForms.Properties;
 
 namespace TcgForms.Controls
 {
@@ -27,12 +28,34 @@ namespace TcgForms.Controls
             InitializeComponent();
         }
 
+        public void Zoom()
+        {
+            using var form = new InfoCardForm(Card);
+            
+            form.ShowDialog();
+        }
+
+        public void Verse()
+        {
+            var resource = new ComponentResourceManager(typeof(CardControl));
+
+            BackgroundImage = resource.GetObject("$this.VerseCard") as Image;
+
+            SuspendLayout();
+
+            ResumeLayout(false);
+        }
+
+        protected ToolStripMenuItem GetMenuItemZoom() => menuItemZoom;
+
         private void CardControl_DoubleClick(object sender, EventArgs e)
         {
-            using (var form = new InfoCardForm(Card))
-            {
-                form.ShowDialog();
-            }
+            Zoom();
+        }
+
+        private void menuItemZoom_Click(object sender, EventArgs e)
+        {
+            Zoom();
         }
     }
 }

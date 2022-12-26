@@ -1,17 +1,14 @@
-﻿using TcgDomain.Entities.Cards;
+﻿using System.ComponentModel;
+using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgForms.AppServices;
 using TcgForms.Forms;
-using TcgInfra.CustomMessages;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace TcgForms.Controls.Hands
 {
     public partial class CardMonsterHandControl : CardControl
     {
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
-
-        public DuelFieldForm DuelFieldForm { get => (ParentForm as MyCardsForm).ParentForm as DuelFieldForm; }
 
         public CardMonsterHandControl()
         {
@@ -27,6 +24,10 @@ namespace TcgForms.Controls.Hands
         {
             InitializeComponent();
         }
+
+        #region Public Methods
+
+        #endregion
 
         #region Events
 
@@ -60,7 +61,7 @@ namespace TcgForms.Controls.Hands
             throw new NotImplementedException();
         }
 
-        private async void contextMenuCardMonster_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        private void contextMenuCardMonster_Opening(object sender, CancelEventArgs e)
         {
             var card = OriginalCard as MonsterCard;
             var myCardsForm = ParentForm as MyCardsForm;
@@ -75,6 +76,12 @@ namespace TcgForms.Controls.Hands
             menuItemSpecialInvoke.Visible = false;
             menuItemSet.Visible = validate;
         }
+
+        private void CardMonsterHandControl_Paint(object sender, PaintEventArgs e)
+        {
+            ContextMenuStrip.Items.Add(GetMenuItemZoom());
+        }
+
 
         #endregion
     }
