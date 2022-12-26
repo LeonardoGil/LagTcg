@@ -47,6 +47,8 @@ namespace TcgForms.Forms
             PhasePlayer = PhasePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
 
+            Turn++;
+
             LoadInfo();
 
             Player.Deck.Shuffle();
@@ -104,7 +106,8 @@ namespace TcgForms.Forms
             {
                 PhasePlayer = PhaseAppServices.NextPhasePlayer(PhasePlayer);
 
-                tableLayoutPlayerMain.Controls.OfType<CardControl>().ToList().ForEach(x => x.ResetActionPhase());
+                Player.ResetAction();
+                Opponent.ResetAction();
             }
 
             Phase = PhaseAppServices.NextPhase(Phase);
@@ -112,6 +115,7 @@ namespace TcgForms.Forms
             LoadInfo();
 
             buttonDraw.Enabled = Phase == PhaseEnum.DrawPhase;
+            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase;
         }
 
         #endregion
@@ -148,6 +152,8 @@ namespace TcgForms.Forms
             var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
 
             AddCardMonsterOnField(table, cardFieldControl, position);
+
+            player.CanInvoke = false;
         }
 
         private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool opponent = false)
@@ -172,6 +178,7 @@ namespace TcgForms.Forms
 
             labelPhase.Text = Phase.GetDescription();
             labelPhasePlayer.Text = PhasePlayer.ToString();
+            labelTurn.Text = string.Concat("Turn: ", Turn);
         }
 
         #endregion

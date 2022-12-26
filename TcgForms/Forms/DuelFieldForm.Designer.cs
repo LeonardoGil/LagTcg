@@ -37,6 +37,7 @@
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.buttonDraw = new System.Windows.Forms.Button();
             this.panelDivisional = new System.Windows.Forms.Panel();
+            this.labelTurn = new System.Windows.Forms.Label();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +103,7 @@
             // groupDuelInfo
             // 
             this.groupDuelInfo.BackColor = System.Drawing.Color.Transparent;
+            this.groupDuelInfo.Controls.Add(this.labelTurn);
             this.groupDuelInfo.Controls.Add(this.labelPhase);
             this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
             this.groupDuelInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -243,6 +245,16 @@
             this.panelDivisional.Size = new System.Drawing.Size(1280, 10);
             this.panelDivisional.TabIndex = 11;
             // 
+            // labelTurn
+            // 
+            this.labelTurn.AutoSize = true;
+            this.labelTurn.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTurn.Location = new System.Drawing.Point(5, 89);
+            this.labelTurn.Name = "labelTurn";
+            this.labelTurn.Size = new System.Drawing.Size(42, 13);
+            this.labelTurn.TabIndex = 11;
+            this.labelTurn.Text = "Turn:";
+            // 
             // DuelFieldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -291,5 +303,6 @@
         private GroupBox groupDuelInfo;
         private Button buttonMyCards;
         private Panel panelDivisional;
+        private Label labelTurn;
     }
 }

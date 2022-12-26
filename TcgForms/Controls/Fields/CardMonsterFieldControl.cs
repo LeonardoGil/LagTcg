@@ -1,18 +1,15 @@
 ﻿using System.ComponentModel;
 using TcgDomain.Entities.Cards;
+using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 
 namespace TcgForms.Controls.Fields
 {
     public partial class CardMonsterFieldControl : CardControl
     {
-        public DuelPositionEnum DuelPosition { get; set; }
+        public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
 
         public bool Set { get; set; }
-
-        public bool CanAttack { get; set; }
-
-        public bool CanChangePosition { get; set; }
 
         public CardMonsterFieldControl()
         {
@@ -33,12 +30,6 @@ namespace TcgForms.Controls.Fields
             if (set) Verse();
         }
 
-        public override void ResetActionPhase()
-        {
-            CanAttack = true;
-            CanChangePosition = true;
-        }
-
         private void CardMonsterFieldControl_Paint(object sender, PaintEventArgs e)
         {
             ContextMenuStrip.Items.Add(GetMenuItemZoom());
@@ -46,14 +37,14 @@ namespace TcgForms.Controls.Fields
 
         private void contextMenuMonsterCard_Opening(object sender, CancelEventArgs e)
         {
-            menuItemChangePosition.Visible = CanChangePosition;
-            menuItemAttack.Visible = CanAttack && DuelPosition == DuelPositionEnum.Atk;
+            menuItemChangePosition.Visible = MonsterCard.CanChangePosition;
+            menuItemAttack.Visible = MonsterCard.CanAttack && MonsterCard.DuelPosition == DuelPositionEnum.Atk;
         }
 
         private void menuItemChangePosition_Click(object sender, EventArgs e)
         {
             Verse();
-            CanChangePosition = false;
+            MonsterCard.CanChangePosition = false;
         }
     }
 }

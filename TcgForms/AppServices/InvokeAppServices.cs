@@ -69,6 +69,9 @@ namespace TcgForms.AppServices
 
         public bool CanInvokeMonster(MonsterCard card, Player player)
         {
+            if (!player.CanInvoke)
+                return false;
+
             switch (card.RangeMonsterLevel)
             {
                 case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:

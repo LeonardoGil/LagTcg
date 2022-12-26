@@ -45,8 +45,6 @@ namespace TcgForms.Controls
             ResumeLayout(false);
         }
 
-        public virtual void ResetActionPhase() => throw new NotImplementedException();
-
         protected ToolStripMenuItem GetMenuItemZoom() => menuItemZoom;
 
         private void CardControl_DoubleClick(object sender, EventArgs e)

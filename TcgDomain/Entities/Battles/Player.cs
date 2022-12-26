@@ -4,6 +4,11 @@ namespace TcgDomain.Entities.Battles
 {
     public class Player
     {
+        public Player()
+        {
+            ResetAction();
+        }
+
         public string Username { get; set; }
 
         public int PointLife { get; set; }
@@ -16,5 +21,10 @@ namespace TcgDomain.Entities.Battles
         public dynamic[] MonstersField = new dynamic[5];
 
         public dynamic[] SpecialField = new dynamic[5];
+
+        public void ResetAction()
+        {
+            CanInvoke = true;
+        }
     }
 }

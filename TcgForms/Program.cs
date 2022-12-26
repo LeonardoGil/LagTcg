@@ -15,18 +15,27 @@ namespace TcgForms
         {
             var cards = MockService.LoadInitialCards();
 
+            var duelDeck = new DuelDeck(YugiMutoDeck.Get(cards));
+
             var player = new Player
             {
                 Username = "Leonardo",
                 PointLife = 8000,
-                Deck = new DuelDeck(YugiMutoDeck.Get(cards))
+                Deck = duelDeck
+            };
+
+            var opponent = new Player
+            {
+                Username = "Machine",
+                PointLife = 8000,
+                Deck = duelDeck
             };
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new DuelFieldForm(player, null));
+            Application.Run(new DuelFieldForm(player, opponent));
         }
     }
 }

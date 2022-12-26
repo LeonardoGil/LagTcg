@@ -12,6 +12,10 @@ namespace TcgDomain.Entities.Cards.Abstract
 
         public int Level { get; set; }
 
+        public bool CanAttack { get; set; }
+
+        public bool CanChangePosition { get; set; }
+
         public AttributeEnum Attribute { get; set; }
         
         public TypeMonsterEnum Type { get; set; }
@@ -32,5 +36,8 @@ namespace TcgDomain.Entities.Cards.Abstract
                 throw new BusinessException(ErrorMessage.LevelMonsterCardInvalid);
             }
         }
+     
+        public DuelPositionEnum DuelPosition { get; set; }
+
     }
 }
