@@ -10,6 +10,8 @@ namespace TcgForms.Controls.Hands
     {
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
+        public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
+
         public CardMonsterHandControl()
         {
             InitializeComponent();
@@ -29,26 +31,33 @@ namespace TcgForms.Controls.Hands
 
         #endregion
 
+        #region Private Methods
+
+        private void Invoke(MonsterCard monsterCard, bool set)
+        {
+            switch (monsterCard.RangeMonsterLevel)
+            {
+                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonster(this, set);
+                    break;
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1, set);
+                    break;
+
+                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
+                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2, set);
+                    break;
+            }
+        }
+
+        #endregion
+
         #region Events
 
         private void menuItemInvoke_Click(object sender, EventArgs e)
         {
-            var monsterCard = OriginalCard as MonsterCard;
-
-            switch (monsterCard.RangeMonsterLevel)
-            {
-                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonster(this);
-                    break;
-
-                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1);
-                    break;
-
-                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2);
-                    break;
-            }
+            Invoke(MonsterCard, MonsterCard.Set);
         }
 
         private void menuItemSpecialInvoke_Click(object sender, EventArgs e)
@@ -58,7 +67,9 @@ namespace TcgForms.Controls.Hands
 
         private void menuItemSet_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MonsterCard.Set = true;
+
+            Invoke(MonsterCard, MonsterCard.Set);
         }
 
         private void contextMenuCardMonster_Opening(object sender, CancelEventArgs e)
@@ -81,7 +92,6 @@ namespace TcgForms.Controls.Hands
         {
             ContextMenuStrip.Items.Add(GetMenuItemZoom());
         }
-
 
         #endregion
     }

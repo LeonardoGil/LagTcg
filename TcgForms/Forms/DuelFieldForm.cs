@@ -65,15 +65,15 @@ namespace TcgForms.Forms
             tableLayoutPlayerMain.ResumeLayout(false);
         }
 
-        public void InvokePlayerMonster(CardMonsterHandControl cardHandControl)
+        public void InvokePlayerMonster(CardMonsterHandControl cardHandControl, bool set = false)
         {
             PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
-            InvokeMonster(Player, cardHandControl.OriginalCard);
+            InvokeMonster(Player, cardHandControl.OriginalCard, false, set);
         }
 
-        public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity)
+        public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity, bool set = false)
         {
             var cardsInField = Player.MonstersField.OfType<Card>().ToList();
 
@@ -85,7 +85,7 @@ namespace TcgForms.Forms
             PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
-            InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice);
+            InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice, false, set);
         }
 
         public void DrawCard(int quantity = 1)
@@ -150,20 +150,20 @@ namespace TcgForms.Forms
             table.Controls.Remove(cardFieldControl);
         }
 
-        private void InvokeMonster(Player player, dynamic originalCard, bool opponent = false)
+        private void InvokeMonster(Player player, dynamic originalCard, bool opponent = false, bool set = false)
         {
             var position = InvokeAppServices.Invoke(player, originalCard);
 
-            var cardFieldControl = new CardMonsterFieldControl(originalCard, position);
+            var cardFieldControl = new CardMonsterFieldControl(originalCard, position, set);
 
             var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
 
-            AddCardMonsterOnField(table, cardFieldControl, position);
+            AddCardMonsterOnField(table, cardFieldControl, position, set);
 
             player.CanInvoke = false;
         }
 
-        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool opponent = false)
+        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool opponent = false, bool set = false)
         {
             InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, cardHandControl.OriginalCard);
 
@@ -175,7 +175,7 @@ namespace TcgForms.Forms
 
             cardsMonsterField.ForEach(card => RemoveCardMonsterOnField(table, card));
 
-            InvokeMonster(player, cardHandControl.OriginalCard, opponent);
+            InvokeMonster(player, cardHandControl.OriginalCard, opponent, set);
         }
 
         private void LoadInfo()
