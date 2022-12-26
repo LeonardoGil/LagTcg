@@ -17,6 +17,8 @@ namespace TcgForms.Forms
 
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
+        private readonly PhaseAppServices PhaseAppServices = new PhaseAppServices();
+
         private readonly MyCardsForm MyCardsForm = new MyCardsForm();
 
         #endregion
@@ -113,11 +115,15 @@ namespace TcgForms.Forms
         public void NextPhase()
         {
             if (Phase == PhaseEnum.EndPhase)
-                Phase = PhaseEnum.DrawPhase;
-            else
-                Phase = Phase + 1;
+            {
+                PhasePlayer = PhaseAppServices.NextPhasePlayer(PhasePlayer);
+            }
+
+            Phase = PhaseAppServices.NextPhase(Phase);
 
             LoadInfo();
+
+            buttonDraw.Enabled = Phase == PhaseEnum.DrawPhase;
         }
 
         public void AddCardOnField(CardMonsterFieldControl cardFieldControl, int position)
