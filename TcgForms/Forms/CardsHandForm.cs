@@ -31,19 +31,11 @@ namespace TcgForms.Forms
         public void AddCardFromHand(CardMonsterHandControl cardControl)
         {
             flowLayoutPanelHands.Controls.Add(cardControl);
-
-            flowLayoutPanelHands.SuspendLayout();
-
-            flowLayoutPanelHands.ResumeLayout(false);
         }
         
         public void RemoveCardFromHand(CardMonsterHandControl cardControl)
         {
             flowLayoutPanelHands.Controls.Remove(cardControl);
-
-            flowLayoutPanelHands.SuspendLayout();
-
-            flowLayoutPanelHands.ResumeLayout(false);
         }
 
         private void MyCardsForm_Load(object sender, EventArgs e)

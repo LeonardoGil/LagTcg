@@ -3,7 +3,6 @@ using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 using TcgDomain.Extensions;
 using TcgForms.AppServices;
-using TcgForms.Controls;
 using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
 
@@ -19,7 +18,7 @@ namespace TcgForms.Forms
 
         private readonly PhaseAppServices PhaseAppServices = new PhaseAppServices();
 
-        private readonly CardsHandForm MyCardsForm = new CardsHandForm();
+        private readonly CardsHandForm PlayerCardsHandForm = new CardsHandForm();
 
         #endregion
 
@@ -59,10 +58,17 @@ namespace TcgForms.Forms
 
         #region Public Methods
 
+        public void RefreshPlayerTableMonster()
+        {
+            tableLayoutPlayerMain.SuspendLayout();
+
+            tableLayoutPlayerMain.ResumeLayout(false);
+        }
+
         public void InvokePlayerMonster(CardMonsterHandControl cardHandControl)
         {
-            MyCardsForm.RemoveCard(cardHandControl);
-            MyCardsForm.RemoveCardFromHand(cardHandControl);
+            PlayerCardsHandForm.RemoveCard(cardHandControl);
+            PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
             InvokeMonster(Player, cardHandControl.OriginalCard);
         }
@@ -75,6 +81,9 @@ namespace TcgForms.Forms
 
             if (!cardsForSacrifice.Any())
                 return;
+
+            PlayerCardsHandForm.RemoveCard(cardHandControl);
+            PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
             InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice);
         }
@@ -90,7 +99,7 @@ namespace TcgForms.Forms
                 if (basicCard.IsMonsterCard())
                 {
                     var cardControl = new CardMonsterHandControl(card);
-                    MyCardsForm.AddCard(cardControl);
+                    PlayerCardsHandForm.AddCard(cardControl);
                 }
 
                 if (basicCard.IsSpecialCard())
@@ -122,32 +131,30 @@ namespace TcgForms.Forms
 
         #region Private Methods
 
-        private void AddCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl, int position)
+        private void AddCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl, int position, bool set = false)
         {
             table.Controls.Add(cardFieldControl, position, 0);
 
-            table.SuspendLayout();
-
-            cardFieldControl.Anchor = AnchorStyles.None;
-            cardFieldControl.Location = new Point(20 + (140 * position), 10);
-
-            table.ResumeLayout(false);
+            if (set)
+            {
+                cardFieldControl.SetDefense();
+            }
+            else
+            {
+                cardFieldControl.SetAttack();
+            }
         }
 
         private void RemoveCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl)
         {
             table.Controls.Remove(cardFieldControl);
-
-            table.SuspendLayout();
-
-            table.ResumeLayout(false);
         }
 
         private void InvokeMonster(Player player, dynamic originalCard, bool opponent = false)
         {
             var position = InvokeAppServices.Invoke(player, originalCard);
 
-            var cardFieldControl = new CardMonsterFieldControl(originalCard);
+            var cardFieldControl = new CardMonsterFieldControl(originalCard, position);
 
             var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
 
@@ -198,8 +205,8 @@ namespace TcgForms.Forms
 
         private void buttonMyCards_Click(object sender, EventArgs e)
         {
-            MyCardsForm.DuelFieldForm = this;
-            MyCardsForm.ShowDialog();
+            PlayerCardsHandForm.DuelFieldForm = this;
+            PlayerCardsHandForm.ShowDialog();
         }
 
         #endregion

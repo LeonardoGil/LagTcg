@@ -39,5 +39,10 @@ namespace TcgDomain.Entities.Cards.Abstract
      
         public DuelPositionEnum DuelPosition { get; set; }
 
+        public void ResetAction()
+        {
+            CanAttack = true;
+            CanChangePosition = true;
+        }
     }
 }

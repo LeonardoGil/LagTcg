@@ -25,6 +25,8 @@ namespace TcgDomain.Entities.Battles
         public void ResetAction()
         {
             CanInvoke = true;
+
+            MonstersField.OfType<MonsterCard>().ToList().ForEach(x => x.ResetAction());
         }
     }
 }

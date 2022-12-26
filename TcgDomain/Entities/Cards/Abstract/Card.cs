@@ -18,6 +18,8 @@ namespace TcgDomain.Entities.Cards.Abstract
 
         public string Description { get; set; }
 
+        public bool Set { get; set; }
+
         #region TypeCard
 
         public TypeCardEnum TypeCard { get; set; }

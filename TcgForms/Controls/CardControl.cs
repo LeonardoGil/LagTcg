@@ -7,19 +7,29 @@ namespace TcgForms.Controls
 {
     public partial class CardControl : UserControl
     {
-        public readonly dynamic OriginalCard; 
+        protected const int SizeX = 100;
 
-        public readonly Card Card; 
-        
-        public CardControl(dynamic originalCard)
+        protected const int SizeY = 140;
+
+        public readonly dynamic OriginalCard;
+
+        public Card Card { get => OriginalCard as Card; }
+
+
+        public CardControl(dynamic originalCard, bool set = false)
         {
             InitializeComponent();
 
             OriginalCard = originalCard;
-            Card = originalCard as Card;
 
-            if (Card.Image is not null)
+            if (set)
+            {
+                Verse();
+            }
+            else if (Card.Image is not null)
+            {
                 BackgroundImage = new Bitmap(Card.Image.GetStream());
+            }
         }
 
         public CardControl()
@@ -30,7 +40,7 @@ namespace TcgForms.Controls
         public void Zoom()
         {
             using var form = new InfoCardForm(Card);
-            
+
             form.ShowDialog();
         }
 
