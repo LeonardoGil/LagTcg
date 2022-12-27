@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
@@ -5,7 +6,6 @@ using TcgDomain.Extensions;
 using TcgForms.AppServices;
 using TcgForms.Controls.Fields;
 using TcgForms.Controls.Hands;
-using TcgForms.Controls.Stacks;
 
 namespace TcgForms.Forms
 {
@@ -27,7 +27,7 @@ namespace TcgForms.Forms
 
         public int Turn { get; private set; }
 
-        public PhasePlayerEnum PhasePlayer { get; private set; }
+        public TypePlayerEnum PhasePlayer { get; private set; }
 
         public PhaseEnum Phase { get; private set; }
 
@@ -44,7 +44,7 @@ namespace TcgForms.Forms
             Player = user;
             Opponent = opponent;
 
-            PhasePlayer = PhasePlayerEnum.Player;
+            PhasePlayer = TypePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
 
             Player.Deck.Shuffle();
@@ -71,7 +71,7 @@ namespace TcgForms.Forms
             PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
-            InvokeMonster(Player, cardHandControl.OriginalCard, false, set);
+            InvokeMonster(Player, cardHandControl.OriginalCard, set);
         }
 
         public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity, bool set = false)
@@ -86,7 +86,7 @@ namespace TcgForms.Forms
             PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
-            InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice, false, set);
+            InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice, set);
         }
 
         public void DrawCardPlayer(int quantity = 1)
@@ -124,7 +124,7 @@ namespace TcgForms.Forms
 
             LoadInfo();
 
-            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase || PhasePlayer == PhasePlayerEnum.Opponent;
+            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase || PhasePlayer == TypePlayerEnum.Opponent;
         }
 
         #endregion
@@ -150,32 +150,34 @@ namespace TcgForms.Forms
             table.Controls.Remove(cardFieldControl);
         }
 
-        private void InvokeMonster(Player player, dynamic originalCard, bool opponent = false, bool set = false)
+        private void InvokeMonster(Player player, dynamic originalCard, bool set = false)
         {
             var position = InvokeAppServices.Invoke(player, originalCard);
 
             var cardFieldControl = new CardMonsterFieldControl(originalCard, position, set);
 
-            var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
+            var table = player.Type == TypePlayerEnum.Player ? tableLayoutPlayerMain : tableLayoutOpponentMain;
 
             AddCardMonsterOnField(table, cardFieldControl, position, set);
 
             player.CanInvoke = false;
         }
 
-        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool opponent = false, bool set = false)
+        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool set = false)
         {
             InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, cardHandControl.OriginalCard);
 
-            var table = opponent ? tableLayoutOpponentMain : tableLayoutPlayerMain;
+            var tableMain = player.Type == TypePlayerEnum.Player ? tableLayoutPlayerMain : tableLayoutOpponentMain;
 
-            var cardsMonsterField = table.Controls.OfType<CardMonsterFieldControl>()
+            var cardsMonsterField = tableMain.Controls.OfType<CardMonsterFieldControl>()
                                                                   .Where(x => !player.MonstersField.OfType<Card>().Contains(x.Card))
                                                                   .ToList();
 
-            cardsMonsterField.ForEach(card => RemoveCardMonsterOnField(table, card));
+            cardsMonsterField.ForEach(card => RemoveCardMonsterOnField(tableMain, card));
 
-            InvokeMonster(player, cardHandControl.OriginalCard, opponent, set);
+            CheckGraveyardControl(player);
+
+            InvokeMonster(player, cardHandControl.OriginalCard, set);
         }
 
         private void LoadInfo()
@@ -186,6 +188,23 @@ namespace TcgForms.Forms
             labelPhase.Text = Phase.GetDescription();
             labelPhasePlayer.Text = PhasePlayer.ToString();
             labelTurn.Text = string.Concat("Turn: ", Turn);
+        }
+
+        private void CheckGraveyardControl(Player player)
+        {
+            if (player.Graveyard.Any())
+            {
+                var control = player.Type == TypePlayerEnum.Player ? GraveyardPlayerControl : null;
+
+                if (!control.Visible)
+                {
+                    GraveyardPlayerControl.Visible = true;
+                    GraveyardPlayerControl.Enabled = true;
+
+                    SuspendLayout();
+                    ResumeLayout(false);
+                }
+            }
         }
 
         #endregion

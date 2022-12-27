@@ -6,5 +6,10 @@
         {
             InitializeComponent();
         }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -35,25 +35,33 @@
             // 
             this.flowLayoutPanelHands.BackColor = System.Drawing.Color.Black;
             this.flowLayoutPanelHands.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelHands.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelHands.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelHands.Location = new System.Drawing.Point(10, 10);
             this.flowLayoutPanelHands.Name = "flowLayoutPanelHands";
-            this.flowLayoutPanelHands.Size = new System.Drawing.Size(800, 280);
+            this.flowLayoutPanelHands.Size = new System.Drawing.Size(745, 295);
             this.flowLayoutPanelHands.TabIndex = 1;
+            this.flowLayoutPanelHands.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseDown);
+            this.flowLayoutPanelHands.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseMove);
             // 
             // CardsHandForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(800, 280);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.BackColor = System.Drawing.Color.Cyan;
+            this.BackgroundImage = global::TcgForms.Properties.Resources.BackgroundDigitalDuel;
+            this.ClientSize = new System.Drawing.Size(765, 315);
             this.Controls.Add(this.flowLayoutPanelHands);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "CardsHandForm";
+            this.Opacity = 0.95D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MyCardsForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardsHandForm_KeyPress);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseMove);
             this.ResumeLayout(false);
 
         }

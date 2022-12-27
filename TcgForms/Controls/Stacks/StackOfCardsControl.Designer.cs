@@ -28,8 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StackOfCardsControl));
+            this.contextMenuStack = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStack.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // contextMenuStack
+            // 
+            this.contextMenuStack.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem});
+            this.contextMenuStack.Name = "contextMenuStack";
+            this.contextMenuStack.Size = new System.Drawing.Size(181, 48);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // StackOfCardsControl
             // 
@@ -37,12 +55,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContextMenuStrip = this.contextMenuStack;
             this.Name = "StackOfCardsControl";
             this.Size = new System.Drawing.Size(100, 140);
+            this.contextMenuStack.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private ContextMenuStrip contextMenuStack;
+        private ToolStripMenuItem showToolStripMenuItem;
     }
 }

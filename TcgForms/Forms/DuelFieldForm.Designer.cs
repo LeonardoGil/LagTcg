@@ -37,12 +37,15 @@
             this.buttonNextPhase = new System.Windows.Forms.Button();
             this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
             this.deckControlPlayer = new TcgForms.Controls.Stacks.DeckControl();
+            this.GraveyardPlayerControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
             this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
+            this.ExtraDeckControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
             this.panelDivisional = new System.Windows.Forms.Panel();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.tableLayoutPlayerDeck.SuspendLayout();
+            this.tableLayoutPlayerSecondary.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutOpponentSecondary
@@ -201,6 +204,7 @@
             this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPlayerDeck.Controls.Add(this.deckControlPlayer, 0, 1);
+            this.tableLayoutPlayerDeck.Controls.Add(this.GraveyardPlayerControl, 0, 0);
             this.tableLayoutPlayerDeck.Location = new System.Drawing.Point(1030, 410);
             this.tableLayoutPlayerDeck.Name = "tableLayoutPlayerDeck";
             this.tableLayoutPlayerDeck.RowCount = 2;
@@ -218,6 +222,17 @@
             this.deckControlPlayer.Name = "deckControlPlayer";
             this.deckControlPlayer.Size = new System.Drawing.Size(100, 140);
             this.deckControlPlayer.TabIndex = 0;
+            // 
+            // GraveyardPlayerControl
+            // 
+            this.GraveyardPlayerControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GraveyardPlayerControl.BackgroundImage")));
+            this.GraveyardPlayerControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.GraveyardPlayerControl.Enabled = false;
+            this.GraveyardPlayerControl.Location = new System.Drawing.Point(5, 5);
+            this.GraveyardPlayerControl.Name = "GraveyardPlayerControl";
+            this.GraveyardPlayerControl.Size = new System.Drawing.Size(100, 140);
+            this.GraveyardPlayerControl.TabIndex = 1;
+            this.GraveyardPlayerControl.Visible = false;
             // 
             // tableLayoutPlayerMain
             // 
@@ -244,6 +259,7 @@
             this.tableLayoutPlayerSecondary.ColumnCount = 1;
             this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPlayerSecondary.Controls.Add(this.ExtraDeckControl, 0, 1);
             this.tableLayoutPlayerSecondary.Location = new System.Drawing.Point(110, 410);
             this.tableLayoutPlayerSecondary.Name = "tableLayoutPlayerSecondary";
             this.tableLayoutPlayerSecondary.RowCount = 2;
@@ -251,6 +267,17 @@
             this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPlayerSecondary.Size = new System.Drawing.Size(110, 300);
             this.tableLayoutPlayerSecondary.TabIndex = 3;
+            // 
+            // ExtraDeckControl
+            // 
+            this.ExtraDeckControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExtraDeckControl.BackgroundImage")));
+            this.ExtraDeckControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExtraDeckControl.Enabled = false;
+            this.ExtraDeckControl.Location = new System.Drawing.Point(5, 154);
+            this.ExtraDeckControl.Name = "ExtraDeckControl";
+            this.ExtraDeckControl.Size = new System.Drawing.Size(100, 140);
+            this.ExtraDeckControl.TabIndex = 0;
+            this.ExtraDeckControl.Visible = false;
             // 
             // panelDivisional
             // 
@@ -287,6 +314,7 @@
             this.groupPlayerInfo.ResumeLayout(false);
             this.groupPlayerInfo.PerformLayout();
             this.tableLayoutPlayerDeck.ResumeLayout(false);
+            this.tableLayoutPlayerSecondary.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -309,5 +337,7 @@
         private Panel panelDivisional;
         private Label labelTurn;
         private Controls.Stacks.DeckControl deckControlPlayer;
+        private Controls.Stacks.StackOfCardsControl GraveyardPlayerControl;
+        private Controls.Stacks.StackOfCardsControl ExtraDeckControl;
     }
 }

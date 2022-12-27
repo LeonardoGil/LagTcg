@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TcgForms.Controls.Hands;
+﻿using TcgForms.Controls.Hands;
 
 namespace TcgForms.Forms
 {
@@ -10,6 +9,8 @@ namespace TcgForms.Forms
         public List<CardMonsterHandControl> CardMonsterControls { get => CardControls.Where(x => x is CardMonsterHandControl).OfType<CardMonsterHandControl>().ToList(); }
 
         public DuelFieldForm DuelFieldForm { get; set; }
+
+        private Point Point;
 
         public CardsHandForm()
         {
@@ -45,6 +46,28 @@ namespace TcgForms.Forms
             foreach (var control in CardControls)
             {
                 AddCardFromHand(control);
+            }
+        }
+
+        private void CardsHandForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point = e.Location;
+        }
+
+        private void CardsHandForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - Point.X;
+                Top += e.Y - Point.Y;
+            }
+        }
+
+        private void CardsHandForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                Close();
             }
         }
     }

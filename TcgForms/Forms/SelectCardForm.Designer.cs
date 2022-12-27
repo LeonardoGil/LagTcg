@@ -35,27 +35,30 @@
             // 
             // flowLayoutPanelCards
             // 
+            this.flowLayoutPanelCards.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanelCards.BackColor = System.Drawing.Color.Black;
-            this.flowLayoutPanelCards.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelCards.Location = new System.Drawing.Point(0, 60);
+            this.flowLayoutPanelCards.Location = new System.Drawing.Point(4, 40);
             this.flowLayoutPanelCards.Name = "flowLayoutPanelCards";
-            this.flowLayoutPanelCards.Size = new System.Drawing.Size(800, 140);
+            this.flowLayoutPanelCards.Size = new System.Drawing.Size(750, 140);
             this.flowLayoutPanelCards.TabIndex = 0;
             // 
             // labelText
             // 
             this.labelText.AutoSize = true;
-            this.labelText.Font = new System.Drawing.Font("Fira Code Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelText.Location = new System.Drawing.Point(12, 9);
+            this.labelText.BackColor = System.Drawing.Color.Transparent;
+            this.labelText.Font = new System.Drawing.Font("Fira Code SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelText.ForeColor = System.Drawing.Color.White;
+            this.labelText.Location = new System.Drawing.Point(5, 10);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(0, 20);
+            this.labelText.Size = new System.Drawing.Size(70, 24);
             this.labelText.TabIndex = 1;
+            this.labelText.Text = "TESTE";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(728, 9);
+            this.buttonOk.Location = new System.Drawing.Point(720, 5);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(60, 45);
+            this.buttonOk.Size = new System.Drawing.Size(35, 30);
             this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -65,16 +68,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(800, 200);
-            this.ControlBox = false;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackColor = System.Drawing.Color.Silver;
+            this.BackgroundImage = global::TcgForms.Properties.Resources.BackgroundDigitalDuel;
+            this.ClientSize = new System.Drawing.Size(760, 185);
             this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.labelText);
             this.Controls.Add(this.flowLayoutPanelCards);
+            this.Controls.Add(this.labelText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SelectCardForm";
+            this.Opacity = 0.85D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SelectCardForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SelectCardForm_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SelectCardForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

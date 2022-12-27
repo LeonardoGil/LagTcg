@@ -10,6 +10,8 @@ namespace TcgForms.Forms
         public int Quantity { get; set; }
 
         public bool Exceed { get; set; }
+        
+        private Point Point;
 
         public SelectCardForm(List<Card> cards, string text, int quantity = 1, bool exceed = false)
         {
@@ -34,6 +36,8 @@ namespace TcgForms.Forms
             flowLayoutPanelCards.ResumeLayout(false);
         }
 
+        #region Events
+        
         private void buttonOk_Click(object sender, EventArgs e)
         {
             var cardsControl = flowLayoutPanelCards.Controls.OfType<dynamic>()
@@ -61,5 +65,21 @@ namespace TcgForms.Forms
 
             Close();
         }
+
+        private void SelectCardForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X - Point.X;
+                Top += e.Y - Point.Y;
+            }
+        }
+
+        private void SelectCardForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point = e.Location;
+        }
+
+        #endregion
     }
 }

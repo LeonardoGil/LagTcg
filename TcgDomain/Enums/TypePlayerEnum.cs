@@ -1,6 +1,6 @@
 ﻿namespace TcgDomain.Enums
 {
-    public enum PhasePlayerEnum
+    public enum TypePlayerEnum
     {
         Player = 0,
 

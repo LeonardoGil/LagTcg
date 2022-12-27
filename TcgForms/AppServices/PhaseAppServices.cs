@@ -19,15 +19,15 @@ namespace TcgForms.AppServices
             return phase;
         }
 
-        public PhasePlayerEnum NextPhasePlayer(PhasePlayerEnum phasePlayer)
+        public TypePlayerEnum NextPhasePlayer(TypePlayerEnum phasePlayer)
         {
             switch (phasePlayer)
             {
-                case PhasePlayerEnum.Player:
-                    return PhasePlayerEnum.Opponent;
+                case TypePlayerEnum.Player:
+                    return TypePlayerEnum.Opponent;
 
-                case PhasePlayerEnum.Opponent:
-                    return PhasePlayerEnum.Player;
+                case TypePlayerEnum.Opponent:
+                    return TypePlayerEnum.Player;
 
                 default:
                     throw new BusinessException("Fase não definida");

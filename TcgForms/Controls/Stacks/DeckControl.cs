@@ -22,7 +22,7 @@ namespace TcgForms.Controls.Stacks
         {
             var duelField = ParentForm as DuelFieldForm;
 
-            menuItemDraw.Enabled = duelField.Phase == PhaseEnum.DrawPhase && duelField.PhasePlayer == PhasePlayerEnum.Player;
+            menuItemDraw.Enabled = duelField.Phase == PhaseEnum.DrawPhase && duelField.PhasePlayer == TypePlayerEnum.Player;
         }
     }
 }

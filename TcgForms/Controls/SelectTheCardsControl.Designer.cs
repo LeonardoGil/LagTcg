@@ -33,8 +33,8 @@
             // 
             // checkBox
             // 
-            this.checkBox.AutoSize = true;
-            this.checkBox.Location = new System.Drawing.Point(3, 3);
+            this.checkBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox.Location = new System.Drawing.Point(7, 7);
             this.checkBox.Name = "checkBox";
             this.checkBox.Size = new System.Drawing.Size(15, 14);
             this.checkBox.TabIndex = 0;
@@ -47,8 +47,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkBox);
             this.Name = "SelectTheCardsControl";
+            this.DoubleClick += new System.EventHandler(this.SelectTheCardsControl_DoubleClick);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

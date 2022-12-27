@@ -20,5 +20,10 @@ namespace TcgForms.Controls
         {
             Selected = checkBox.Checked;
         }
+
+        private void SelectTheCardsControl_DoubleClick(object sender, EventArgs e)
+        {
+            Selected = checkBox.Checked = !checkBox.Checked; 
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace TcgForms.AppServices
 
                 if (sacrifice.Contains(monsterCard))
                 {
+                    player.Graveyard.Add(player.MonstersField[position]);
                     player.MonstersField[position] = null;
                 }
             }
@@ -88,9 +89,9 @@ namespace TcgForms.AppServices
             }
         }
 
-        public bool CanInvokeMonster(PhaseEnum phase, PhasePlayerEnum phasePlayer)
+        public bool CanInvokeMonster(PhaseEnum phase, TypePlayerEnum phasePlayer)
         {
-            return phasePlayer == PhasePlayerEnum.Player && (phase == PhaseEnum.MainPhaseOne || phase == PhaseEnum.MainPhaseTwo);
+            return phasePlayer == TypePlayerEnum.Player && (phase == PhaseEnum.MainPhaseOne || phase == PhaseEnum.MainPhaseTwo);
         }
 
         public bool CanInvokeMonsterForAttribute(Player player, int attributes)
