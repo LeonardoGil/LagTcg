@@ -1,13 +1,13 @@
-﻿using TcgForms.Controls.Hands;
+﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Entities.Cards;
+using TcgForms.Controls.Hands;
+using TcgForms.Controls;
+using System.Windows.Forms;
 
 namespace TcgForms.Forms
 {
     public partial class CardsHandForm : Form
     {
-        public List<dynamic> CardControls { get; set; }
-
-        public List<CardMonsterHandControl> CardMonsterControls { get => CardControls.Where(x => x is CardMonsterHandControl).OfType<CardMonsterHandControl>().ToList(); }
-
         public DuelFieldForm DuelFieldForm { get; set; }
 
         private Point Point;
@@ -15,18 +15,22 @@ namespace TcgForms.Forms
         public CardsHandForm()
         {
             InitializeComponent();
-
-            CardControls = new List<dynamic>();
         }
 
-        public void AddCard(dynamic cardControl)
+        public void AddCard(object sender, EventArgs e)
         {
-            CardControls.Add(cardControl);
-        }
+            var card = sender as Card;
 
-        public void RemoveCard(dynamic cardControl)
-        {
-            CardControls.Remove(cardControl);
+            if (card.IsMonsterCard())
+            {
+                var cardControl = new CardMonsterHandControl(sender as NormalCard);
+                AddCardFromHand(cardControl);
+            }
+
+            if (card.IsSpecialCard())
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void AddCardFromHand(CardMonsterHandControl cardControl)
@@ -39,15 +43,7 @@ namespace TcgForms.Forms
             flowLayoutPanelHands.Controls.Remove(cardControl);
         }
 
-        private void MyCardsForm_Load(object sender, EventArgs e)
-        {
-            flowLayoutPanelHands.Controls.Clear();
-
-            foreach (var control in CardControls)
-            {
-                AddCardFromHand(control);
-            }
-        }
+        #region Events 
 
         private void CardsHandForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -65,10 +61,18 @@ namespace TcgForms.Forms
 
         private void CardsHandForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
+            if (e.KeyChar == (char)Keys.Escape || e.KeyChar == (char)Keys.Space)
             {
                 Close();
             }
         }
+
+        private void CardsHandForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
+        #endregion
     }
 }

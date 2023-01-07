@@ -58,7 +58,7 @@
             this.Opacity = 0.95D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.MyCardsForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CardsHandForm_FormClosing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CardsHandForm_KeyPress);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CardsHandForm_MouseMove);

@@ -46,8 +46,14 @@ namespace TcgForms.Forms
             Player = user;
             Opponent = opponent;
 
+            Player.Deck.DrawCard += new EventHandler(PlayerCardsHandForm.AddCard);
+
             PhasePlayer = TypePlayerEnum.Player;
             Phase = PhaseEnum.DrawPhase;
+
+            PlayerCardsHandForm.DuelFieldForm = this;
+
+            PlayerCardsHandForm.Show();
 
             Player.Deck.Shuffle();
             DrawCardPlayer(5);
@@ -79,7 +85,6 @@ namespace TcgForms.Forms
 
         public void InvokePlayerMonster(CardMonsterHandControl cardHandControl, bool set = false)
         {
-            PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
             InvokeMonster(Player, cardHandControl.OriginalCard, set);
@@ -94,7 +99,6 @@ namespace TcgForms.Forms
             if (!cardsForSacrifice.Any())
                 return;
 
-            PlayerCardsHandForm.RemoveCard(cardHandControl);
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
             InvokeMonsterAttribute(Player, cardHandControl, cardsForSacrifice, set);
@@ -102,23 +106,7 @@ namespace TcgForms.Forms
 
         public void DrawCardPlayer(int quantity = 1)
         {
-            var cards = DrawAppServices.DrawCards(Player, quantity);
-
-            foreach (var card in cards)
-            {
-                var basicCard = (card as Card);
-
-                if (basicCard.IsMonsterCard())
-                {
-                    var cardControl = new CardMonsterHandControl(card);
-                    PlayerCardsHandForm.AddCard(cardControl);
-                }
-
-                if (basicCard.IsSpecialCard())
-                {
-                    throw new NotImplementedException();
-                }
-            }
+            DrawAppServices.DrawCards(Player, quantity);
         }
 
         public void NextPhase()
@@ -253,7 +241,8 @@ namespace TcgForms.Forms
         private void buttonMyCards_Click(object sender, EventArgs e)
         {
             PlayerCardsHandForm.DuelFieldForm = this;
-            PlayerCardsHandForm.ShowDialog();
+            PlayerCardsHandForm.Show();
+            PlayerCardsHandForm.Activate();
         }
 
         #endregion

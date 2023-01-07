@@ -1,4 +1,5 @@
 ﻿using TcgDomain.Entities.Cards.Abstract;
+using TcgDomain.Entities.Decks;
 using TcgDomain.Enums;
 using TcgInfra.CustomExceptions;
 
@@ -14,6 +15,8 @@ namespace TcgDomain.Entities.Battles
             SpecialField = new dynamic[5];
 
             Graveyard = new List<dynamic>();
+
+            PointLife = 8000;
         }
 
         public string Username { get; set; }

@@ -1,5 +1,5 @@
-﻿using TcgDomain.Entities;
-using TcgDomain.Entities.Cards;
+﻿using TcgDomain.Entities.Cards;
+using TcgDomain.Entities.Decks;
 
 namespace TcgMock.Decks
 {

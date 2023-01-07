@@ -46,7 +46,7 @@
             // 
             this.menuItemDraw.Name = "menuItemDraw";
             this.menuItemDraw.Size = new System.Drawing.Size(180, 22);
-            this.menuItemDraw.Text = "Draw";
+            this.menuItemDraw.Text = "DrawCard";
             this.menuItemDraw.Click += new System.EventHandler(this.menuItemDraw_Click);
             // 
             // DeckControl

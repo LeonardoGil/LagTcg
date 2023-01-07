@@ -2,10 +2,12 @@
 using TcgDomain.Extensions;
 using TcgInfra.CustomExceptions;
 
-namespace TcgDomain.Entities
+namespace TcgDomain.Entities.Decks
 {
     public class Deck
     {
+        public event EventHandler DrawCard;
+
         public Deck()
         {
             Cards = new List<dynamic>();
@@ -28,7 +30,7 @@ namespace TcgDomain.Entities
 
             Cards.Add(card);
         }
-        
+
         public void RemoveCard(dynamic card)
         {
             Cards.Remove(card);
@@ -41,6 +43,8 @@ namespace TcgDomain.Entities
 
             var card = Cards.First();
             Cards.Remove(card);
+
+            DrawCard?.Invoke(card, EventArgs.Empty);
 
             return card;
         }
