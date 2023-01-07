@@ -6,6 +6,11 @@ namespace TcgDomain.Entities.Cards.Abstract
 {
     public abstract class MonsterCard : Card
     {
+        public MonsterCard()
+        {
+            CanAttack = true;
+        }
+
         public int Attack { get; set; }
 
         public int Defense { get; set; }

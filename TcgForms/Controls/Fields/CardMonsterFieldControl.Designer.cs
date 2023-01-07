@@ -49,6 +49,7 @@
             this.menuItemAttack.Name = "menuItemAttack";
             this.menuItemAttack.Size = new System.Drawing.Size(180, 22);
             this.menuItemAttack.Text = "Attack";
+            this.menuItemAttack.Click += new System.EventHandler(this.menuItemAttack_Click);
             // 
             // menuItemChangePosition
             // 

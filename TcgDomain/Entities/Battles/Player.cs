@@ -40,5 +40,13 @@ namespace TcgDomain.Entities.Battles
 
             MonstersField.OfType<MonsterCard>().ToList().ForEach(x => x.ResetAction());
         }
+
+        public void Damage(int damage)
+        {
+            PointLife -= damage;
+
+            if (PointLife <= 0)
+                throw new FatalException("Perdeu");
+        }
     }
 }

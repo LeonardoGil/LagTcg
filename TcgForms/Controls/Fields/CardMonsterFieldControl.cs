@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
 using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
@@ -78,9 +79,13 @@ namespace TcgForms.Controls.Fields
 
         private void contextMenuMonsterCard_Opening(object sender, CancelEventArgs e)
         {
+            var duelFieldForm = ParentForm as DuelFieldForm;
+
             menuItemChangePosition.Visible = !Card.Set && MonsterCard.CanChangePosition;
-            
-            menuItemAttack.Visible = MonsterCard.CanAttack && MonsterCard.DuelPosition == DuelPositionEnum.Atk;
+
+            menuItemAttack.Visible = duelFieldForm.Turn > 1 && 
+                                            MonsterCard.CanAttack && 
+                                            MonsterCard.DuelPosition == DuelPositionEnum.Atk;
         }
 
         private void menuItemChangePosition_Click(object sender, EventArgs e)
@@ -97,6 +102,32 @@ namespace TcgForms.Controls.Fields
             }
 
             MonsterCard.CanChangePosition = false;
+        }
+
+        private void menuItemAttack_Click(object sender, EventArgs e)
+        {
+            var duelFieldForm = ParentForm as DuelFieldForm;
+
+            var monstersOpponent = duelFieldForm.Opponent.MonstersField.OfType<Card>().ToList();
+
+            if (monstersOpponent.Any())
+            {
+                using (var selectCardForm = new SelectCardForm(monstersOpponent, "Selecione uma Carta para atacar", 1))
+                {
+                    selectCardForm.ShowDialog();
+                    if (selectCardForm.DialogResult == DialogResult.OK)
+                    {
+                        var monsterCardOpponent = selectCardForm.CardsSelected.First() as MonsterCard;
+
+                        duelFieldForm.Battle(MonsterCard, monsterCardOpponent);
+
+                    }
+                }
+            }
+            else
+            {
+                duelFieldForm.Battle(MonsterCard, null);   
+            }
         }
 
         #endregion

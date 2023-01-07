@@ -42,6 +42,8 @@
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.ExtraDeckControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
             this.panelDivisional = new System.Windows.Forms.Panel();
+            this.labelOpponentPointLife = new System.Windows.Forms.Label();
+            this.labelOpponentName = new System.Windows.Forms.Label();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.tableLayoutPlayerDeck.SuspendLayout();
@@ -55,7 +57,7 @@
             this.tableLayoutOpponentSecondary.ColumnCount = 1;
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1050, 40);
+            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1030, 20);
             this.tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
             this.tableLayoutOpponentSecondary.RowCount = 2;
             this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -73,7 +75,7 @@
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.Location = new System.Drawing.Point(270, 20);
+            this.tableLayoutOpponentMain.Location = new System.Drawing.Point(275, 20);
             this.tableLayoutOpponentMain.Name = "tableLayoutOpponentMain";
             this.tableLayoutOpponentMain.RowCount = 2;
             this.tableLayoutOpponentMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -88,7 +90,7 @@
             this.tableLayoutOpponentDeck.ColumnCount = 1;
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(110, 40);
+            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(110, 20);
             this.tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
             this.tableLayoutOpponentDeck.RowCount = 2;
             this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -154,6 +156,8 @@
             // groupPlayerInfo
             // 
             this.groupPlayerInfo.BackColor = System.Drawing.Color.Transparent;
+            this.groupPlayerInfo.Controls.Add(this.labelOpponentPointLife);
+            this.groupPlayerInfo.Controls.Add(this.labelOpponentName);
             this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
             this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
             this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -163,7 +167,7 @@
             this.groupPlayerInfo.Size = new System.Drawing.Size(100, 150);
             this.groupPlayerInfo.TabIndex = 8;
             this.groupPlayerInfo.TabStop = false;
-            this.groupPlayerInfo.Text = "Player";
+            this.groupPlayerInfo.Text = "Players";
             // 
             // labelPlayerPointLife
             // 
@@ -287,6 +291,26 @@
             this.panelDivisional.Size = new System.Drawing.Size(1280, 10);
             this.panelDivisional.TabIndex = 11;
             // 
+            // labelOpponentPointLife
+            // 
+            this.labelOpponentPointLife.AutoSize = true;
+            this.labelOpponentPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelOpponentPointLife.Location = new System.Drawing.Point(5, 119);
+            this.labelOpponentPointLife.Name = "labelOpponentPointLife";
+            this.labelOpponentPointLife.Size = new System.Drawing.Size(70, 13);
+            this.labelOpponentPointLife.TabIndex = 10;
+            this.labelOpponentPointLife.Text = "PointLife";
+            // 
+            // labelOpponentName
+            // 
+            this.labelOpponentName.AutoSize = true;
+            this.labelOpponentName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelOpponentName.Location = new System.Drawing.Point(5, 89);
+            this.labelOpponentName.Name = "labelOpponentName";
+            this.labelOpponentName.Size = new System.Drawing.Size(35, 13);
+            this.labelOpponentName.TabIndex = 9;
+            this.labelOpponentName.Text = "Name";
+            // 
             // DuelFieldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -339,5 +363,7 @@
         private Controls.Stacks.DeckControl deckControlPlayer;
         private Controls.Stacks.StackOfCardsControl GraveyardPlayerControl;
         private Controls.Stacks.StackOfCardsControl ExtraDeckControl;
+        private Label labelOpponentPointLife;
+        private Label labelOpponentName;
     }
 }

@@ -19,6 +19,8 @@ namespace TcgForms.Forms
 
         private readonly PhaseAppServices PhaseAppServices = new PhaseAppServices();
 
+        private readonly BattleAppService BattleAppService = new BattleAppService();
+
         private readonly CardsHandForm PlayerCardsHandForm = new CardsHandForm();
 
         #endregion
@@ -64,6 +66,15 @@ namespace TcgForms.Forms
             tableLayoutPlayerMain.SuspendLayout();
 
             tableLayoutPlayerMain.ResumeLayout(false);
+        }
+
+        public void Battle(MonsterCard playerMonster, MonsterCard opponentMonster)
+        {
+            BattleAppService.Battle(Player, Opponent, playerMonster, opponentMonster);
+
+            RemoveCardsAfterBattle(Player, tableLayoutPlayerMain);
+
+            LoadInfo();
         }
 
         public void InvokePlayerMonster(CardMonsterHandControl cardHandControl, bool set = false)
@@ -131,6 +142,22 @@ namespace TcgForms.Forms
 
         #region Private Methods
 
+        private void RemoveCardsAfterBattle(Player player, TableLayoutPanel table)
+        {
+            for (int i = 0; i < player.MonstersField.Length; i++)
+            {
+                if (player.MonstersField[i] is null)
+                {
+                    var cardMonsterControl = GetCardMonsterOnField(table, i);
+                    
+                    if (cardMonsterControl is not null)
+                    {
+                        RemoveCardMonsterOnField(table, cardMonsterControl);
+                    }
+                }
+            }
+        }
+
         private void AddCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl, int position, bool set = false)
         {
             table.Controls.Add(cardFieldControl, position, 0);
@@ -148,6 +175,11 @@ namespace TcgForms.Forms
         private void RemoveCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl)
         {
             table.Controls.Remove(cardFieldControl);
+        }
+
+        private CardMonsterFieldControl GetCardMonsterOnField(TableLayoutPanel table, int position)
+        {
+            return table.Controls.OfType<CardMonsterFieldControl>().FirstOrDefault(x => x.Position == position);
         }
 
         private void InvokeMonster(Player player, dynamic originalCard, bool set = false)
@@ -183,7 +215,9 @@ namespace TcgForms.Forms
         private void LoadInfo()
         {
             labelPlayerName.Text = Player.Username;
+            labelOpponentName.Text = Opponent.Username;
             labelPlayerPointLife.Text = Player.PointLife.ToString();
+            labelOpponentPointLife.Text = Opponent.PointLife.ToString();
 
             labelPhase.Text = Phase.GetDescription();
             labelPhasePlayer.Text = PhasePlayer.ToString();

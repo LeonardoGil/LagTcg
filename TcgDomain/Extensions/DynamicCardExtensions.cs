@@ -1,5 +1,4 @@
-﻿using TcgDomain.Entities.Cards.Abstract;
-using TcgDomain.Entities.Cards;
+﻿using TcgDomain.Entities.Cards;
 using TcgDomain.Enums;
 using TcgInfra.CustomExceptions;
 using TcgInfra.CustomMessages;
@@ -17,6 +16,17 @@ namespace TcgDomain.Extensions
         public static bool IsCard(this object card)
         {
             return card is NormalCard || card is EffectCard;
+        }
+
+        public static void RemoveCard(this dynamic[] cards, dynamic monsterCard)
+        {
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (cards[i] == monsterCard)
+                {
+                    cards[i] = null;
+                }
+            }
         }
 
         public static TypeCardEnum GetTypeCard(this object card)
