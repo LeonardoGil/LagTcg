@@ -6,23 +6,23 @@ using TcgForms.Forms;
 
 namespace TcgForms.Controls.Hands
 {
-    public partial class CardMonsterHandControl : CardControl
+    public partial class MonsterCardHandControl : CardControl
     {
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
         public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
 
-        public CardMonsterHandControl()
+        public MonsterCardHandControl()
         {
             InitializeComponent();
         }
 
-        public CardMonsterHandControl(NormalCard card) : base(card)
+        public MonsterCardHandControl(NormalCard card) : base(card)
         {
             InitializeComponent();
         }
 
-        public CardMonsterHandControl(EffectCard card) : base(card)
+        public MonsterCardHandControl(EffectCard card) : base(card)
         {
             InitializeComponent();
         }

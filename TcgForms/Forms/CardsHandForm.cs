@@ -23,7 +23,7 @@ namespace TcgForms.Forms
 
             if (card.IsMonsterCard())
             {
-                var cardControl = new CardMonsterHandControl(sender as NormalCard);
+                var cardControl = new MonsterCardHandControl(sender as NormalCard);
                 AddCardFromHand(cardControl);
             }
 
@@ -33,12 +33,12 @@ namespace TcgForms.Forms
             }
         }
 
-        public void AddCardFromHand(CardMonsterHandControl cardControl)
+        public void AddCardFromHand(MonsterCardHandControl cardControl)
         {
             flowLayoutPanelHands.Controls.Add(cardControl);
         }
         
-        public void RemoveCardFromHand(CardMonsterHandControl cardControl)
+        public void RemoveCardFromHand(MonsterCardHandControl cardControl)
         {
             flowLayoutPanelHands.Controls.Remove(cardControl);
         }

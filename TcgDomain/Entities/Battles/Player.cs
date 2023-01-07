@@ -11,8 +11,8 @@ namespace TcgDomain.Entities.Battles
         {
             CanInvoke = true;
 
-            MonstersField = new dynamic[5];
-            SpecialField = new dynamic[5];
+            MonstersField = new MonsterCard[5];
+            SpecialField = new SpecialCard[5];
 
             Graveyard = new List<dynamic>();
 
@@ -27,13 +27,11 @@ namespace TcgDomain.Entities.Battles
 
         public Deck Deck { get; set; }
 
-        public Deck ExtraDeck { get; set; }
-
         public List<dynamic> Graveyard { get; set; }
 
-        public dynamic[] MonstersField { get; set; }
+        public MonsterCard[] MonstersField { get; set; }
 
-        public dynamic[] SpecialField { get; set; }
+        public SpecialCard[] SpecialField { get; set; }
 
         public bool CanInvoke { get; set; }
 

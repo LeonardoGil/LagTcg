@@ -1,6 +1,6 @@
 ﻿namespace TcgForms.Controls.Fields
 {
-    partial class CardMonsterFieldControl
+    partial class MonsterCardFieldControl
     {
         /// <summary> 
         /// Required designer variable.

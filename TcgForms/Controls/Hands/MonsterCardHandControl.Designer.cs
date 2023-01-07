@@ -1,6 +1,6 @@
 ﻿namespace TcgForms.Controls.Hands
 {
-    partial class CardMonsterHandControl : CardControl
+    partial class MonsterCardHandControl : CardControl
     {
         /// <summary> 
         /// Required designer variable.

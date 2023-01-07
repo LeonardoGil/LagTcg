@@ -7,18 +7,18 @@ using TcgForms.Forms;
 
 namespace TcgForms.Controls.Fields
 {
-    public partial class CardMonsterFieldControl : CardControl
+    public partial class MonsterCardFieldControl : CardControl
     {
         public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
 
         public int Position { get; set; }
 
-        public CardMonsterFieldControl()
+        public MonsterCardFieldControl()
         {
             InitializeComponent();
         }
 
-        public CardMonsterFieldControl(NormalCard card, int position, bool set = false) : base(card, set)
+        public MonsterCardFieldControl(NormalCard card, int position, bool set = false) : base(card, set)
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace TcgForms.Controls.Fields
             Card.Set = set;
         }
 
-        public CardMonsterFieldControl(EffectCard card, int position, bool set = false) : base(card, set)
+        public MonsterCardFieldControl(EffectCard card, int position, bool set = false) : base(card, set)
         {
             InitializeComponent();
 

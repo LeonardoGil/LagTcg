@@ -83,14 +83,14 @@ namespace TcgForms.Forms
             LoadInfo();
         }
 
-        public void InvokePlayerMonster(CardMonsterHandControl cardHandControl, bool set = false)
+        public void InvokePlayerMonster(MonsterCardHandControl cardHandControl, bool set = false)
         {
             PlayerCardsHandForm.RemoveCardFromHand(cardHandControl);
 
             InvokeMonster(Player, cardHandControl.OriginalCard, set);
         }
 
-        public void InvokePlayerMonsterAttribute(CardMonsterHandControl cardHandControl, int quantity, bool set = false)
+        public void InvokePlayerMonsterAttribute(MonsterCardHandControl cardHandControl, int quantity, bool set = false)
         {
             var cardsInField = Player.MonstersField.OfType<Card>().ToList();
 
@@ -146,7 +146,7 @@ namespace TcgForms.Forms
             }
         }
 
-        private void AddCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl, int position, bool set = false)
+        private void AddCardMonsterOnField(TableLayoutPanel table, MonsterCardFieldControl cardFieldControl, int position, bool set = false)
         {
             table.Controls.Add(cardFieldControl, position, 0);
 
@@ -160,21 +160,21 @@ namespace TcgForms.Forms
             }
         }
 
-        private void RemoveCardMonsterOnField(TableLayoutPanel table, CardMonsterFieldControl cardFieldControl)
+        private void RemoveCardMonsterOnField(TableLayoutPanel table, MonsterCardFieldControl cardFieldControl)
         {
             table.Controls.Remove(cardFieldControl);
         }
 
-        private CardMonsterFieldControl GetCardMonsterOnField(TableLayoutPanel table, int position)
+        private MonsterCardFieldControl GetCardMonsterOnField(TableLayoutPanel table, int position)
         {
-            return table.Controls.OfType<CardMonsterFieldControl>().FirstOrDefault(x => x.Position == position);
+            return table.Controls.OfType<MonsterCardFieldControl>().FirstOrDefault(x => x.Position == position);
         }
 
         private void InvokeMonster(Player player, dynamic originalCard, bool set = false)
         {
             var position = InvokeAppServices.Invoke(player, originalCard);
 
-            var cardFieldControl = new CardMonsterFieldControl(originalCard, position, set);
+            var cardFieldControl = new MonsterCardFieldControl(originalCard, position, set);
 
             var table = player.Type == TypePlayerEnum.Player ? tableLayoutPlayerMain : tableLayoutOpponentMain;
 
@@ -183,13 +183,13 @@ namespace TcgForms.Forms
             player.CanInvoke = false;
         }
 
-        private void InvokeMonsterAttribute(Player player, CardMonsterHandControl cardHandControl, List<Card> cardsForSacrifice, bool set = false)
+        private void InvokeMonsterAttribute(Player player, MonsterCardHandControl cardHandControl, List<Card> cardsForSacrifice, bool set = false)
         {
             InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, cardHandControl.OriginalCard);
 
             var tableMain = player.Type == TypePlayerEnum.Player ? tableLayoutPlayerMain : tableLayoutOpponentMain;
 
-            var cardsMonsterField = tableMain.Controls.OfType<CardMonsterFieldControl>()
+            var cardsMonsterField = tableMain.Controls.OfType<MonsterCardFieldControl>()
                                                                   .Where(x => !player.MonstersField.OfType<Card>().Contains(x.Card))
                                                                   .ToList();
 
