@@ -18,17 +18,6 @@ namespace TcgDomain.Extensions
             return card is NormalCard || card is EffectCard;
         }
 
-        public static void RemoveCard(this dynamic[] cards, dynamic monsterCard)
-        {
-            for (int i = 0; i < cards.Length; i++)
-            {
-                if (cards[i] == monsterCard)
-                {
-                    cards[i] = null;
-                }
-            }
-        }
-
         public static TypeCardEnum GetTypeCard(this object card)
         {
             if (card is NormalCard)

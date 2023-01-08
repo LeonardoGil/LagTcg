@@ -2,7 +2,6 @@
 using TcgDomain.Entities.Cards;
 using TcgForms.Controls.Hands;
 using TcgForms.Controls;
-using System.Windows.Forms;
 
 namespace TcgForms.Forms
 {
@@ -15,32 +14,6 @@ namespace TcgForms.Forms
         public CardsHandForm()
         {
             InitializeComponent();
-        }
-
-        public void AddCard(object sender, EventArgs e)
-        {
-            var card = sender as Card;
-
-            if (card.IsMonsterCard())
-            {
-                var cardControl = new MonsterCardHandControl(sender as NormalCard);
-                AddCardFromHand(cardControl);
-            }
-
-            if (card.IsSpecialCard())
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public void AddCardFromHand(MonsterCardHandControl cardControl)
-        {
-            flowLayoutPanelHands.Controls.Add(cardControl);
-        }
-        
-        public void RemoveCardFromHand(MonsterCardHandControl cardControl)
-        {
-            flowLayoutPanelHands.Controls.Remove(cardControl);
         }
 
         #region Events 
@@ -71,6 +44,29 @@ namespace TcgForms.Forms
         {
             e.Cancel = true;
             Hide();
+        }
+
+        public void CardsHand_Add(object sender, EventArgs e)
+        {
+            var card = sender as Card;
+
+            if (card.IsMonsterCard())
+            {
+                var cardControl = new MonsterCardHandControl(sender as NormalCard);
+                cardControl.Remove += new EventHandler(CardsHand_Remove);
+
+                flowLayoutPanelHands.Controls.Add(cardControl);
+            }
+
+            if (card.IsSpecialCard())
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void CardsHand_Remove(object sender, EventArgs e)
+        {
+            flowLayoutPanelHands.Controls.Remove(sender as MonsterCardHandControl);
         }
 
         #endregion

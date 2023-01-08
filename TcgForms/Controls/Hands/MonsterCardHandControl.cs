@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
 using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgForms.AppServices;
@@ -8,6 +9,8 @@ namespace TcgForms.Controls.Hands
 {
     public partial class MonsterCardHandControl : CardControl
     {
+        public event EventHandler Remove;
+
         private readonly InvokeAppServices InvokeAppServices = new InvokeAppServices();
 
         public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
@@ -27,28 +30,38 @@ namespace TcgForms.Controls.Hands
             InitializeComponent();
         }
 
-        #region Public Methods
-
-        #endregion
-
         #region Private Methods
 
-        private void Invoke(MonsterCard monsterCard, bool set)
+        private void Invoke(MonsterCard monsterCard)
         {
+            var player = (ParentForm as CardsHandForm).DuelFieldForm.Player;
+
+            var cardsForSacrifice = default(List<Card>);
+
             switch (monsterCard.RangeMonsterLevel)
             {
                 case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonster(this, set);
-                    break;
+                    InvokeAppServices.Invoke(player, OriginalCard);
+                    Remove?.Invoke(this, EventArgs.Empty);
+                    return;
 
+               
                 case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 1, set);
+                    cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(player.DuelField.MonstersField.All.OfType<Card>().ToList(), 1);
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
-                    (ParentForm as CardsHandForm).DuelFieldForm.InvokePlayerMonsterAttribute(this, 2, set);
+                    cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(player.DuelField.MonstersField.All.OfType<Card>().ToList(), 2);
                     break;
             }
+
+
+            if (cardsForSacrifice is null || !cardsForSacrifice.Any())
+                return;
+
+            InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, OriginalCard);
+
+            Remove?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion
@@ -57,7 +70,7 @@ namespace TcgForms.Controls.Hands
 
         private void menuItemInvoke_Click(object sender, EventArgs e)
         {
-            Invoke(MonsterCard, MonsterCard.Set);
+            Invoke(MonsterCard);
         }
 
         private void menuItemSpecialInvoke_Click(object sender, EventArgs e)
@@ -69,7 +82,7 @@ namespace TcgForms.Controls.Hands
         {
             MonsterCard.Set = true;
 
-            Invoke(MonsterCard, MonsterCard.Set);
+            Invoke(MonsterCard);
         }
 
         private void contextMenuCardMonster_Opening(object sender, CancelEventArgs e)

@@ -1,5 +1,4 @@
-﻿using TcgDomain.Entities.Cards.Abstract;
-using TcgDomain.Entities.Decks;
+﻿using TcgDomain.Entities.Decks;
 using TcgDomain.Enums;
 using TcgInfra.CustomExceptions;
 
@@ -7,31 +6,28 @@ namespace TcgDomain.Entities.Battles
 {
     public class Player
     {
+        public event EventHandler ChangePointLife;
+
+        public event EventHandler Lose;
+
         public Player()
         {
             CanInvoke = true;
 
-            MonstersField = new MonsterCard[5];
-            SpecialField = new SpecialCard[5];
-
-            Graveyard = new List<dynamic>();
-
             PointLife = 8000;
+
+            DuelField = new DuelField();
         }
 
         public string Username { get; set; }
 
-        public int PointLife { get; set; }
+        public int PointLife { get; private set; }
 
         public TypePlayerEnum Type { get; set; }
 
         public Deck Deck { get; set; }
 
-        public List<dynamic> Graveyard { get; set; }
-
-        public MonsterCard[] MonstersField { get; set; }
-
-        public SpecialCard[] SpecialField { get; set; }
+        public DuelField DuelField { get; set; }
 
         public bool CanInvoke { get; set; }
 
@@ -39,7 +35,7 @@ namespace TcgDomain.Entities.Battles
         {
             CanInvoke = true;
 
-            MonstersField.OfType<MonsterCard>().ToList().ForEach(x => x.ResetAction());
+            DuelField.MonstersField.All.ForEach(x => x?.ResetAction());
         }
 
         public void Damage(int damage)

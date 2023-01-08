@@ -20,14 +20,12 @@ namespace TcgForms
             var player = new Player
             {
                 Username = "Leonardo",
-                PointLife = 8000,
                 Deck = duelDeck
             };
 
             var opponent = new Player
             {
                 Username = "Machine",
-                PointLife = 8000,
                 Deck = duelDeck
             };
 

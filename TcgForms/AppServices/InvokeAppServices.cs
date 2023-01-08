@@ -12,17 +12,18 @@ namespace TcgForms.AppServices
         private readonly int[] _Position = { 2, 1, 3, 0, 4 };
         private readonly int[] _SortPosition = { 0, 1, 2, 3, 4 };
 
-        public int Invoke(Player player, dynamic card)
+        public void Invoke(Player player, dynamic card)
         {
             foreach (var position in _Position)
             {
-                var monster = player.MonstersField[position];
+                var monster = player.DuelField.MonstersField[position];
 
                 if (monster is not null)
                     continue;
 
-                player.MonstersField[position] = card;
-                return position;
+                player.DuelField.MonstersField[position] = card;
+                player.CanInvoke = false;
+                return;
             }
 
             throw new BusinessException("Não há posição disponivel em campo");
@@ -32,7 +33,7 @@ namespace TcgForms.AppServices
         {
             foreach (var position in _SortPosition)
             {
-                var monster = player.MonstersField[position];
+                var monster = player.DuelField.MonstersField[position];
 
                 if (monster is null)
                     continue;
@@ -41,10 +42,12 @@ namespace TcgForms.AppServices
 
                 if (sacrifice.Contains(monsterCard))
                 {
-                    player.Graveyard.Add(player.MonstersField[position]);
-                    player.MonstersField[position] = null;
+                    player.DuelField.Graveyard.Add(player.DuelField.MonstersField[position]);
+                    player.DuelField.MonstersField[position] = null;
                 }
             }
+
+            Invoke(player, card);
         }
         
         public List<Card> SelectCardsForAttribute(List<Card> cardsAvailable, int quantity)
@@ -96,12 +99,12 @@ namespace TcgForms.AppServices
 
         public bool CanInvokeMonsterForAttribute(Player player, int attributes)
         {
-            return player.MonstersField.Count(x => x is not null) >= attributes;
+            return player.DuelField.MonstersField.All.Count(x => x is not null) >= attributes;
         }
 
         public bool HasSpaceInField(Player player)
         {
-            return player.MonstersField.Any(x => x is null);
+            return player.DuelField.MonstersField.All.Any(x => x is null);
         }
     }
 }

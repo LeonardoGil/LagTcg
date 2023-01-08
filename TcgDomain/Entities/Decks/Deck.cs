@@ -24,7 +24,7 @@ namespace TcgDomain.Entities.Decks
             var numberCards = Cards.Count(c => c == card);
 
             if (numberCards >= 3)
-                throw new BusinessException("Já possui 3 cards iguais no Deck.");
+                throw new BusinessException("Já possui 3 Cards iguais no Deck.");
 
             (card as Card).SetImage();
 

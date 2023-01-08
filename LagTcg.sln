@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgForms", "TcgForms\TcgForms.csproj", "{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcgForms", "TcgForms\TcgForms.csproj", "{19A9E3A3-DC79-4912-A235-DEA7A3DB077F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgDomain", "TcgDomain\TcgDomain.csproj", "{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcgDomain", "TcgDomain\TcgDomain.csproj", "{C5FA5580-F6C8-4F49-9E3B-B84846A1B4BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FC472DC-25ED-4E7A-829A-23E007CDAEE5}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgInfra", "TcgInfra\TcgInfra.csproj", "{46FC144A-7B55-4D20-9656-BA41207886E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcgInfra", "TcgInfra\TcgInfra.csproj", "{46FC144A-7B55-4D20-9656-BA41207886E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcgMock", "TcgMock\TcgMock.csproj", "{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TcgMock", "TcgMock\TcgMock.csproj", "{BF53814D-EBA5-44DB-84F0-B83ACF81F8B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

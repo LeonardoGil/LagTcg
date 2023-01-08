@@ -24,6 +24,15 @@ namespace TcgForms.Controls.Fields
 
             Position = position;
             Card.Set = set;
+
+            if (Card.Set)
+            {
+                SetDefense();
+            }
+            else
+            {
+                SetAttack();
+            }
         }
 
         public MonsterCardFieldControl(EffectCard card, int position, bool set = false) : base(card, set)
@@ -32,6 +41,15 @@ namespace TcgForms.Controls.Fields
 
             Position = position;
             Card.Set = set;
+
+            if (Card.Set)
+            {
+                SetDefense();
+            }
+            else
+            {
+                SetAttack();
+            }
         }
 
         #region Public Methods
@@ -108,7 +126,7 @@ namespace TcgForms.Controls.Fields
         {
             var duelFieldForm = ParentForm as DuelFieldForm;
 
-            var monstersOpponent = duelFieldForm.Opponent.MonstersField.OfType<Card>().ToList();
+            var monstersOpponent = duelFieldForm.Opponent.DuelField.MonstersField.All.OfType<Card>().ToList();
 
             if (monstersOpponent.Any())
             {

@@ -33,17 +33,17 @@ namespace TcgForms.AppServices
             {
                 case BattleResultEnum.Win:
                     playerDefense.Damage(monsterAttack.Attack - monsterDefense.Attack);
-                    playerDefense.MonstersField.RemoveCard(monsterDefense);
+                    playerDefense.DuelField.MonstersField.RemoveMonsterCard(monsterDefense);
                     break;
 
                 case BattleResultEnum.Defeat:
                     playerAttack.Damage(monsterDefense.Attack - monsterAttack.Attack);
-                    playerAttack.MonstersField.RemoveCard(monsterAttack);
+                    playerAttack.DuelField.MonstersField.RemoveMonsterCard(monsterAttack);
                     break;
 
                 case BattleResultEnum.Tie:
-                    playerAttack.MonstersField.RemoveCard(playerAttack);
-                    playerDefense.MonstersField.RemoveCard(playerDefense);
+                    playerAttack.DuelField.MonstersField.RemoveMonsterCard(monsterAttack);
+                    playerDefense.DuelField.MonstersField.RemoveMonsterCard(monsterDefense);
                     break;
 
                 default:
@@ -56,7 +56,7 @@ namespace TcgForms.AppServices
             switch (CalcBattle(monsterAttack.Attack, monsterDefense.Defense))
             {
                 case BattleResultEnum.Win:
-                    playerDefense.MonstersField.RemoveCard(monsterDefense);
+                    playerDefense.DuelField.MonstersField.RemoveMonsterCard(monsterDefense);
                     break;
 
                 case BattleResultEnum.Defeat:
