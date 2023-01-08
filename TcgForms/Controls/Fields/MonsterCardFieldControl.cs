@@ -3,12 +3,15 @@ using System.Windows.Forms;
 using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
+using TcgForms.AppServices;
 using TcgForms.Forms;
 
 namespace TcgForms.Controls.Fields
 {
     public partial class MonsterCardFieldControl : CardControl
     {
+        private readonly BattleAppService BattleAppService = new BattleAppService();
+
         public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
 
         public int Position { get; set; }
@@ -137,14 +140,13 @@ namespace TcgForms.Controls.Fields
                     {
                         var monsterCardOpponent = selectCardForm.CardsSelected.First() as MonsterCard;
 
-                        duelFieldForm.Battle(MonsterCard, monsterCardOpponent);
-
+                        BattleAppService.Battle(duelFieldForm.Player, duelFieldForm.Opponent, MonsterCard, monsterCardOpponent);
                     }
                 }
             }
             else
             {
-                duelFieldForm.Battle(MonsterCard, null);   
+                BattleAppService.Battle(duelFieldForm.Player, duelFieldForm.Opponent, MonsterCard, null);
             }
         }
 

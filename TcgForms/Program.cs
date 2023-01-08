@@ -23,7 +23,7 @@ namespace TcgForms
                 Deck = duelDeck
             };
 
-            var opponent = new Player
+            var opponent = new Bot
             {
                 Username = "Machine",
                 Deck = duelDeck

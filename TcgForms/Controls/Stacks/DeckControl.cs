@@ -1,21 +1,31 @@
-﻿using TcgDomain.Enums;
+﻿using TcgDomain.Entities.Battles;
+using TcgDomain.Enums;
+using TcgForms.AppServices;
 using TcgForms.Forms;
 
 namespace TcgForms.Controls.Stacks
 {
     public partial class DeckControl : StackOfCardsControl
     {
+        private readonly DrawAppServices DrawAppServices = new DrawAppServices();
+
         public DeckControl()
         {
             InitializeComponent();
         }
 
-        private void menuItemDraw_Click(object sender, EventArgs e)
+        public void Draw(int quantity = 1)
         {
             var duelField = ParentForm as DuelFieldForm;
 
-            duelField.DrawCardPlayer();
-            duelField.NextPhase();
+            DrawAppServices.DrawCards(duelField.Player, quantity);
+        }
+
+        private void menuItemDraw_Click(object sender, EventArgs e)
+        {
+            Draw();
+
+            (ParentForm as DuelFieldForm).NextPhase();
         }
 
         private void contextMenuDeck_Opening(object sender, System.ComponentModel.CancelEventArgs e)

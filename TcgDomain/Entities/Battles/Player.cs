@@ -42,6 +42,8 @@ namespace TcgDomain.Entities.Battles
         {
             PointLife -= damage;
 
+            ChangePointLife?.Invoke(this, EventArgs.Empty);
+
             if (PointLife <= 0)
                 throw new FatalException("Perdeu");
         }
