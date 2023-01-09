@@ -5,12 +5,16 @@ using TcgDomain.Extensions;
 using TcgApplication.AppServices;
 using TcgForms.Controls.Fields;
 using TcgInfra.CustomEventArgs;
+using TcgApplication.BotScripts;
+using TcgDomain.Entities.Scripts;
 
 namespace TcgForms.Forms
 {
     public partial class DuelFieldForm : Form
     {
         #region Services & Forms
+
+        private readonly MainScript BotScript = new MainScript();
 
         private readonly PhaseAppServices PhaseAppServices = new PhaseAppServices();
 
@@ -70,7 +74,10 @@ namespace TcgForms.Forms
 
             labelPhase.Text = Phase.GetDescription();
 
-            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase || PhasePlayer == TypePlayerEnum.Opponent;
+            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Player;
+
+            if (Phase == PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Opponent)
+                ExecBot();
         }
 
         #endregion
@@ -92,8 +99,10 @@ namespace TcgForms.Forms
         private void LoadEvents()
         {
             Player.Deck.DrawCard += new EventHandler(PlayerCardsHandForm.CardsHand_Add);
-            Player.DuelField.MonstersField.Put += new EventHandler<InvokeEventArgs>(Player_InvokeMonster);
             Player.DuelField.MonstersField.Remove += new EventHandler<InvokeEventArgs>(Player_RemoveMonster);
+            
+            Player.DuelField.MonstersField.Put += new EventHandler<InvokeEventArgs>(Player_InvokeMonster);
+            Opponent.DuelField.MonstersField.Put += new EventHandler<InvokeEventArgs>(Opponent_InvokeMonster);
 
             Player.ChangePointLife += new EventHandler(Players_ChangePointLife);
             Opponent.ChangePointLife += new EventHandler(Players_ChangePointLife);
@@ -116,6 +125,26 @@ namespace TcgForms.Forms
             labelPhasePlayer.Text = PhasePlayer.ToString();
         }
 
+        private async Task ExecBot()
+        {
+            do
+            {
+                var inputData = new InputData()
+                {
+                    Bot = Opponent,
+                    Opponent = Player,
+                    Phase = Phase
+                };
+
+                BotScript.On(inputData);
+
+                NextPhase();
+
+                Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            } while (PhasePlayer == TypePlayerEnum.Opponent);
+        }
+
         #endregion
 
         #region Events
@@ -125,6 +154,13 @@ namespace TcgForms.Forms
             var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
 
             tableLayoutPlayerMain.Controls.Add(control, control.Position, 0);
+        }
+
+        public void Opponent_InvokeMonster(object sender, InvokeEventArgs e)
+        {
+            var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
+
+            tableLayoutOpponentMain.Controls.Add(control, control.Position, 1);
         }
 
         public void Player_RemoveMonster(object sender, InvokeEventArgs e)

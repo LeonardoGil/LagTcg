@@ -1,7 +1,7 @@
 ﻿using TcgDomain.Entities.Battles;
 using TcgDomain.Enums;
 
-namespace TcgDomain.Scripts
+namespace TcgDomain.Entities.Scripts
 {
     public class InputData
     {

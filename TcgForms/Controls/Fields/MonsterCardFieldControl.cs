@@ -9,7 +9,7 @@ namespace TcgForms.Controls.Fields
 {
     public partial class MonsterCardFieldControl : CardControl
     {
-        private readonly BattleAppService BattleAppService = new BattleAppService();
+        private readonly BattleAppServices BattleAppService = new BattleAppServices();
 
         public MonsterCard MonsterCard { get => OriginalCard as MonsterCard; }
 

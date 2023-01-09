@@ -4,7 +4,7 @@ using TcgDomain.Enums;
 
 namespace TcgApplication.AppServices
 {
-    public class BattleAppService
+    public class BattleAppServices
     {
         public void Battle(Player playerAttack, Player playerDefense, MonsterCard monsterAttack, MonsterCard monsterDefense)
         {
