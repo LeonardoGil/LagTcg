@@ -48,29 +48,6 @@ namespace TcgApplication.AppServices
 
             Invoke(player, card);
         }
-        
-        public List<Card> SelectCardsForAttribute(List<Card> cardsAvailable, int quantity)
-        {
-            var dialog = string.Format(DialogMessage.InvokeAttribute, quantity);
-
-            //ADD evento
-
-            //if (MessageBox.Show(dialog, "Invoke", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
-            //    var message = $"Selecione {quantity} carta(s)";
-
-            //    using (var selectCardForm = new SelectCardForm(cardsAvailable, message, quantity))
-            //    {
-            //        selectCardForm.ShowDialog();
-            //        if (selectCardForm.DialogResult == DialogResult.OK)
-            //        {
-            //            return selectCardForm.CardsSelected;
-            //        }
-            //    }
-            //}
-
-            return new List<Card>();
-        }
 
         public bool CanInvokeMonster(MonsterCard card, Player player)
         {

@@ -3,6 +3,7 @@ using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgApplication.AppServices;
 using TcgForms.Forms;
+using TcgInfra.CustomMessages;
 
 namespace TcgForms.Controls.Hands
 {
@@ -35,7 +36,7 @@ namespace TcgForms.Controls.Hands
         {
             var player = (ParentForm as CardsHandForm).DuelFieldForm.Player;
 
-            var cardsForSacrifice = default(List<Card>);
+            var numberCardForSacrifice = 0;
 
             switch (monsterCard.RangeMonsterLevel)
             {
@@ -46,14 +47,31 @@ namespace TcgForms.Controls.Hands
 
                
                 case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
-                    cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(player.DuelField.MonstersField.All.OfType<Card>().ToList(), 1);
+                    numberCardForSacrifice = 1;
                     break;
 
                 case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
-                    cardsForSacrifice = InvokeAppServices.SelectCardsForAttribute(player.DuelField.MonstersField.All.OfType<Card>().ToList(), 2);
+                    numberCardForSacrifice = 2;
                     break;
             }
 
+            var cardsForSacrifice = default(List<Card>);
+
+            if (MessageBox.Show(string.Format(DialogMessage.InvokeAttribute, numberCardForSacrifice), "Invoke", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                var message = $"Selecione {numberCardForSacrifice} carta(s)";
+
+                var cards = player.DuelField.MonstersField.All.OfType<Card>().ToList();
+
+                using (var selectCardForm = new SelectCardForm(cards, message, numberCardForSacrifice))
+                {
+                    selectCardForm.ShowDialog();
+                    if (selectCardForm.DialogResult == DialogResult.OK)
+                    {
+                        cardsForSacrifice = selectCardForm.CardsSelected;
+                    }
+                }
+            }
 
             if (cardsForSacrifice is null || !cardsForSacrifice.Any())
                 return;
