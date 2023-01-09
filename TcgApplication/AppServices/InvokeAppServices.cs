@@ -1,11 +1,10 @@
 ﻿using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
-using TcgForms.Forms;
 using TcgInfra.CustomExceptions;
 using TcgInfra.CustomMessages;
 
-namespace TcgForms.AppServices
+namespace TcgApplication.AppServices
 {
     public class InvokeAppServices
     {
@@ -54,19 +53,21 @@ namespace TcgForms.AppServices
         {
             var dialog = string.Format(DialogMessage.InvokeAttribute, quantity);
 
-            if (MessageBox.Show(dialog, "Invoke", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                var message = $"Selecione {quantity} carta(s)";
+            //ADD evento
 
-                using (var selectCardForm = new SelectCardForm(cardsAvailable, message, quantity))
-                {
-                    selectCardForm.ShowDialog();
-                    if (selectCardForm.DialogResult == DialogResult.OK)
-                    {
-                        return selectCardForm.CardsSelected;
-                    }
-                }
-            }
+            //if (MessageBox.Show(dialog, "Invoke", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
+            //    var message = $"Selecione {quantity} carta(s)";
+
+            //    using (var selectCardForm = new SelectCardForm(cardsAvailable, message, quantity))
+            //    {
+            //        selectCardForm.ShowDialog();
+            //        if (selectCardForm.DialogResult == DialogResult.OK)
+            //        {
+            //            return selectCardForm.CardsSelected;
+            //        }
+            //    }
+            //}
 
             return new List<Card>();
         }

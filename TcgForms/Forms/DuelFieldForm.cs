@@ -1,11 +1,8 @@
-using Microsoft.VisualBasic.ApplicationServices;
-using System.ComponentModel;
 using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards;
-using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
 using TcgDomain.Extensions;
-using TcgForms.AppServices;
+using TcgApplication.AppServices;
 using TcgForms.Controls.Fields;
 using TcgInfra.CustomEventArgs;
 

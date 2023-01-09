@@ -1,6 +1,6 @@
 ﻿using TcgDomain.Entities.Battles;
 
-namespace TcgForms.AppServices
+namespace TcgApplication.AppServices
 {
     public class DrawAppServices
     {

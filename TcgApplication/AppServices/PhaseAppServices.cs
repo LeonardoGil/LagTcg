@@ -1,7 +1,7 @@
 ﻿using TcgDomain.Enums;
 using TcgInfra.CustomExceptions;
 
-namespace TcgForms.AppServices
+namespace TcgApplication.AppServices
 {
     public class PhaseAppServices
     {

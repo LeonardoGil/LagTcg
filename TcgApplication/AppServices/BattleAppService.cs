@@ -1,9 +1,8 @@
 ﻿using TcgDomain.Entities.Battles;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
-using TcgDomain.Extensions;
 
-namespace TcgForms.AppServices
+namespace TcgApplication.AppServices
 {
     public class BattleAppService
     {

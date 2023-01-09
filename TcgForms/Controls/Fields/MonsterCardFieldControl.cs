@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
 using TcgDomain.Enums;
-using TcgForms.AppServices;
+using TcgApplication.AppServices;
 using TcgForms.Forms;
 
 namespace TcgForms.Controls.Fields

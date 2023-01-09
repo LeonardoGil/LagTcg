@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Reflection.Metadata.Ecma335;
 using TcgDomain.Entities.Cards;
 using TcgDomain.Entities.Cards.Abstract;
-using TcgForms.AppServices;
+using TcgApplication.AppServices;
 using TcgForms.Forms;
 
 namespace TcgForms.Controls.Hands

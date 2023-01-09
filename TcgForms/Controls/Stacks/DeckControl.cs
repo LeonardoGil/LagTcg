@@ -1,6 +1,5 @@
-﻿using TcgDomain.Entities.Battles;
-using TcgDomain.Enums;
-using TcgForms.AppServices;
+﻿using TcgDomain.Enums;
+using TcgApplication.AppServices;
 using TcgForms.Forms;
 
 namespace TcgForms.Controls.Stacks
