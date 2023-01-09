@@ -61,10 +61,10 @@ namespace TcgForms.Forms
             {
                 PhasePlayer = PhaseAppServices.NextPhasePlayer(PhasePlayer);
 
-                labelPhasePlayer.Text = PhasePlayer.ToString();
+                labelPhasePlayer.Invoke(() => { labelPhasePlayer.Text = PhasePlayer.ToString(); });
 
                 Turn++;
-                labelTurn.Text = string.Concat("Turn: ", Turn);
+                labelTurn.Invoke(() => { labelTurn.Text = string.Concat("Turn: ", Turn); });
 
                 Player.ResetAction();
                 Opponent.ResetAction();
@@ -72,12 +72,12 @@ namespace TcgForms.Forms
 
             Phase = PhaseAppServices.NextPhase(Phase);
 
-            labelPhase.Text = Phase.GetDescription();
+            labelPhase.Invoke(() => { labelPhase.Text = Phase.GetDescription(); });
 
             buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Player;
 
             if (Phase == PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Opponent)
-                ExecBot();
+                backgroundWorkerBot.RunWorkerAsync();
         }
 
         #endregion
@@ -99,8 +99,10 @@ namespace TcgForms.Forms
         private void LoadEvents()
         {
             Player.Deck.DrawCard += new EventHandler(PlayerCardsHandForm.CardsHand_Add);
+
             Player.DuelField.MonstersField.Remove += new EventHandler<InvokeEventArgs>(Player_RemoveMonster);
-            
+            Opponent.DuelField.MonstersField.Remove += new EventHandler<InvokeEventArgs>(Opponent_RemoveMonster);
+
             Player.DuelField.MonstersField.Put += new EventHandler<InvokeEventArgs>(Player_InvokeMonster);
             Opponent.DuelField.MonstersField.Put += new EventHandler<InvokeEventArgs>(Opponent_InvokeMonster);
 
@@ -125,7 +127,87 @@ namespace TcgForms.Forms
             labelPhasePlayer.Text = PhasePlayer.ToString();
         }
 
-        private async Task ExecBot()
+        #endregion
+
+        #region Events
+
+        public void Player_InvokeMonster(object sender, InvokeEventArgs e)
+        {
+            var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
+
+            tableLayoutPlayerMain.Invoke(() => { tableLayoutPlayerMain.Controls.Add(control, control.Position, 0); });
+        }
+
+        public void Opponent_InvokeMonster(object sender, InvokeEventArgs e)
+        {
+            var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
+
+            tableLayoutOpponentMain.Invoke(() => { tableLayoutOpponentMain.Controls.Add(control, control.Position, 1); });
+        }
+
+        public void Player_RemoveMonster(object sender, InvokeEventArgs e)
+        {
+            var control = tableLayoutPlayerMain.Controls.OfType<MonsterCardFieldControl>().ToList().FirstOrDefault(x => x.Position == e.Position);
+
+            tableLayoutPlayerMain.Invoke(() => { tableLayoutPlayerMain.Controls.Remove(control); });
+        }
+
+        public void Opponent_RemoveMonster(object sender, InvokeEventArgs e)
+        {
+            var control = tableLayoutOpponentMain.Controls.OfType<MonsterCardFieldControl>().ToList().FirstOrDefault(x => x.Position == e.Position);
+
+            tableLayoutOpponentMain.Invoke(() => { tableLayoutOpponentMain.Controls.Remove(control); });
+        }
+
+        public void Players_ChangePointLife(object sender, EventArgs e)
+        {
+            var player = sender as Player;
+
+            var label = default(Label);
+
+            switch (player.Type)
+            {
+                case TypePlayerEnum.Player:
+                    label = labelPlayerPointLife;
+                    break;
+
+                case TypePlayerEnum.Opponent:
+                    label = labelOpponentPointLife;
+                    break;
+            }
+
+            label.Invoke(() => 
+            { 
+                label.Text = player.PointLife.ToString();
+
+                Task.Run(() =>
+                {
+                    label.ForeColor = Color.Maroon;
+
+                    Thread.Sleep(TimeSpan.FromSeconds(0.5));
+
+                    label.ForeColor = Color.Red;
+
+                    Thread.Sleep(TimeSpan.FromSeconds(0.5));
+
+                    label.ForeColor = Color.White;
+                });
+            });
+        }
+
+        private void buttonNextPhase_Click(object sender, EventArgs e)
+        {
+            NextPhase();
+        }
+
+        private void buttonMyCards_Click(object sender, EventArgs e)
+        {
+            PlayerCardsHandForm.DuelFieldForm = this;
+            PlayerCardsHandForm.Show();
+            PlayerCardsHandForm.Activate();
+        }
+
+        private void backgroundWorkerBot_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             do
             {
@@ -140,62 +222,9 @@ namespace TcgForms.Forms
 
                 NextPhase();
 
-                Thread.Sleep(TimeSpan.FromSeconds(2));
+                Thread.Sleep(TimeSpan.FromSeconds(1.5));
 
             } while (PhasePlayer == TypePlayerEnum.Opponent);
-        }
-
-        #endregion
-
-        #region Events
-
-        public void Player_InvokeMonster(object sender, InvokeEventArgs e)
-        {
-            var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
-
-            tableLayoutPlayerMain.Controls.Add(control, control.Position, 0);
-        }
-
-        public void Opponent_InvokeMonster(object sender, InvokeEventArgs e)
-        {
-            var control = new MonsterCardFieldControl(sender as NormalCard, e.Position, e.Set);
-
-            tableLayoutOpponentMain.Controls.Add(control, control.Position, 1);
-        }
-
-        public void Player_RemoveMonster(object sender, InvokeEventArgs e)
-        {
-            var control = tableLayoutPlayerMain.Controls.OfType<MonsterCardFieldControl>().ToList().FirstOrDefault(x => x.Position == e.Position);
-
-            tableLayoutPlayerMain.Controls.Remove(control);
-        }
-
-        public void Players_ChangePointLife(object sender, EventArgs e)
-        {
-            var player = sender as Player;
-
-            switch (player.Type)
-            {
-                case TypePlayerEnum.Player:
-                    labelPlayerPointLife.Text = player.PointLife.ToString();
-                    break;
-
-                case TypePlayerEnum.Opponent:
-                    labelOpponentPointLife.Text = player.PointLife.ToString();
-                    break;
-            }
-        }
-
-        private void buttonNextPhase_Click(object sender, EventArgs e)
-        {
-            NextPhase();
-        }
-
-        private void buttonMyCards_Click(object sender, EventArgs e)
-        {
-            PlayerCardsHandForm.DuelFieldForm = this;
-            PlayerCardsHandForm.Show();
-            PlayerCardsHandForm.Activate();
         }
 
         #endregion

@@ -32,6 +32,8 @@
             this.labelPhase = new System.Windows.Forms.Label();
             this.labelPhasePlayer = new System.Windows.Forms.Label();
             this.groupPlayerInfo = new System.Windows.Forms.GroupBox();
+            this.labelOpponentPointLife = new System.Windows.Forms.Label();
+            this.labelOpponentName = new System.Windows.Forms.Label();
             this.labelPlayerPointLife = new System.Windows.Forms.Label();
             this.labelPlayerName = new System.Windows.Forms.Label();
             this.buttonNextPhase = new System.Windows.Forms.Button();
@@ -42,8 +44,7 @@
             this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
             this.ExtraDeckControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
             this.panelDivisional = new System.Windows.Forms.Panel();
-            this.labelOpponentPointLife = new System.Windows.Forms.Label();
-            this.labelOpponentName = new System.Windows.Forms.Label();
+            this.backgroundWorkerBot = new System.ComponentModel.BackgroundWorker();
             this.groupDuelInfo.SuspendLayout();
             this.groupPlayerInfo.SuspendLayout();
             this.tableLayoutPlayerDeck.SuspendLayout();
@@ -169,6 +170,26 @@
             this.groupPlayerInfo.TabStop = false;
             this.groupPlayerInfo.Text = "Players";
             // 
+            // labelOpponentPointLife
+            // 
+            this.labelOpponentPointLife.AutoSize = true;
+            this.labelOpponentPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelOpponentPointLife.Location = new System.Drawing.Point(5, 119);
+            this.labelOpponentPointLife.Name = "labelOpponentPointLife";
+            this.labelOpponentPointLife.Size = new System.Drawing.Size(70, 13);
+            this.labelOpponentPointLife.TabIndex = 10;
+            this.labelOpponentPointLife.Text = "PointLife";
+            // 
+            // labelOpponentName
+            // 
+            this.labelOpponentName.AutoSize = true;
+            this.labelOpponentName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelOpponentName.Location = new System.Drawing.Point(5, 89);
+            this.labelOpponentName.Name = "labelOpponentName";
+            this.labelOpponentName.Size = new System.Drawing.Size(35, 13);
+            this.labelOpponentName.TabIndex = 9;
+            this.labelOpponentName.Text = "Name";
+            // 
             // labelPlayerPointLife
             // 
             this.labelPlayerPointLife.AutoSize = true;
@@ -291,25 +312,9 @@
             this.panelDivisional.Size = new System.Drawing.Size(1280, 10);
             this.panelDivisional.TabIndex = 11;
             // 
-            // labelOpponentPointLife
+            // backgroundWorkerBot
             // 
-            this.labelOpponentPointLife.AutoSize = true;
-            this.labelOpponentPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOpponentPointLife.Location = new System.Drawing.Point(5, 119);
-            this.labelOpponentPointLife.Name = "labelOpponentPointLife";
-            this.labelOpponentPointLife.Size = new System.Drawing.Size(70, 13);
-            this.labelOpponentPointLife.TabIndex = 10;
-            this.labelOpponentPointLife.Text = "PointLife";
-            // 
-            // labelOpponentName
-            // 
-            this.labelOpponentName.AutoSize = true;
-            this.labelOpponentName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOpponentName.Location = new System.Drawing.Point(5, 89);
-            this.labelOpponentName.Name = "labelOpponentName";
-            this.labelOpponentName.Size = new System.Drawing.Size(35, 13);
-            this.labelOpponentName.TabIndex = 9;
-            this.labelOpponentName.Text = "Name";
+            this.backgroundWorkerBot.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerBot_DoWork);
             // 
             // DuelFieldForm
             // 
@@ -365,5 +370,6 @@
         private Controls.Stacks.StackOfCardsControl ExtraDeckControl;
         private Label labelOpponentPointLife;
         private Label labelOpponentName;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerBot;
     }
 }
