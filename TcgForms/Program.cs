@@ -15,18 +15,14 @@ namespace TcgForms
         {
             var cards = MockService.LoadInitialCards();
 
-            var duelDeck = YugiMutoDeck.Get(cards);
-
-            var player = new Player
+            var player = new Player(YugiMutoDeck.Get(cards))
             {
                 Username = "Leonardo",
-                Deck = duelDeck
             };
 
-            var opponent = new Bot
+            var opponent = new Bot(YugiMutoDeck.Get(cards))
             {
                 Username = "Machine",
-                Deck = duelDeck
             };
 
             // To customize application configuration such as set high DPI settings or default font,

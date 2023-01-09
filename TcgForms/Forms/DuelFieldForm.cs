@@ -44,10 +44,7 @@ namespace TcgForms.Forms
 
             LoadInfo();
             LoadEvents();
-
-            Player.Deck.Shuffle();
-
-            deckControlPlayer.Draw(5);
+            PrepareDuel();
         }
 
         #endregion
@@ -59,7 +56,7 @@ namespace TcgForms.Forms
             if (Phase == PhaseEnum.EndPhase)
             {
                 PhasePlayer = PhaseAppServices.NextPhasePlayer(PhasePlayer);
-                
+
                 labelPhasePlayer.Text = PhasePlayer.ToString();
 
                 Turn++;
@@ -79,6 +76,18 @@ namespace TcgForms.Forms
         #endregion
 
         #region Private Methods
+
+        private void PrepareDuel()
+        {
+            Player.Deck.Shuffle();
+            Opponent.Deck.Shuffle();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Player.Deck.Draw();
+                Opponent.Deck.Draw();
+            }
+        }
 
         private void LoadEvents()
         {
@@ -117,7 +126,7 @@ namespace TcgForms.Forms
 
             tableLayoutPlayerMain.Controls.Add(control, control.Position, 0);
         }
-        
+
         public void Player_RemoveMonster(object sender, InvokeEventArgs e)
         {
             var control = tableLayoutPlayerMain.Controls.OfType<MonsterCardFieldControl>().ToList().FirstOrDefault(x => x.Position == e.Position);

@@ -1,12 +1,10 @@
-﻿using TcgDomain.Scripts;
+﻿using TcgDomain.Entities.Decks;
 
 namespace TcgDomain.Entities.Battles
 {
     public class Bot : Player
     {
-        public readonly BasicScript DuelScript = new BasicScript();
-
-        public Bot() : base()
+        public Bot(Deck deck) : base(deck)
         {
             Type = Enums.TypePlayerEnum.Opponent;
         }
