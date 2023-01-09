@@ -4,7 +4,7 @@ namespace TcgDomain.Enums
 {
     public enum PhaseEnum
     {
-        [Description("DrawCard Phase")]
+        [Description("Draw Card Phase")]
         DrawPhase = 0,
 
         [Description("Standby Phase")]
