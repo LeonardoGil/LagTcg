@@ -6,6 +6,8 @@ namespace TcgDomain.Entities.Cards.Abstract
 {
     public abstract class MonsterCard : Card
     {
+        public event EventHandler ChangeDuelPosition;
+
         public MonsterCard()
         {
             CanAttack = true;
@@ -22,11 +24,11 @@ namespace TcgDomain.Entities.Cards.Abstract
         public bool CanChangePosition { get; set; }
 
         public AttributeEnum Attribute { get; set; }
-        
+
         public TypeMonsterEnum Type { get; set; }
 
-        public RangeMonsterLevelEnum RangeMonsterLevel 
-        { 
+        public RangeMonsterLevelEnum RangeMonsterLevel
+        {
             get
             {
                 if (Level >= 1 && Level <= 4)
@@ -41,8 +43,21 @@ namespace TcgDomain.Entities.Cards.Abstract
                 throw new BusinessException(ErrorMessage.LevelMonsterCardInvalid);
             }
         }
-     
-        public DuelPositionEnum DuelPosition { get; set; }
+
+        protected DuelPositionEnum _duelPosition;
+
+        public DuelPositionEnum DuelPosition
+        {
+            get => _duelPosition;
+            set
+            {
+                if (_duelPosition != value)
+                {
+                    _duelPosition = value;
+                    ChangeDuelPosition?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
 
         public void ResetAction()
         {

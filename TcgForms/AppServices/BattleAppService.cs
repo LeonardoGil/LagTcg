@@ -9,6 +9,8 @@ namespace TcgForms.AppServices
     {
         public void Battle(Player playerAttack, Player playerDefense, MonsterCard monsterAttack, MonsterCard monsterDefense)
         {
+            monsterAttack.CanAttack = false;
+
             if (monsterDefense is null)
             {
                 playerDefense.Damage(monsterAttack.Attack);

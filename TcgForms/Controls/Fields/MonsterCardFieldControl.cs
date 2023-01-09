@@ -24,23 +24,41 @@ namespace TcgForms.Controls.Fields
         public MonsterCardFieldControl(NormalCard card, int position, bool set = false) : base(card, set)
         {
             InitializeComponent();
-
-            Position = position;
-            Card.Set = set;
-
-            if (Card.Set)
-            {
-                SetDefense();
-            }
-            else
-            {
-                SetAttack();
-            }
+            DefaultConstructor(position, set);
         }
 
         public MonsterCardFieldControl(EffectCard card, int position, bool set = false) : base(card, set)
         {
             InitializeComponent();
+            DefaultConstructor(position, set);
+        }
+
+        #region Public Methods
+
+        public void SetAttack(bool initialize = false)
+        {
+            if (!initialize)
+                BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+
+            ChangeSizeControl(SizeX, SizeY, 25, 10);
+        }
+
+        public void SetDefense()
+        {
+            BackgroundImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
+            ChangeSizeControl(SizeY, SizeX, 5, 30);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void DefaultConstructor(int position, bool set)
+        {
+            ContextMenuStrip.Items.Add(GetMenuItemZoom());
+
+            MonsterCard.ChangeDuelPosition += new EventHandler(MonsterCard_ChangeDuelPosition);
 
             Position = position;
             Card.Set = set;
@@ -51,35 +69,9 @@ namespace TcgForms.Controls.Fields
             }
             else
             {
-                SetAttack();
+                SetAttack(true);
             }
         }
-
-        #region Public Methods
-
-        public void SetAttack()
-        {
-            if (MonsterCard.DuelPosition != DuelPositionEnum.Atk)
-                BackgroundImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-
-            ChangeSizeControl(SizeX, SizeY, 25, 10);
-
-            MonsterCard.DuelPosition = DuelPositionEnum.Atk;
-        }
-
-        public void SetDefense()
-        {
-            if (MonsterCard.DuelPosition != DuelPositionEnum.Def)
-                BackgroundImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
-
-            ChangeSizeControl(SizeY, SizeX, 5, 30);
-
-            MonsterCard.DuelPosition = DuelPositionEnum.Def;
-        }
-
-        #endregion
-
-        #region Private Methods
 
         private void ChangeSizeControl(int sizeX, int sizeY, int positionX, int positionY)
         {
@@ -93,9 +85,20 @@ namespace TcgForms.Controls.Fields
 
         #region Events
 
-        private void CardMonsterFieldControl_Paint(object sender, PaintEventArgs e)
+        private void MonsterCard_ChangeDuelPosition(object sender, EventArgs e)
         {
-            ContextMenuStrip.Items.Add(GetMenuItemZoom());
+            var card = sender as MonsterCard;
+
+            switch (card.DuelPosition)
+            {
+                case DuelPositionEnum.Atk:
+                    SetAttack();
+                    break;
+
+                case DuelPositionEnum.Def:
+                    SetDefense();
+                    break;
+            }
         }
 
         private void contextMenuMonsterCard_Opening(object sender, CancelEventArgs e)
@@ -104,8 +107,8 @@ namespace TcgForms.Controls.Fields
 
             menuItemChangePosition.Visible = !Card.Set && MonsterCard.CanChangePosition;
 
-            menuItemAttack.Visible = duelFieldForm.Turn > 1 && 
-                                            MonsterCard.CanAttack && 
+            menuItemAttack.Visible = duelFieldForm.Turn > 1 &&
+                                            MonsterCard.CanAttack &&
                                             MonsterCard.DuelPosition == DuelPositionEnum.Atk;
         }
 
@@ -114,11 +117,11 @@ namespace TcgForms.Controls.Fields
             switch (MonsterCard.DuelPosition)
             {
                 case DuelPositionEnum.Atk:
-                    SetDefense();
+                    MonsterCard.DuelPosition = DuelPositionEnum.Def;
                     break;
 
                 case DuelPositionEnum.Def:
-                    SetAttack();
+                    MonsterCard.DuelPosition = DuelPositionEnum.Atk;
                     break;
             }
 
