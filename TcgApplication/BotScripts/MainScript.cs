@@ -81,7 +81,7 @@ namespace TcgApplication.BotScripts
                 {
                     var monsterCard = bot.Cards.OfType<MonsterCard>()
                                                .ToList()
-                                               .Where(x => x.RangeMonsterLevel == TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour)
+                                               .Where(x => x.RangeMonsterLevel == TcgDomain.Enums.MonsterRangeLevelEnum.OneToFour)
                                                .OrderByDescending(x => x.Attack)
                                                .FirstOrDefault();
 

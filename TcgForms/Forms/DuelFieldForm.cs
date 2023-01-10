@@ -26,7 +26,7 @@ namespace TcgForms.Forms
 
         public int Turn { get; private set; }
 
-        public TypePlayerEnum PhasePlayer { get; private set; }
+        public PlayerTypeEnum PhasePlayer { get; private set; }
 
         public PhaseEnum Phase { get; private set; }
 
@@ -74,9 +74,9 @@ namespace TcgForms.Forms
 
             labelPhase.Invoke(() => { labelPhase.Text = Phase.GetDescription(); });
 
-            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Player;
+            buttonNextPhase.Enabled = Phase != PhaseEnum.DrawPhase && PhasePlayer == PlayerTypeEnum.Player;
 
-            if (Phase == PhaseEnum.DrawPhase && PhasePlayer == TypePlayerEnum.Opponent)
+            if (Phase == PhaseEnum.DrawPhase && PhasePlayer == PlayerTypeEnum.Opponent)
                 backgroundWorkerBot.RunWorkerAsync();
         }
 
@@ -114,7 +114,7 @@ namespace TcgForms.Forms
         {
             Turn++;
 
-            PhasePlayer = TypePlayerEnum.Player;
+            PhasePlayer = PlayerTypeEnum.Player;
             Phase = PhaseEnum.DrawPhase;
 
             labelPlayerName.Text = Player.Username;
@@ -167,11 +167,11 @@ namespace TcgForms.Forms
 
             switch (player.Type)
             {
-                case TypePlayerEnum.Player:
+                case PlayerTypeEnum.Player:
                     label = labelPlayerPointLife;
                     break;
 
-                case TypePlayerEnum.Opponent:
+                case PlayerTypeEnum.Opponent:
                     label = labelOpponentPointLife;
                     break;
             }
@@ -224,7 +224,7 @@ namespace TcgForms.Forms
 
                 Thread.Sleep(TimeSpan.FromSeconds(1.5));
 
-            } while (PhasePlayer == TypePlayerEnum.Opponent);
+            } while (PhasePlayer == PlayerTypeEnum.Opponent);
         }
 
         #endregion

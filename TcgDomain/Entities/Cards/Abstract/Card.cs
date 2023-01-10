@@ -22,20 +22,20 @@ namespace TcgDomain.Entities.Cards.Abstract
 
         #region TypeCard
 
-        public TypeCardEnum TypeCard { get; set; }
+        public CardTypeEnum TypeCard { get; set; }
 
         public bool IsMonsterCard()
         {
-            return TypeCard == TypeCardEnum.NormalMonster ||
-                    TypeCard == TypeCardEnum.EffectMonster ||
-                    TypeCard == TypeCardEnum.RitualMonster ||
-                    TypeCard == TypeCardEnum.FusionMonster;
+            return TypeCard == CardTypeEnum.NormalMonster ||
+                    TypeCard == CardTypeEnum.EffectMonster ||
+                    TypeCard == CardTypeEnum.RitualMonster ||
+                    TypeCard == CardTypeEnum.FusionMonster;
         }
 
         public bool IsSpecialCard()
         {
-            return TypeCard == TypeCardEnum.SpellCard ||
-                    TypeCard == TypeCardEnum.TrapCard;
+            return TypeCard == CardTypeEnum.SpellCard ||
+                    TypeCard == CardTypeEnum.TrapCard;
         }
 
         #endregion

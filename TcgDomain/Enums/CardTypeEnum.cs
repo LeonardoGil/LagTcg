@@ -2,7 +2,7 @@
 
 namespace TcgDomain.Enums
 {
-    public enum TypeCardEnum
+    public enum CardTypeEnum
     {
         [Description("Normal Monster")]
         NormalMonster = 0,

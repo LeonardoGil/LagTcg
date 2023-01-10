@@ -40,17 +40,17 @@ namespace TcgForms.Controls.Hands
 
             switch (monsterCard.RangeMonsterLevel)
             {
-                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.OneToFour:
                     InvokeAppServices.Invoke(player, OriginalCard);
                     Remove?.Invoke(this, EventArgs.Empty);
                     return;
 
                
-                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.FiveAndSix:
                     numberCardForSacrifice = 1;
                     break;
 
-                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.SevenOrMore:
                     numberCardForSacrifice = 2;
                     break;
             }

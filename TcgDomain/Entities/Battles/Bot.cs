@@ -6,7 +6,7 @@ namespace TcgDomain.Entities.Battles
     {
         public Bot(Deck deck) : base(deck)
         {
-            Type = Enums.TypePlayerEnum.Opponent;
+            Type = Enums.PlayerTypeEnum.Opponent;
         }
     }
 }

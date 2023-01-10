@@ -31,7 +31,7 @@ namespace TcgForms.Controls.Stacks
         {
             var duelField = ParentForm as DuelFieldForm;
 
-            menuItemDraw.Enabled = duelField.Phase == PhaseEnum.DrawPhase && duelField.PhasePlayer == TypePlayerEnum.Player;
+            menuItemDraw.Enabled = duelField.Phase == PhaseEnum.DrawPhase && duelField.PhasePlayer == PlayerTypeEnum.Player;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace TcgDomain.Entities.Battles
 
         public int PointLife { get; private set; }
 
-        public TypePlayerEnum Type { get; protected set; }
+        public PlayerTypeEnum Type { get; protected set; }
 
         public List<dynamic> Cards { get; private set; }
 

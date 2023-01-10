@@ -1,6 +1,6 @@
 ﻿namespace TcgDomain.Enums
 {
-    public enum TypeMonsterEnum
+    public enum MonsterTypeEnum
     {
         Dragon = 0,
 

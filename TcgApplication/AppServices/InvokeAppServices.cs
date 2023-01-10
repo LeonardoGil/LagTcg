@@ -32,13 +32,13 @@ namespace TcgApplication.AppServices
 
             switch (card.RangeMonsterLevel)
             {
-                case TcgDomain.Enums.RangeMonsterLevelEnum.OneToFour:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.OneToFour:
                     return HasSpaceInField(player);
 
-                case TcgDomain.Enums.RangeMonsterLevelEnum.FiveAndSix:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.FiveAndSix:
                     return CanInvokeMonsterForAttribute(player, 1);
 
-                case TcgDomain.Enums.RangeMonsterLevelEnum.SevenOrMore:
+                case TcgDomain.Enums.MonsterRangeLevelEnum.SevenOrMore:
                     return CanInvokeMonsterForAttribute(player, 2);
 
                 default:
@@ -46,9 +46,9 @@ namespace TcgApplication.AppServices
             }
         }
 
-        public bool CanInvokeMonster(PhaseEnum phase, TypePlayerEnum phasePlayer)
+        public bool CanInvokeMonster(PhaseEnum phase, PlayerTypeEnum phasePlayer)
         {
-            return phasePlayer == TypePlayerEnum.Player && (phase == PhaseEnum.MainPhaseOne || phase == PhaseEnum.MainPhaseTwo);
+            return phasePlayer == PlayerTypeEnum.Player && (phase == PhaseEnum.MainPhaseOne || phase == PhaseEnum.MainPhaseTwo);
         }
 
         public bool CanInvokeMonsterForAttribute(Player player, int attributes)

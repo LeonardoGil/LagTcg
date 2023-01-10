@@ -2,7 +2,7 @@
 
 namespace TcgDomain.Entities.Cards
 {
-    public class MagicCard : SpecialCard
+    public class SpellCard : SpecialCard
     {
     }
 }

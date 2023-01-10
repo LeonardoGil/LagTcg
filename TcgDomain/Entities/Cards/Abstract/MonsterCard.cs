@@ -25,20 +25,20 @@ namespace TcgDomain.Entities.Cards.Abstract
 
         public AttributeEnum Attribute { get; set; }
 
-        public TypeMonsterEnum Type { get; set; }
+        public MonsterTypeEnum Type { get; set; }
 
-        public RangeMonsterLevelEnum RangeMonsterLevel
+        public MonsterRangeLevelEnum RangeMonsterLevel
         {
             get
             {
                 if (Level >= 1 && Level <= 4)
-                    return RangeMonsterLevelEnum.OneToFour;
+                    return MonsterRangeLevelEnum.OneToFour;
 
                 if (Level == 5 || Level == 6)
-                    return RangeMonsterLevelEnum.FiveAndSix;
+                    return MonsterRangeLevelEnum.FiveAndSix;
 
                 if (Level >= 7)
-                    return RangeMonsterLevelEnum.SevenOrMore;
+                    return MonsterRangeLevelEnum.SevenOrMore;
 
                 throw new BusinessException(ErrorMessage.LevelMonsterCardInvalid);
             }

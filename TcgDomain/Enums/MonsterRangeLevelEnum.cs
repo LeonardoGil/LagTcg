@@ -1,6 +1,6 @@
 ﻿namespace TcgDomain.Enums
 {
-    public enum RangeMonsterLevelEnum
+    public enum MonsterRangeLevelEnum
     {
         OneToFour = 0,
 

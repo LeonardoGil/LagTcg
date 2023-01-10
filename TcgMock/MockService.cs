@@ -16,7 +16,7 @@ namespace TcgMock
 
                 var cardsDto = JsonConvert.DeserializeObject<List<CardDTO>>(file) ?? new List<CardDTO>();
 
-                return cardsDto.Where(x => x.Type == TypeCardEnum.NormalMonster.GetDescription()).Select(dto => new NormalCard
+                return cardsDto.Where(x => x.Type == CardTypeEnum.NormalMonster.GetDescription()).Select(dto => new NormalCard
                 {
                     Serie = dto.Id,
                     Attack = dto.Atk,
