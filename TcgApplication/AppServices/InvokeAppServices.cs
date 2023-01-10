@@ -13,40 +13,16 @@ namespace TcgApplication.AppServices
 
         public void Invoke(Player player, dynamic card)
         {
-            foreach (var position in _Position)
-            {
-                var monster = player.DuelField.MonstersField[position];
-
-                if (monster is not null)
-                    continue;
-
-                player.DuelField.MonstersField[position] = card;
-                player.CanInvoke = false;
-                return;
-            }
-
-            throw new BusinessException("Não há posição disponivel em campo");
+            player.DuelField.Invoke(card);
+            player.CanInvoke = false;
+            player.Cards.Remove(card);
         }
 
-        public void SacrificeForInvoke(Player player, List<Card> sacrifice, dynamic card)
+        public void InvokeSacrifice(Player player, List<Card> sacrifices, dynamic card)
         {
-            foreach (var position in _SortPosition)
-            {
-                var monster = player.DuelField.MonstersField[position];
-
-                if (monster is null)
-                    continue;
-
-                var monsterCard = monster as Card;
-
-                if (sacrifice.Contains(monsterCard))
-                {
-                    player.DuelField.Graveyard.Add(player.DuelField.MonstersField[position]);
-                    player.DuelField.MonstersField[position] = null;
-                }
-            }
-
-            Invoke(player, card);
+            player.DuelField.InvokeSacrifice(card, sacrifices);
+            player.CanInvoke = false;
+            player.Cards.Remove(card);
         }
 
         public bool CanInvokeMonster(MonsterCard card, Player player)

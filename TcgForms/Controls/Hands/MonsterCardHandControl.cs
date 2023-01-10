@@ -76,7 +76,7 @@ namespace TcgForms.Controls.Hands
             if (cardsForSacrifice is null || !cardsForSacrifice.Any())
                 return;
 
-            InvokeAppServices.SacrificeForInvoke(player, cardsForSacrifice, OriginalCard);
+            InvokeAppServices.InvokeSacrifice(player, cardsForSacrifice, OriginalCard);
 
             Remove?.Invoke(this, EventArgs.Empty);
         }
