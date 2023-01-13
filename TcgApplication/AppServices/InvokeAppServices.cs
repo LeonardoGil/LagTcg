@@ -11,18 +11,22 @@ namespace TcgApplication.AppServices
         private readonly int[] _Position = { 2, 1, 3, 0, 4 };
         private readonly int[] _SortPosition = { 0, 1, 2, 3, 4 };
 
-        public void Invoke(Player player, dynamic card)
+        public void Invoke(Player player, MonsterCard card)
         {
-            player.DuelField.Invoke(card);
-            player.CanInvoke = false;
             player.Cards.Remove(card);
+            
+            player.DuelField.Invoke(card);
+            
+            player.CanInvoke = false;
         }
 
-        public void InvokeSacrifice(Player player, List<Card> sacrifices, dynamic card)
+        public void InvokeSacrifice(Player player, List<Card> sacrifices, MonsterCard card)
         {
-            player.DuelField.InvokeSacrifice(card, sacrifices);
-            player.CanInvoke = false;
             player.Cards.Remove(card);
+            
+            player.DuelField.InvokeSacrifice(card, sacrifices);
+            
+            player.CanInvoke = false;
         }
 
         public bool CanInvokeMonster(MonsterCard card, Player player)

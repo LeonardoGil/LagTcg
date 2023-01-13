@@ -9,6 +9,7 @@ namespace TcgApplication.AppServices
         public void Battle(Player playerAttack, Player playerDefense, MonsterCard monsterAttack, MonsterCard monsterDefense)
         {
             monsterAttack.CanAttack = false;
+            monsterAttack.CanChangePosition = false;
 
             if (monsterDefense is null)
             {

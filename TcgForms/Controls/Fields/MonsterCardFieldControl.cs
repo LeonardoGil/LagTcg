@@ -87,7 +87,7 @@ namespace TcgForms.Controls.Fields
         private void MonsterCard_ChangeDuelPosition(object sender, EventArgs e)
         {
             var card = sender as MonsterCard;
-
+            
             switch (card.DuelPosition)
             {
                 case DuelPositionEnum.Atk:
@@ -104,11 +104,18 @@ namespace TcgForms.Controls.Fields
         {
             var duelFieldForm = ParentForm as DuelFieldForm;
 
-            menuItemChangePosition.Visible = !Card.Set && MonsterCard.CanChangePosition;
+            menuItemChangePosition.Visible = 
+                duelFieldForm.PhasePlayer == PlayerTypeEnum.Player &&
+                !Card.Set && 
+                MonsterCard.CanChangePosition &&
+                (duelFieldForm.Phase == PhaseEnum.MainPhaseOne || duelFieldForm.Phase == PhaseEnum.MainPhaseTwo);
 
-            menuItemAttack.Visible = duelFieldForm.Turn > 1 &&
-                                            MonsterCard.CanAttack &&
-                                            MonsterCard.DuelPosition == DuelPositionEnum.Atk;
+            menuItemAttack.Visible = 
+                duelFieldForm.Turn > 1 &&
+                duelFieldForm.Phase == PhaseEnum.BattlePhase &&
+                duelFieldForm.PhasePlayer == PlayerTypeEnum.Player &&
+                MonsterCard.CanAttack &&
+                MonsterCard.DuelPosition == DuelPositionEnum.Atk;
         }
 
         private void menuItemChangePosition_Click(object sender, EventArgs e)

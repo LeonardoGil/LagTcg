@@ -41,8 +41,7 @@ namespace TcgForms.Controls.Hands
             switch (monsterCard.RangeMonsterLevel)
             {
                 case TcgDomain.Enums.MonsterRangeLevelEnum.OneToFour:
-                    InvokeAppServices.Invoke(player, OriginalCard);
-                    Remove?.Invoke(this, EventArgs.Empty);
+                    InvokeAppServices.Invoke(player, MonsterCard);
                     return;
 
                
@@ -76,9 +75,7 @@ namespace TcgForms.Controls.Hands
             if (cardsForSacrifice is null || !cardsForSacrifice.Any())
                 return;
 
-            InvokeAppServices.InvokeSacrifice(player, cardsForSacrifice, OriginalCard);
-
-            Remove?.Invoke(this, EventArgs.Empty);
+            InvokeAppServices.InvokeSacrifice(player, cardsForSacrifice, MonsterCard);
         }
 
         #endregion
@@ -88,6 +85,8 @@ namespace TcgForms.Controls.Hands
         private void menuItemInvoke_Click(object sender, EventArgs e)
         {
             Invoke(MonsterCard);
+
+            Remove?.Invoke(this, EventArgs.Empty);
         }
 
         private void menuItemSpecialInvoke_Click(object sender, EventArgs e)
@@ -99,7 +98,11 @@ namespace TcgForms.Controls.Hands
         {
             MonsterCard.Set = true;
 
+            MonsterCard.DuelPosition = TcgDomain.Enums.DuelPositionEnum.Def;
+
             Invoke(MonsterCard);
+
+            Remove?.Invoke(this, EventArgs.Empty);
         }
 
         private void contextMenuCardMonster_Opening(object sender, CancelEventArgs e)
