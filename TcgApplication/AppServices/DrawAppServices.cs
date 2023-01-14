@@ -2,7 +2,7 @@
 
 namespace TcgApplication.AppServices
 {
-    public class DrawAppServices
+    public class DrawAppServices : BaseAppServices
     {
         public void DrawCards(Player player, int quantity)
         {
