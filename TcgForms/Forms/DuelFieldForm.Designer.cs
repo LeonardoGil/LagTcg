@@ -21,331 +21,354 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DuelFieldForm));
-            this.tableLayoutOpponentSecondary = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutOpponentMain = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutOpponentDeck = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonMyCards = new System.Windows.Forms.Button();
-            this.groupDuelInfo = new System.Windows.Forms.GroupBox();
-            this.labelTurn = new System.Windows.Forms.Label();
-            this.labelPhase = new System.Windows.Forms.Label();
-            this.labelPhasePlayer = new System.Windows.Forms.Label();
-            this.groupPlayerInfo = new System.Windows.Forms.GroupBox();
-            this.labelOpponentPointLife = new System.Windows.Forms.Label();
-            this.labelOpponentName = new System.Windows.Forms.Label();
-            this.labelPlayerPointLife = new System.Windows.Forms.Label();
-            this.labelPlayerName = new System.Windows.Forms.Label();
-            this.buttonNextPhase = new System.Windows.Forms.Button();
-            this.tableLayoutPlayerDeck = new System.Windows.Forms.TableLayoutPanel();
-            this.deckControlPlayer = new TcgForms.Controls.Stacks.DeckControl();
-            this.GraveyardPlayerControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
-            this.tableLayoutPlayerMain = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPlayerSecondary = new System.Windows.Forms.TableLayoutPanel();
-            this.ExtraDeckControl = new TcgForms.Controls.Stacks.StackOfCardsControl();
-            this.panelDivisional = new System.Windows.Forms.Panel();
-            this.backgroundWorkerBot = new System.ComponentModel.BackgroundWorker();
-            this.groupDuelInfo.SuspendLayout();
-            this.groupPlayerInfo.SuspendLayout();
-            this.tableLayoutPlayerDeck.SuspendLayout();
-            this.tableLayoutPlayerSecondary.SuspendLayout();
-            this.SuspendLayout();
+            tableLayoutOpponentSecondary = new TableLayoutPanel();
+            tableLayoutOpponentMain = new TableLayoutPanel();
+            tableLayoutOpponentDeck = new TableLayoutPanel();
+            buttonMyCards = new Button();
+            groupDuelInfo = new GroupBox();
+            labelTurn = new Label();
+            labelPhase = new Label();
+            labelPhasePlayer = new Label();
+            groupPlayerInfo = new GroupBox();
+            labelPlayerPointLife = new Label();
+            labelPlayerName = new Label();
+            labelOpponentPointLife = new Label();
+            labelOpponentName = new Label();
+            buttonNextPhase = new Button();
+            tableLayoutPlayerDeck = new TableLayoutPanel();
+            deckControlPlayer = new Controls.Stacks.DeckControl();
+            GraveyardPlayerControl = new Controls.Stacks.StackOfCardsControl();
+            tableLayoutPlayerMain = new TableLayoutPanel();
+            tableLayoutPlayerSecondary = new TableLayoutPanel();
+            ExtraDeckControl = new Controls.Stacks.StackOfCardsControl();
+            panelDivisional = new Panel();
+            backgroundWorkerBot = new System.ComponentModel.BackgroundWorker();
+            groupOpponentInfo = new GroupBox();
+            groupDuelInfo.SuspendLayout();
+            groupPlayerInfo.SuspendLayout();
+            tableLayoutPlayerDeck.SuspendLayout();
+            tableLayoutPlayerSecondary.SuspendLayout();
+            groupOpponentInfo.SuspendLayout();
+            SuspendLayout();
             // 
             // tableLayoutOpponentSecondary
             // 
-            this.tableLayoutOpponentSecondary.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutOpponentSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutOpponentSecondary.ColumnCount = 1;
-            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutOpponentSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentSecondary.Location = new System.Drawing.Point(1030, 20);
-            this.tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
-            this.tableLayoutOpponentSecondary.RowCount = 2;
-            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentSecondary.Size = new System.Drawing.Size(110, 300);
-            this.tableLayoutOpponentSecondary.TabIndex = 2;
+            tableLayoutOpponentSecondary.BackColor = Color.Transparent;
+            tableLayoutOpponentSecondary.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutOpponentSecondary.ColumnCount = 1;
+            tableLayoutOpponentSecondary.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutOpponentSecondary.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutOpponentSecondary.Location = new Point(1010, 20);
+            tableLayoutOpponentSecondary.Name = "tableLayoutOpponentSecondary";
+            tableLayoutOpponentSecondary.RowCount = 2;
+            tableLayoutOpponentSecondary.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentSecondary.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentSecondary.Size = new Size(110, 300);
+            tableLayoutOpponentSecondary.TabIndex = 2;
             // 
             // tableLayoutOpponentMain
             // 
-            this.tableLayoutOpponentMain.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutOpponentMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutOpponentMain.ColumnCount = 5;
-            this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutOpponentMain.Location = new System.Drawing.Point(275, 20);
-            this.tableLayoutOpponentMain.Name = "tableLayoutOpponentMain";
-            this.tableLayoutOpponentMain.RowCount = 2;
-            this.tableLayoutOpponentMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentMain.Size = new System.Drawing.Size(700, 320);
-            this.tableLayoutOpponentMain.TabIndex = 1;
+            tableLayoutOpponentMain.BackColor = Color.Transparent;
+            tableLayoutOpponentMain.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutOpponentMain.ColumnCount = 5;
+            tableLayoutOpponentMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutOpponentMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutOpponentMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutOpponentMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutOpponentMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutOpponentMain.Location = new Point(275, 20);
+            tableLayoutOpponentMain.Name = "tableLayoutOpponentMain";
+            tableLayoutOpponentMain.RowCount = 2;
+            tableLayoutOpponentMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentMain.Size = new Size(700, 320);
+            tableLayoutOpponentMain.TabIndex = 1;
             // 
             // tableLayoutOpponentDeck
             // 
-            this.tableLayoutOpponentDeck.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutOpponentDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutOpponentDeck.ColumnCount = 1;
-            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutOpponentDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutOpponentDeck.Location = new System.Drawing.Point(110, 20);
-            this.tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
-            this.tableLayoutOpponentDeck.RowCount = 2;
-            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutOpponentDeck.Size = new System.Drawing.Size(110, 300);
-            this.tableLayoutOpponentDeck.TabIndex = 0;
+            tableLayoutOpponentDeck.BackColor = Color.Transparent;
+            tableLayoutOpponentDeck.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutOpponentDeck.ColumnCount = 1;
+            tableLayoutOpponentDeck.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutOpponentDeck.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutOpponentDeck.Location = new Point(130, 20);
+            tableLayoutOpponentDeck.Name = "tableLayoutOpponentDeck";
+            tableLayoutOpponentDeck.RowCount = 2;
+            tableLayoutOpponentDeck.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentDeck.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOpponentDeck.Size = new Size(110, 300);
+            tableLayoutOpponentDeck.TabIndex = 0;
             // 
             // buttonMyCards
             // 
-            this.buttonMyCards.Location = new System.Drawing.Point(25, 640);
-            this.buttonMyCards.Name = "buttonMyCards";
-            this.buttonMyCards.Size = new System.Drawing.Size(60, 50);
-            this.buttonMyCards.TabIndex = 10;
-            this.buttonMyCards.Text = "My Cards";
-            this.buttonMyCards.UseVisualStyleBackColor = true;
-            this.buttonMyCards.Click += new System.EventHandler(this.buttonMyCards_Click);
+            buttonMyCards.Location = new Point(25, 640);
+            buttonMyCards.Name = "buttonMyCards";
+            buttonMyCards.Size = new Size(60, 50);
+            buttonMyCards.TabIndex = 10;
+            buttonMyCards.Text = "My Cards";
+            buttonMyCards.UseVisualStyleBackColor = true;
+            buttonMyCards.Click += buttonMyCards_Click;
             // 
             // groupDuelInfo
             // 
-            this.groupDuelInfo.BackColor = System.Drawing.Color.Transparent;
-            this.groupDuelInfo.Controls.Add(this.labelTurn);
-            this.groupDuelInfo.Controls.Add(this.labelPhase);
-            this.groupDuelInfo.Controls.Add(this.labelPhasePlayer);
-            this.groupDuelInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupDuelInfo.ForeColor = System.Drawing.Color.White;
-            this.groupDuelInfo.Location = new System.Drawing.Point(1165, 550);
-            this.groupDuelInfo.Name = "groupDuelInfo";
-            this.groupDuelInfo.Size = new System.Drawing.Size(100, 150);
-            this.groupDuelInfo.TabIndex = 9;
-            this.groupDuelInfo.TabStop = false;
-            this.groupDuelInfo.Text = "Duel";
+            groupDuelInfo.BackColor = Color.Transparent;
+            groupDuelInfo.Controls.Add(labelTurn);
+            groupDuelInfo.Controls.Add(labelPhase);
+            groupDuelInfo.Controls.Add(labelPhasePlayer);
+            groupDuelInfo.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            groupDuelInfo.ForeColor = Color.WhiteSmoke;
+            groupDuelInfo.Location = new Point(12, 390);
+            groupDuelInfo.Name = "groupDuelInfo";
+            groupDuelInfo.Size = new Size(100, 150);
+            groupDuelInfo.TabIndex = 9;
+            groupDuelInfo.TabStop = false;
+            groupDuelInfo.Text = "Duel";
             // 
             // labelTurn
             // 
-            this.labelTurn.AutoSize = true;
-            this.labelTurn.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTurn.Location = new System.Drawing.Point(5, 89);
-            this.labelTurn.Name = "labelTurn";
-            this.labelTurn.Size = new System.Drawing.Size(42, 13);
-            this.labelTurn.TabIndex = 11;
-            this.labelTurn.Text = "Turn:";
+            labelTurn.AutoSize = true;
+            labelTurn.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTurn.ForeColor = Color.WhiteSmoke;
+            labelTurn.Location = new Point(5, 89);
+            labelTurn.Name = "labelTurn";
+            labelTurn.Size = new Size(47, 16);
+            labelTurn.TabIndex = 11;
+            labelTurn.Text = "Turn:";
             // 
             // labelPhase
             // 
-            this.labelPhase.AutoSize = true;
-            this.labelPhase.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhase.Location = new System.Drawing.Point(5, 29);
-            this.labelPhase.Name = "labelPhase";
-            this.labelPhase.Size = new System.Drawing.Size(42, 13);
-            this.labelPhase.TabIndex = 10;
-            this.labelPhase.Text = "Phase";
+            labelPhase.AutoSize = true;
+            labelPhase.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPhase.ForeColor = Color.WhiteSmoke;
+            labelPhase.Location = new Point(5, 29);
+            labelPhase.Name = "labelPhase";
+            labelPhase.Size = new Size(47, 16);
+            labelPhase.TabIndex = 10;
+            labelPhase.Text = "Phase";
             // 
             // labelPhasePlayer
             // 
-            this.labelPhasePlayer.AutoSize = true;
-            this.labelPhasePlayer.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhasePlayer.Location = new System.Drawing.Point(5, 59);
-            this.labelPhasePlayer.Name = "labelPhasePlayer";
-            this.labelPhasePlayer.Size = new System.Drawing.Size(84, 13);
-            this.labelPhasePlayer.TabIndex = 9;
-            this.labelPhasePlayer.Text = "PhasePlayer";
+            labelPhasePlayer.AutoSize = true;
+            labelPhasePlayer.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPhasePlayer.ForeColor = Color.WhiteSmoke;
+            labelPhasePlayer.Location = new Point(5, 59);
+            labelPhasePlayer.Name = "labelPhasePlayer";
+            labelPhasePlayer.Size = new Size(95, 16);
+            labelPhasePlayer.TabIndex = 9;
+            labelPhasePlayer.Text = "PhasePlayer";
             // 
             // groupPlayerInfo
             // 
-            this.groupPlayerInfo.BackColor = System.Drawing.Color.Transparent;
-            this.groupPlayerInfo.Controls.Add(this.labelOpponentPointLife);
-            this.groupPlayerInfo.Controls.Add(this.labelOpponentName);
-            this.groupPlayerInfo.Controls.Add(this.labelPlayerPointLife);
-            this.groupPlayerInfo.Controls.Add(this.labelPlayerName);
-            this.groupPlayerInfo.Font = new System.Drawing.Font("Fira Code SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupPlayerInfo.ForeColor = System.Drawing.Color.White;
-            this.groupPlayerInfo.Location = new System.Drawing.Point(1165, 390);
-            this.groupPlayerInfo.Name = "groupPlayerInfo";
-            this.groupPlayerInfo.Size = new System.Drawing.Size(100, 150);
-            this.groupPlayerInfo.TabIndex = 8;
-            this.groupPlayerInfo.TabStop = false;
-            this.groupPlayerInfo.Text = "Players";
-            // 
-            // labelOpponentPointLife
-            // 
-            this.labelOpponentPointLife.AutoSize = true;
-            this.labelOpponentPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOpponentPointLife.Location = new System.Drawing.Point(5, 119);
-            this.labelOpponentPointLife.Name = "labelOpponentPointLife";
-            this.labelOpponentPointLife.Size = new System.Drawing.Size(70, 13);
-            this.labelOpponentPointLife.TabIndex = 10;
-            this.labelOpponentPointLife.Text = "PointLife";
-            // 
-            // labelOpponentName
-            // 
-            this.labelOpponentName.AutoSize = true;
-            this.labelOpponentName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOpponentName.Location = new System.Drawing.Point(5, 89);
-            this.labelOpponentName.Name = "labelOpponentName";
-            this.labelOpponentName.Size = new System.Drawing.Size(35, 13);
-            this.labelOpponentName.TabIndex = 9;
-            this.labelOpponentName.Text = "Name";
+            groupPlayerInfo.BackColor = Color.Transparent;
+            groupPlayerInfo.Controls.Add(labelPlayerPointLife);
+            groupPlayerInfo.Controls.Add(labelPlayerName);
+            groupPlayerInfo.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            groupPlayerInfo.ForeColor = Color.WhiteSmoke;
+            groupPlayerInfo.Location = new Point(1140, 554);
+            groupPlayerInfo.Name = "groupPlayerInfo";
+            groupPlayerInfo.Size = new Size(100, 150);
+            groupPlayerInfo.TabIndex = 8;
+            groupPlayerInfo.TabStop = false;
+            groupPlayerInfo.Text = "Players";
             // 
             // labelPlayerPointLife
             // 
-            this.labelPlayerPointLife.AutoSize = true;
-            this.labelPlayerPointLife.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPlayerPointLife.Location = new System.Drawing.Point(5, 59);
-            this.labelPlayerPointLife.Name = "labelPlayerPointLife";
-            this.labelPlayerPointLife.Size = new System.Drawing.Size(70, 13);
-            this.labelPlayerPointLife.TabIndex = 8;
-            this.labelPlayerPointLife.Text = "PointLife";
+            labelPlayerPointLife.AutoSize = true;
+            labelPlayerPointLife.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPlayerPointLife.ForeColor = Color.WhiteSmoke;
+            labelPlayerPointLife.Location = new Point(5, 59);
+            labelPlayerPointLife.Name = "labelPlayerPointLife";
+            labelPlayerPointLife.Size = new Size(79, 16);
+            labelPlayerPointLife.TabIndex = 8;
+            labelPlayerPointLife.Text = "PointLife";
             // 
             // labelPlayerName
             // 
-            this.labelPlayerName.AutoSize = true;
-            this.labelPlayerName.Font = new System.Drawing.Font("Fira Code SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPlayerName.Location = new System.Drawing.Point(5, 29);
-            this.labelPlayerName.Name = "labelPlayerName";
-            this.labelPlayerName.Size = new System.Drawing.Size(35, 13);
-            this.labelPlayerName.TabIndex = 7;
-            this.labelPlayerName.Text = "Name";
+            labelPlayerName.AutoSize = true;
+            labelPlayerName.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPlayerName.ForeColor = Color.WhiteSmoke;
+            labelPlayerName.Location = new Point(5, 29);
+            labelPlayerName.Name = "labelPlayerName";
+            labelPlayerName.Size = new Size(39, 16);
+            labelPlayerName.TabIndex = 7;
+            labelPlayerName.Text = "Name";
+            // 
+            // labelOpponentPointLife
+            // 
+            labelOpponentPointLife.AutoSize = true;
+            labelOpponentPointLife.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOpponentPointLife.ForeColor = Color.WhiteSmoke;
+            labelOpponentPointLife.Location = new Point(5, 59);
+            labelOpponentPointLife.Name = "labelOpponentPointLife";
+            labelOpponentPointLife.Size = new Size(79, 16);
+            labelOpponentPointLife.TabIndex = 10;
+            labelOpponentPointLife.Text = "PointLife";
+            // 
+            // labelOpponentName
+            // 
+            labelOpponentName.AutoSize = true;
+            labelOpponentName.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOpponentName.ForeColor = Color.WhiteSmoke;
+            labelOpponentName.Location = new Point(5, 29);
+            labelOpponentName.Name = "labelOpponentName";
+            labelOpponentName.Size = new Size(39, 16);
+            labelOpponentName.TabIndex = 9;
+            labelOpponentName.Text = "Name";
             // 
             // buttonNextPhase
             // 
-            this.buttonNextPhase.Enabled = false;
-            this.buttonNextPhase.Location = new System.Drawing.Point(25, 570);
-            this.buttonNextPhase.Name = "buttonNextPhase";
-            this.buttonNextPhase.Size = new System.Drawing.Size(60, 50);
-            this.buttonNextPhase.TabIndex = 6;
-            this.buttonNextPhase.Text = "Next Phase";
-            this.buttonNextPhase.UseVisualStyleBackColor = true;
-            this.buttonNextPhase.Click += new System.EventHandler(this.buttonNextPhase_Click);
+            buttonNextPhase.Enabled = false;
+            buttonNextPhase.Location = new Point(25, 570);
+            buttonNextPhase.Name = "buttonNextPhase";
+            buttonNextPhase.Size = new Size(60, 50);
+            buttonNextPhase.TabIndex = 6;
+            buttonNextPhase.Text = "Next Phase";
+            buttonNextPhase.UseVisualStyleBackColor = true;
+            buttonNextPhase.Click += buttonNextPhase_Click;
             // 
             // tableLayoutPlayerDeck
             // 
-            this.tableLayoutPlayerDeck.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPlayerDeck.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutPlayerDeck.ColumnCount = 1;
-            this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPlayerDeck.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPlayerDeck.Controls.Add(this.deckControlPlayer, 0, 1);
-            this.tableLayoutPlayerDeck.Controls.Add(this.GraveyardPlayerControl, 0, 0);
-            this.tableLayoutPlayerDeck.Location = new System.Drawing.Point(1030, 410);
-            this.tableLayoutPlayerDeck.Name = "tableLayoutPlayerDeck";
-            this.tableLayoutPlayerDeck.RowCount = 2;
-            this.tableLayoutPlayerDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerDeck.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerDeck.Size = new System.Drawing.Size(110, 300);
-            this.tableLayoutPlayerDeck.TabIndex = 5;
+            tableLayoutPlayerDeck.BackColor = Color.Transparent;
+            tableLayoutPlayerDeck.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPlayerDeck.ColumnCount = 1;
+            tableLayoutPlayerDeck.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPlayerDeck.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPlayerDeck.Controls.Add(deckControlPlayer, 0, 1);
+            tableLayoutPlayerDeck.Controls.Add(GraveyardPlayerControl, 0, 0);
+            tableLayoutPlayerDeck.Location = new Point(1010, 410);
+            tableLayoutPlayerDeck.Name = "tableLayoutPlayerDeck";
+            tableLayoutPlayerDeck.RowCount = 2;
+            tableLayoutPlayerDeck.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerDeck.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerDeck.Size = new Size(110, 300);
+            tableLayoutPlayerDeck.TabIndex = 5;
             // 
             // deckControlPlayer
             // 
-            this.deckControlPlayer.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deckControlPlayer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deckControlPlayer.BackgroundImage")));
-            this.deckControlPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deckControlPlayer.Location = new System.Drawing.Point(5, 154);
-            this.deckControlPlayer.Name = "deckControlPlayer";
-            this.deckControlPlayer.Size = new System.Drawing.Size(100, 140);
-            this.deckControlPlayer.TabIndex = 0;
+            deckControlPlayer.Anchor = AnchorStyles.None;
+            deckControlPlayer.BackgroundImage = (Image)resources.GetObject("deckControlPlayer.BackgroundImage");
+            deckControlPlayer.BackgroundImageLayout = ImageLayout.Stretch;
+            deckControlPlayer.Location = new Point(5, 154);
+            deckControlPlayer.Name = "deckControlPlayer";
+            deckControlPlayer.Size = new Size(100, 140);
+            deckControlPlayer.TabIndex = 0;
             // 
             // GraveyardPlayerControl
             // 
-            this.GraveyardPlayerControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GraveyardPlayerControl.BackgroundImage")));
-            this.GraveyardPlayerControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.GraveyardPlayerControl.Enabled = false;
-            this.GraveyardPlayerControl.Location = new System.Drawing.Point(5, 5);
-            this.GraveyardPlayerControl.Name = "GraveyardPlayerControl";
-            this.GraveyardPlayerControl.Size = new System.Drawing.Size(100, 140);
-            this.GraveyardPlayerControl.TabIndex = 1;
-            this.GraveyardPlayerControl.Visible = false;
+            GraveyardPlayerControl.BackgroundImage = (Image)resources.GetObject("GraveyardPlayerControl.BackgroundImage");
+            GraveyardPlayerControl.BackgroundImageLayout = ImageLayout.Stretch;
+            GraveyardPlayerControl.Enabled = false;
+            GraveyardPlayerControl.Location = new Point(5, 5);
+            GraveyardPlayerControl.Name = "GraveyardPlayerControl";
+            GraveyardPlayerControl.Size = new Size(100, 140);
+            GraveyardPlayerControl.TabIndex = 1;
+            GraveyardPlayerControl.Visible = false;
             // 
             // tableLayoutPlayerMain
             // 
-            this.tableLayoutPlayerMain.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPlayerMain.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutPlayerMain.ColumnCount = 5;
-            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPlayerMain.Location = new System.Drawing.Point(275, 390);
-            this.tableLayoutPlayerMain.Name = "tableLayoutPlayerMain";
-            this.tableLayoutPlayerMain.RowCount = 2;
-            this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerMain.Size = new System.Drawing.Size(700, 320);
-            this.tableLayoutPlayerMain.TabIndex = 4;
+            tableLayoutPlayerMain.BackColor = Color.Transparent;
+            tableLayoutPlayerMain.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPlayerMain.ColumnCount = 5;
+            tableLayoutPlayerMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPlayerMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPlayerMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPlayerMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPlayerMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPlayerMain.Location = new Point(275, 390);
+            tableLayoutPlayerMain.Name = "tableLayoutPlayerMain";
+            tableLayoutPlayerMain.RowCount = 2;
+            tableLayoutPlayerMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerMain.Size = new Size(700, 320);
+            tableLayoutPlayerMain.TabIndex = 4;
             // 
             // tableLayoutPlayerSecondary
             // 
-            this.tableLayoutPlayerSecondary.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPlayerSecondary.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            this.tableLayoutPlayerSecondary.ColumnCount = 1;
-            this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPlayerSecondary.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPlayerSecondary.Controls.Add(this.ExtraDeckControl, 0, 1);
-            this.tableLayoutPlayerSecondary.Location = new System.Drawing.Point(110, 410);
-            this.tableLayoutPlayerSecondary.Name = "tableLayoutPlayerSecondary";
-            this.tableLayoutPlayerSecondary.RowCount = 2;
-            this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerSecondary.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPlayerSecondary.Size = new System.Drawing.Size(110, 300);
-            this.tableLayoutPlayerSecondary.TabIndex = 3;
+            tableLayoutPlayerSecondary.BackColor = Color.Transparent;
+            tableLayoutPlayerSecondary.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPlayerSecondary.ColumnCount = 1;
+            tableLayoutPlayerSecondary.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPlayerSecondary.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPlayerSecondary.Controls.Add(ExtraDeckControl, 0, 1);
+            tableLayoutPlayerSecondary.Location = new Point(130, 410);
+            tableLayoutPlayerSecondary.Name = "tableLayoutPlayerSecondary";
+            tableLayoutPlayerSecondary.RowCount = 2;
+            tableLayoutPlayerSecondary.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerSecondary.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPlayerSecondary.Size = new Size(110, 300);
+            tableLayoutPlayerSecondary.TabIndex = 3;
             // 
             // ExtraDeckControl
             // 
-            this.ExtraDeckControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExtraDeckControl.BackgroundImage")));
-            this.ExtraDeckControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ExtraDeckControl.Enabled = false;
-            this.ExtraDeckControl.Location = new System.Drawing.Point(5, 154);
-            this.ExtraDeckControl.Name = "ExtraDeckControl";
-            this.ExtraDeckControl.Size = new System.Drawing.Size(100, 140);
-            this.ExtraDeckControl.TabIndex = 0;
-            this.ExtraDeckControl.Visible = false;
+            ExtraDeckControl.BackgroundImage = (Image)resources.GetObject("ExtraDeckControl.BackgroundImage");
+            ExtraDeckControl.BackgroundImageLayout = ImageLayout.Stretch;
+            ExtraDeckControl.Enabled = false;
+            ExtraDeckControl.Location = new Point(5, 154);
+            ExtraDeckControl.Name = "ExtraDeckControl";
+            ExtraDeckControl.Size = new Size(100, 140);
+            ExtraDeckControl.TabIndex = 0;
+            ExtraDeckControl.Visible = false;
             // 
             // panelDivisional
             // 
-            this.panelDivisional.BackColor = System.Drawing.Color.White;
-            this.panelDivisional.Location = new System.Drawing.Point(0, 360);
-            this.panelDivisional.Name = "panelDivisional";
-            this.panelDivisional.Size = new System.Drawing.Size(1280, 10);
-            this.panelDivisional.TabIndex = 11;
+            panelDivisional.BackColor = Color.Gainsboro;
+            panelDivisional.ForeColor = Color.WhiteSmoke;
+            panelDivisional.Location = new Point(0, 360);
+            panelDivisional.Name = "panelDivisional";
+            panelDivisional.Size = new Size(1280, 10);
+            panelDivisional.TabIndex = 11;
             // 
             // backgroundWorkerBot
             // 
-            this.backgroundWorkerBot.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerBot_DoWork);
+            backgroundWorkerBot.DoWork += backgroundWorkerBot_DoWork;
+            // 
+            // groupOpponentInfo
+            // 
+            groupOpponentInfo.BackColor = Color.Transparent;
+            groupOpponentInfo.Controls.Add(labelOpponentPointLife);
+            groupOpponentInfo.Controls.Add(labelOpponentName);
+            groupOpponentInfo.Font = new Font("Fira Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            groupOpponentInfo.ForeColor = Color.WhiteSmoke;
+            groupOpponentInfo.Location = new Point(12, 20);
+            groupOpponentInfo.Name = "groupOpponentInfo";
+            groupOpponentInfo.Size = new Size(100, 150);
+            groupOpponentInfo.TabIndex = 12;
+            groupOpponentInfo.TabStop = false;
+            groupOpponentInfo.Text = "Opponent";
             // 
             // DuelFieldForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Blue;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panelDivisional);
-            this.Controls.Add(this.tableLayoutOpponentMain);
-            this.Controls.Add(this.tableLayoutOpponentSecondary);
-            this.Controls.Add(this.groupPlayerInfo);
-            this.Controls.Add(this.groupDuelInfo);
-            this.Controls.Add(this.tableLayoutOpponentDeck);
-            this.Controls.Add(this.buttonMyCards);
-            this.Controls.Add(this.tableLayoutPlayerDeck);
-            this.Controls.Add(this.tableLayoutPlayerSecondary);
-            this.Controls.Add(this.tableLayoutPlayerMain);
-            this.Controls.Add(this.buttonNextPhase);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "DuelFieldForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Duel Field";
-            this.groupDuelInfo.ResumeLayout(false);
-            this.groupDuelInfo.PerformLayout();
-            this.groupPlayerInfo.ResumeLayout(false);
-            this.groupPlayerInfo.PerformLayout();
-            this.tableLayoutPlayerDeck.ResumeLayout(false);
-            this.tableLayoutPlayerSecondary.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.RoyalBlue;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1252, 720);
+            Controls.Add(groupOpponentInfo);
+            Controls.Add(panelDivisional);
+            Controls.Add(tableLayoutOpponentMain);
+            Controls.Add(tableLayoutOpponentSecondary);
+            Controls.Add(groupPlayerInfo);
+            Controls.Add(groupDuelInfo);
+            Controls.Add(tableLayoutOpponentDeck);
+            Controls.Add(buttonMyCards);
+            Controls.Add(tableLayoutPlayerDeck);
+            Controls.Add(tableLayoutPlayerSecondary);
+            Controls.Add(tableLayoutPlayerMain);
+            Controls.Add(buttonNextPhase);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Name = "DuelFieldForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            groupDuelInfo.ResumeLayout(false);
+            groupDuelInfo.PerformLayout();
+            groupPlayerInfo.ResumeLayout(false);
+            groupPlayerInfo.PerformLayout();
+            tableLayoutPlayerDeck.ResumeLayout(false);
+            tableLayoutPlayerSecondary.ResumeLayout(false);
+            groupOpponentInfo.ResumeLayout(false);
+            groupOpponentInfo.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -371,5 +394,6 @@
         private Label labelOpponentPointLife;
         private Label labelOpponentName;
         private System.ComponentModel.BackgroundWorker backgroundWorkerBot;
+        private GroupBox groupOpponentInfo;
     }
 }

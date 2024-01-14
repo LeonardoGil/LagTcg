@@ -7,6 +7,7 @@ using TcgForms.Controls.Fields;
 using TcgInfra.CustomEventArgs;
 using TcgApplication.BotScripts;
 using TcgDomain.Entities.Scripts;
+using TcgForms.Extensions;
 
 namespace TcgForms.Forms
 {
@@ -36,7 +37,7 @@ namespace TcgForms.Forms
 
         public DuelFieldForm(Player user, Bot opponent)
         {
-            BackgroundImage = Properties.Resources.BackgroundDigitalDuel;
+            BackgroundImage = Properties.Resources.BackgroundDigitalDuel.IntensifyColor(210, Color.Black);
 
             Player = user;
             Opponent = opponent;
@@ -176,8 +177,8 @@ namespace TcgForms.Forms
                     break;
             }
 
-            label.Invoke(() => 
-            { 
+            label.Invoke(() =>
+            {
                 label.Text = player.PointLife.ToString();
 
                 Task.Run(() =>
